@@ -36,7 +36,8 @@ return {                                       -- NOTE: First, some plugins that
                 end
                 return 'make install_jsregexp'
             end)()
-        }, 'saadparwaiz1/cmp_luasnip',              -- Adds LSP completion capabilities
+        },
+        'saadparwaiz1/cmp_luasnip',                 -- Adds LSP completion capabilities
         'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-path', -- Adds a number of user-friendly snippets
         'rafamadriz/friendly-snippets' }
 },                                                  -- Useful plugin to show you pending keybinds.
