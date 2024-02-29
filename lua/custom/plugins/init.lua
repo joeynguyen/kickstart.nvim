@@ -49,11 +49,6 @@ return { -- NOTE: First, some plugins that don't require any configuration
         }
     },
     {
-        -- Useful plugin to show you pending keybinds.
-        'folke/which-key.nvim',
-        opts = {}
-    },
-    {
         -- "gc" to comment visual regions/lines
         'numToStr/Comment.nvim',
         opts = {}
