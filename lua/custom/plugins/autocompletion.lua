@@ -12,11 +12,12 @@ return {
                     return
                 end
                 return 'make install_jsregexp'
-            end)()
+            end)(),
         },
-        'saadparwaiz1/cmp_luasnip',                 -- Adds LSP completion capabilities
-        'hrsh7th/cmp-nvim-lsp', 'hrsh7th/cmp-path', -- Adds a number of user-friendly snippets
-        'rafamadriz/friendly-snippets'
+        'saadparwaiz1/cmp_luasnip', -- Adds LSP completion capabilities
+        'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-path',     -- Adds a number of user-friendly snippets
+        'rafamadriz/friendly-snippets',
     },
     config = function()
         -- [[ Configure nvim-cmp ]]
@@ -30,14 +31,14 @@ return {
             snippet = {
                 expand = function(args)
                     luasnip.lsp_expand(args.body)
-                end
+                end,
             },
             window = {
                 completion = cmp.config.window.bordered(),
                 documentation = cmp.config.window.bordered(),
             },
             completion = {
-                completeopt = 'menu,menuone,noinsert'
+                completeopt = 'menu,menuone,noinsert',
             },
             mapping = cmp.mapping.preset.insert {
                 ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -47,7 +48,7 @@ return {
                 ['<C-Space>'] = cmp.mapping.complete {},
                 ['<CR>'] = cmp.mapping.confirm {
                     behavior = cmp.ConfirmBehavior.Replace,
-                    select = true
+                    select = true,
                 },
                 ['<Tab>'] = cmp.mapping(function(fallback)
                     if cmp.visible() then
@@ -66,13 +67,13 @@ return {
                     else
                         fallback()
                     end
-                end, { 'i', 's' })
+                end, { 'i', 's' }),
             },
             sources = {
                 { name = 'nvim_lsp' },
                 { name = 'luasnip' },
-                { name = 'path' }
-            }
+                { name = 'path' },
+            },
         }
-    end
+    end,
 }

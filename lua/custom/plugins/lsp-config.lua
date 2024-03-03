@@ -13,7 +13,7 @@ return {
         {
             'williamboman/mason-lspconfig.nvim', -- Useful status updates for LSP
             dependencies = {
-                'hrsh7th/cmp-nvim-lsp'
+                'hrsh7th/cmp-nvim-lsp',
             },
             config = function()
                 --  This function gets run when an LSP connects to a particular buffer.
@@ -31,7 +31,7 @@ return {
 
                         vim.keymap.set('n', keys, func, {
                             buffer = bufnr,
-                            desc = desc
+                            desc = desc,
                         })
                     end
 
@@ -39,8 +39,8 @@ return {
                     nmap('<leader>ca', function()
                         vim.lsp.buf.code_action {
                             context = {
-                                only = { 'quickfix', 'refactor', 'source' }
-                            }
+                                only = { 'quickfix', 'refactor', 'source' },
+                            },
                         }
                     end, '[C]ode [A]ction')
 
@@ -68,7 +68,7 @@ return {
                     vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
                         vim.lsp.buf.format()
                     end, {
-                        desc = 'Format current buffer with LSP'
+                        desc = 'Format current buffer with LSP',
                     })
                 end
 
@@ -90,18 +90,18 @@ return {
                     lua_ls = {
                         Lua = {
                             diagnostics = {
-                                globals = { "vim" },
+                                globals = { 'vim' },
                             },
                             workspace = {
-                                checkThirdParty = false
+                                checkThirdParty = false,
                             },
                             telemetry = {
-                                enable = false
-                            }
+                                enable = false,
+                            },
                             -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
                             -- diagnostics = { disable = { 'missing-fields' } },
-                        }
-                    }
+                        },
+                    },
                 }
 
                 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
@@ -112,24 +112,26 @@ return {
                 local mason_lspconfig = require 'mason-lspconfig'
 
                 mason_lspconfig.setup {
-                    ensure_installed = vim.tbl_keys(servers)
+                    ensure_installed = vim.tbl_keys(servers),
                 }
 
                 -- set up every language server specified in the `servers` table variable
-                mason_lspconfig.setup_handlers { function(server_name)
-                    require('lspconfig')[server_name].setup {
-                        capabilities = capabilities,
-                        on_attach = on_attach,
-                        settings = servers[server_name],
-                        filetypes = (servers[server_name] or {}).filetypes
-                    }
-                end }
+                mason_lspconfig.setup_handlers {
+                    function(server_name)
+                        require('lspconfig')[server_name].setup {
+                            capabilities = capabilities,
+                            on_attach = on_attach,
+                            settings = servers[server_name],
+                            filetypes = (servers[server_name] or {}).filetypes,
+                        }
+                    end,
+                }
             end,
         },
         {
             'j-hui/fidget.nvim',
             -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-            opts = {}
+            opts = {},
         },
         {
             -- Additional lua configuration, makes nvim stuff amazing!
@@ -139,5 +141,5 @@ return {
                 require('neodev').setup()
             end,
         },
-    }
+    },
 }

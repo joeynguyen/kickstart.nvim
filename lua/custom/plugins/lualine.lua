@@ -7,7 +7,7 @@ return {
             icons_enabled = false,
             theme = 'dracula',
             component_separators = '|',
-            section_separators = ''
-        }
-    }
+            section_separators = '',
+        },
+    },
 }
