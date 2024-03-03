@@ -43,23 +43,23 @@ P.S. You can delete this when you're done too. It's your config now :)
 --    `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
-    vim.fn
-        .system {
-            'git',
-            'clone',
-            '--filter=blob:none',
-            'https://github.com/folke/lazy.nvim.git',
-            '--branch=stable', -- latest stable release
-            lazypath
-        }
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
+    lazypath,
+  }
 end
 vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure Neovim options ]]
-require('vim-options')
+require 'vim-keymaps'
+require 'vim-options'
 
 -- [[ Configure plugins ]]
-require('lazy').setup('custom.plugins')
+require('lazy').setup 'custom.plugins'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
