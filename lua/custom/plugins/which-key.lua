@@ -21,10 +21,10 @@ return {
                 name = '[G]it',
                 _ = 'which_key_ignore',
             },
-            ['<leader>h'] = {
-                name = 'Git [H]unk',
-                _ = 'which_key_ignore',
-            },
+            -- ['<leader>h'] = {
+            --     name = 'Git [H]unk',
+            --     _ = 'which_key_ignore',
+            -- },
             ['<leader>r'] = {
                 name = '[R]ename',
                 _ = 'which_key_ignore',
@@ -48,7 +48,7 @@ return {
             ['<leader>'] = {
                 name = 'VISUAL <leader>',
             },
-            ['<leader>h'] = { 'Git [H]unk' },
+            -- ['<leader>h'] = { 'Git [H]unk' },
         }, {
             mode = 'v',
         })
