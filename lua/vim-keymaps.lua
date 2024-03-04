@@ -1,35 +1,36 @@
 -- [[ Basic Keymaps ]]
+local keymap = vim.keymap
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', {
+keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', {
   silent = true,
 })
 
 -- navigate buffers
-vim.keymap.set('n', '<Tab>', ':bnext<CR>', {})
-vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', {})
+keymap.set('n', '<Tab>', ':bnext<CR>', {})
+keymap.set('n', '<S-Tab>', ':bprevious<CR>', {})
 
 -- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", {
+keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", {
   expr = true,
   silent = true,
 })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", {
+keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", {
   expr = true,
   silent = true,
 })
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, {
+keymap.set('n', '[d', vim.diagnostic.goto_prev, {
   desc = 'Go to previous diagnostic message',
 })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, {
+keymap.set('n', ']d', vim.diagnostic.goto_next, {
   desc = 'Go to next diagnostic message',
 })
-vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, {
+keymap.set('n', '<leader>e', vim.diagnostic.open_float, {
   desc = 'Open floating diagnostic message',
 })
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, {
+keymap.set('n', '<leader>q', vim.diagnostic.setloclist, {
   desc = 'Open diagnostics list',
 })
