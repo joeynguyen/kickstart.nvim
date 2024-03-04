@@ -88,9 +88,11 @@ return {
       vim.keymap.set('n', '<leader>fr', builtin.oldfiles, {
         desc = '[F]iles [R]ecently opened',
       })
-      vim.keymap.set('n', '<leader><space>', builtin.buffers, {
-        desc = '[ ] View current buffers',
-      })
+      -- vim.keymap.set('n', '<leader><space>', builtin.buffers, {
+      --   desc = '[ ] View current buffers',
+      -- })
+      vim.keymap.set('n', '<C-m>', builtin.buffers, {})
+
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to telescope to change theme, layout, etc.
         builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
