@@ -92,6 +92,7 @@ return {
       --   desc = '[ ] View current buffers',
       -- })
       vim.keymap.set('n', '<C-m>', builtin.buffers, {})
+      vim.keymap.set('n', '<C-l>', builtin.oldfiles, {})
 
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to telescope to change theme, layout, etc.
