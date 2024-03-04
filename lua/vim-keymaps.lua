@@ -6,6 +6,10 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', {
   silent = true,
 })
 
+-- navigate buffers
+vim.keymap.set('n', '<Tab>', ':bnext<CR>', {})
+vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', {})
+
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", {
   expr = true,
