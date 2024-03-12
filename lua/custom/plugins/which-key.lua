@@ -33,16 +33,20 @@ return {
         name = '[S]earch',
         _ = 'which_key_ignore',
       },
-      ['<leader>t'] = {
-        name = '[T]oggle',
-        _ = 'which_key_ignore',
-      },
+      -- ['<leader>t'] = {
+      --   name = '[T]oggle',
+      --   _ = 'which_key_ignore',
+      -- },
       -- ['<leader>w'] = {
       --     name = '[W]orkspace',
       --     _ = 'which_key_ignore'
       -- }
       ['<leader><leader>'] = {
         name = 'Hop',
+        _ = 'which_key_ignore',
+      },
+      ['<leader>z'] = {
+        name = '[Z]enMode',
         _ = 'which_key_ignore',
       },
     }
