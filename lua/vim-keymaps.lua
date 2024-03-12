@@ -11,6 +11,12 @@ keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', {
 keymap.set('n', '<Tab>', ':bnext<CR>', {})
 keymap.set('n', '<S-Tab>', ':bprevious<CR>', {})
 
+-- Use ctrl-[hjkl] to navigate windows/panes/splits
+vim.keymap.set('n', '<C-k>', '<cmd>wincmd k<CR>', {})
+vim.keymap.set('n', '<C-j>', '<cmd>wincmd j<CR>', {})
+vim.keymap.set('n', '<C-h>', '<cmd>wincmd h<CR>', {})
+vim.keymap.set('n', '<C-l>', '<cmd>wincmd l<CR>', {})
+
 -- Remap for dealing with word wrap
 keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", {
   expr = true,
