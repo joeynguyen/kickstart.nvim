@@ -12,10 +12,10 @@ keymap.set('n', '<Tab>', ':bnext<CR>', {})
 keymap.set('n', '<S-Tab>', ':bprevious<CR>', {})
 
 -- Use ctrl-[hjkl] to navigate windows/panes/splits
-vim.keymap.set('n', '<C-k>', '<cmd>wincmd k<CR>', {})
-vim.keymap.set('n', '<C-j>', '<cmd>wincmd j<CR>', {})
-vim.keymap.set('n', '<C-h>', '<cmd>wincmd h<CR>', {})
-vim.keymap.set('n', '<C-l>', '<cmd>wincmd l<CR>', {})
+keymap.set('n', '<C-k>', '<cmd>wincmd k<CR>', {})
+keymap.set('n', '<C-j>', '<cmd>wincmd j<CR>', {})
+keymap.set('n', '<C-h>', '<cmd>wincmd h<CR>', {})
+keymap.set('n', '<C-l>', '<cmd>wincmd l<CR>', {})
 
 -- Remap for dealing with word wrap
 keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", {
@@ -40,3 +40,43 @@ keymap.set('n', '<leader>e', vim.diagnostic.open_float, {
 keymap.set('n', '<leader>q', vim.diagnostic.setloclist, {
   desc = 'Open diagnostics list',
 })
+
+-- use 'p' to paste over text without copying that text to your clipboard
+-- (sends it to the void register)
+keymap.set('x', 'p', [["_dP]])
+
+-- delete to void register in Normal and Visual modes
+-- keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
+-- keymap.set({ 'n', 'v' }, '<leader>c', [["_c]])
+
+-- make <C-c> behave exactly like <Esc>
+keymap.set('i', '<C-c>', '<Esc>')
+
+-- keeps cursor in the same place while using "J"
+keymap.set('n', 'J', 'mzJ`z')
+
+-- keeps cursor in the same place while using <C-d> and <C-u>
+keymap.set('n', '<C-d>', '<C-d>zz')
+keymap.set('n', '<C-u>', '<C-u>zz')
+
+-- keeps cursor in the same place while searching
+keymap.set('n', 'n', 'nzzzv')
+keymap.set('n', 'N', 'Nzzzv')
+
+-- source the current file (update nvim with latest changes)
+keymap.set('n', '<leader>u', function()
+  vim.cmd 'so'
+end)
+
+-- disables Vim Ex (batch processing) mode shortcut
+keymap.set('n', 'Q', '<nop>')
+
+-- QuickFix navigation
+-- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+-- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+-- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+-- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+
+-- in Visual mode, use "J" and "K" to move the selected text up and down the file
+-- keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+-- keymap.set("v", "K", ":m '<-2<CR>gv=gv")
