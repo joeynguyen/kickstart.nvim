@@ -1,49 +1,73 @@
+-- for conciseness
+local g = vim.g
+local o = vim.o
+local wo = vim.wo
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+g.mapleader = ' '
+g.maplocalleader = ' '
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
-vim.o.hlsearch = true
+o.hlsearch = true
 
 -- Make line numbers default
-vim.wo.number = true
+wo.number = true
 
 -- Enable mouse mode
-vim.o.mouse = 'a'
+o.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = 'unnamedplus'
+o.clipboard = 'unnamedplus'
+
+-- tabs & indentation
+o.tabstop = 2
+o.softtabstop = 2
+o.shiftwidth = 2
+-- use spaces instead of tabs
+o.expandtab = true
+o.smartindent = true
+
+o.wrap = false
+o.lazyredraw = false
 
 -- Enable break indent
-vim.o.breakindent = true
+o.breakindent = true
 
 -- Save undo history
-vim.o.undofile = true
+o.undofile = true
+
+-- search settings
+o.swapfile = false
+o.backup = false
+o.hlsearch = true
+o.incsearch = true
+o.scrolloff = 8
+o.colorcolumn = "100"
 
 -- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+o.ignorecase = true
+o.smartcase = true
 
 -- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
+wo.signcolumn = 'yes'
 
 -- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
+o.updatetime = 250
+o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
-vim.o.termguicolors = true
+o.termguicolors = true
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
