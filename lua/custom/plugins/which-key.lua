@@ -10,7 +10,7 @@ return {
         _ = 'which_key_ignore',
       },
       ['<leader>d'] = {
-        name = '[D]ocument',
+        name = '[D]ashboard',
         _ = 'which_key_ignore',
       },
       ['<leader>f'] = {
@@ -45,6 +45,10 @@ return {
         name = 'Hop',
         _ = 'which_key_ignore',
       },
+      -- ['<leader>x'] = {
+      --   name = 'Close current buffer',
+      --   _ = 'which_key_ignore',
+      -- },
       ['<leader>z'] = {
         name = '[Z]enMode',
         _ = 'which_key_ignore',
