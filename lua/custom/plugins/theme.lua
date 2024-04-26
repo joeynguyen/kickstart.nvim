@@ -11,3 +11,6 @@ return {
     require('onedark').load()
   end,
 }
+-- Other themes I tried but I still prefer OneDark over:
+--   - https://github.com/sontungexpt/witch
+--   - https://github.com/oxfist/night-owl.nvim
