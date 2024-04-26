@@ -16,6 +16,13 @@ keymap.set('n', '<C-k>', '<cmd>wincmd k<CR>', {})
 keymap.set('n', '<C-j>', '<cmd>wincmd j<CR>', {})
 keymap.set('n', '<C-h>', '<cmd>wincmd h<CR>', {})
 keymap.set('n', '<C-l>', '<cmd>wincmd l<CR>', {})
+-- close buffer
+keymap.set('n', '<C-x>', ':bd<CR>', {
+  desc = 'Close current buffer',
+})
+-- TODO: figure why using leader key doesn't work
+-- keymap.set('n', '<leader>x', ':bd<CR>', {})
+-- keymap.set('n', '<leader>x', '<cmd>bd<CR>', {})
 
 -- Remap for dealing with word wrap
 keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", {
