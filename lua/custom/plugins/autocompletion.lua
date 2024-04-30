@@ -16,7 +16,7 @@ return {
     },
     'saadparwaiz1/cmp_luasnip', -- Adds LSP completion capabilities
     'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-path', -- Adds a number of user-friendly snippets
+    'hrsh7th/cmp-path',         -- Adds a number of user-friendly snippets
     'rafamadriz/friendly-snippets',
   },
   config = function()
@@ -26,6 +26,11 @@ return {
     local luasnip = require 'luasnip'
     require('luasnip.loaders.from_vscode').lazy_load()
     luasnip.config.setup {}
+
+    luasnip.add_snippets('javascript', require 'custom.snippets.javascript')
+    luasnip.add_snippets('javascriptreact', require 'custom.snippets.javascript')
+    luasnip.add_snippets('typescript', require 'custom.snippets.typescript')
+    luasnip.add_snippets('typescriptreact', require 'custom.snippets.typescript')
 
     cmp.setup {
       snippet = {
