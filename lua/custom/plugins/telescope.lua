@@ -89,6 +89,14 @@ return {
       vim.keymap.set('n', '<leader>fr', builtin.oldfiles, {
         desc = '[F]iles [R]ecently opened',
       })
+
+      vim.keymap.set('n', '<leader>fp', ':CopyRelativePath<CR>', {
+        desc = '[F]ile [P]ath copy',
+      })
+      vim.keymap.set('n', '<leader>fn', ':CopyFilename<CR>', {
+        desc = '[F]ile [N]ame copy',
+      })
+
       -- vim.keymap.set('n', '<leader><space>', builtin.buffers, {
       --   desc = '[ ] View current buffers',
       -- })

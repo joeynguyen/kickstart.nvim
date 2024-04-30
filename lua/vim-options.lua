@@ -50,7 +50,7 @@ o.backup = false
 o.hlsearch = true
 o.incsearch = true
 o.scrolloff = 8
-o.colorcolumn = "100"
+o.colorcolumn = '100'
 
 -- Case-insensitive searching UNLESS \C or capital in search
 o.ignorecase = true
@@ -81,3 +81,21 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+vim.api.nvim_create_user_command('CopyRelativePath', function()
+  local path = vim.fn.expand '%:.'
+  vim.fn.setreg('+', path)
+  vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})
+
+vim.api.nvim_create_user_command('CopyAbsolutePath', function()
+  local path = vim.fn.expand '%:p'
+  vim.fn.setreg('+', path)
+  vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})
+
+vim.api.nvim_create_user_command('CopyFilename', function()
+  local filename = vim.fn.expand '%:t'
+  vim.fn.setreg('+', filename)
+  vim.notify('Copied "' .. filename .. '" to the clipboard!')
+end, {})
