@@ -102,7 +102,8 @@ keymap.set('n', '<leader>u', '<cmd>luafile $MYVIMRC<CR>', {
 -- add empty line below
 -- the `cc` command deletes any possible characters added like comment strings)
 -- the `mz` creates a mark at the current cursor position and the '`z' navigates back to it
-Map('n', '<leader>o', 'mz<Esc>o<Esc>cc<Esc>`z', { desc = 'Add empty line below' })
+Map('n', '<leader>O', 'mz<Esc>O<Esc>cc<Esc>`z', { desc = '[O]pen empty line above' })
+Map('n', '<leader>o', 'mz<Esc>o<Esc>cc<Esc>`z', { desc = '[o]pen empty line below' })
 
 -- the code below is equivalent to the Map function call above
 --[[
