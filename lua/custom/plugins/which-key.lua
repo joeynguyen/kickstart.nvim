@@ -9,10 +9,6 @@ return {
         name = '[C]ode',
         _ = 'which_key_ignore',
       },
-      ['<leader>d'] = {
-        name = '[D]ashboard',
-        _ = 'which_key_ignore',
-      },
       ['<leader>f'] = {
         name = '[F]ile',
         _ = 'which_key_ignore',
@@ -49,10 +45,6 @@ return {
       --   name = 'Close current buffer',
       --   _ = 'which_key_ignore',
       -- },
-      ['<leader>z'] = {
-        name = '[Z]enMode',
-        _ = 'which_key_ignore',
-      },
     }
     -- register which-key VISUAL mode
     -- required for visual <leader>hs (hunk stage) to work
@@ -68,3 +60,40 @@ return {
     })
   end,
 }
+
+--[[
+
+all of the mappings below are equivalent
+
+method 2:
+
+wk.register({
+  ["<leader>"] = {
+    f = {
+      name = "+file",
+      f = { "<cmd>Telescope find_files<cr>", "Find File" },
+      r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+      n = { "<cmd>enew<cr>", "New File" },
+    },
+  },
+})
+
+method 3:
+wk.register({
+  ["<leader>f"] = {
+    name = "+file",
+    f = { "<cmd>Telescope find_files<cr>", "Find File" },
+    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    n = { "<cmd>enew<cr>", "New File" },
+  },
+})
+
+method 4:
+wk.register({
+  ["<leader>f"] = { name = "+file" },
+  ["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Find File" },
+  ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+  ["<leader>fn"] = { "<cmd>enew<cr>", "New File" },
+})
+
+--]]

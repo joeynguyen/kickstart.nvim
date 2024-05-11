@@ -55,11 +55,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure Neovim options ]]
-require 'vim-keymaps'
 require 'vim-options'
 
 -- [[ Configure plugins ]]
 require('lazy').setup 'custom.plugins'
+
+-- [[ Configure Neovim keymaps ]]
+-- need to be run after setting up plugins so which-key plugin can pick up our custom shortcuts
+require 'vim-keymaps'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

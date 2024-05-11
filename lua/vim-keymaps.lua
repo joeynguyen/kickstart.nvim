@@ -1,6 +1,14 @@
 -- [[ Basic Keymaps ]]
 local keymap = vim.keymap
 
+function Map(mode, lhs, rhs, opts)
+  local options = { noremap = true, silent = true }
+  if opts then
+    options = vim.tbl_extend('force', options, opts)
+  end
+  vim.keymap.set(mode, lhs, rhs, options)
+end
+
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', {
@@ -15,6 +23,15 @@ keymap.set('n', '<S-Tab>', ':bprevious<CR>', {})
 keymap.set('n', '<C-x>', ':bd<CR>', {
   desc = 'Close current buffer',
 })
+-- save buffer
+keymap.set('n', '<C-s>', ':w<CR>', {
+  desc = 'Save current buffer',
+})
+-- quit Neovim
+keymap.set('n', '<C-q>', ':q<CR>', {
+  desc = 'Quit Neovim',
+})
+
 -- TODO: figure why using leader key doesn't work
 -- keymap.set('n', '<leader>x', ':bd<CR>', {})
 -- keymap.set('n', '<leader>x', '<cmd>bd<CR>', {})
@@ -72,10 +89,33 @@ keymap.set('n', '<C-u>', '<C-u>zz')
 keymap.set('n', 'n', 'nzzzv')
 keymap.set('n', 'N', 'Nzzzv')
 
+--[[
+-- sourcing a file is not supported in lazy.nvim
 -- source the current file (update nvim with latest changes)
-keymap.set('n', '<leader>u', function()
-  vim.cmd 'so'
-end)
+keymap.set('n', '<leader>u', '<cmd>luafile $MYVIMRC<CR>', {
+  desc = '[U]pdate - Nvim source current file',
+  noremap = true,
+  silent = true,
+})
+--]]
+
+-- add empty line below
+-- the `cc` command deletes any possible characters added like comment strings)
+-- the `mz` creates a mark at the current cursor position and the '`z' navigates back to it
+Map('n', '<leader>o', 'mz<Esc>o<Esc>cc<Esc>`z', { desc = 'Add empty line below' })
+
+-- the code below is equivalent to the Map function call above
+--[[
+keymap.set('n', '<leader>o', 'mz<Esc>o<Esc>cc<Esc>`z', {
+  desc = 'Add empty line below',
+  noremap = true,
+  silent = true,
+})
+--]]
+
+-- " adds a carriage return at the current position and add Tab indent
+--  inoremap <leader>o <esc>o
+--  inoremap <leader>O <esc>ko
 
 -- disables Vim Ex (batch processing) mode shortcut
 keymap.set('n', 'Q', '<nop>')

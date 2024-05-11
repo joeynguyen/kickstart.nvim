@@ -22,6 +22,6 @@ return {
     },
   },
   config = function()
-    vim.keymap.set('n', '<leader>z', '<cmd>ZenMode<CR>', {})
+    vim.keymap.set('n', '<leader>z', '<cmd>ZenMode<CR>', { desc = '[Z]enMode' })
   end,
 }
