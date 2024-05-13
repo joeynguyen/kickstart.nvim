@@ -2,6 +2,28 @@ return {
   -- LSP Configuration & Plugins
   'neovim/nvim-lspconfig',
   dependencies = { -- Automatically install LSPs to stdpath for neovim
+    -- needs to be before mason-lspconfig so that this plugin detects and assigns the 'helm' filetype
+    {
+      -- Helm Language Server - Yaml
+      'towolf/vim-helm',
+      config = function()
+        local lspconfig = require 'lspconfig'
+
+        -- setup helm-ls
+        lspconfig.helm_ls.setup {
+          settings = {
+            ['helm-ls'] = {
+              yamlls = {
+                path = 'yaml-language-server',
+              },
+            },
+          },
+        }
+
+        -- setup yamlls
+        lspconfig.yamlls.setup {}
+      end,
+    },
     -- mason-lspconfig requires that these plugins are called in this order
     {
       'williamboman/mason.nvim',
@@ -70,6 +92,16 @@ return {
           end, {
             desc = 'Format current buffer with LSP',
           })
+
+          -- if vim.bo[bufnr].buftype ~= '' or vim.bo[bufnr].filetype == 'helm' then
+          --   vim.diagnostic.disable()
+          -- end
+          if vim.bo[bufnr].buftype ~= '' or vim.bo[bufnr].filetype == 'helm' then
+            vim.diagnostic.disable(bufnr)
+            vim.defer_fn(function()
+              vim.diagnostic.reset(nil, bufnr)
+            end, 1000)
+          end
         end
 
         -- Enable the following language servers
