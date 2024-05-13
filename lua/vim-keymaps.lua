@@ -33,8 +33,8 @@ keymap.set('n', '<C-q>', ':q<CR>', {
 })
 
 -- TODO: figure why using leader key doesn't work
--- keymap.set('n', '<leader>x', ':bd<CR>', {})
--- keymap.set('n', '<leader>x', '<cmd>bd<CR>', {})
+-- keymap.set('n', '<leader>x', ':bd<CR>', { desc = 'Close current buffer' })
+Map('n', '<leader>x', ':bd<CR>', { desc = 'Close current buffer' })
 
 -- moved this functionality to nvim-tmux-navigation plugin
 -- Use alt-[hjkl] to navigate windows/panes/splits
