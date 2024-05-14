@@ -13,6 +13,9 @@ g.maplocalleader = ' '
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
+-- live preview when performing text replace commands, e.g. `:%s/tab/space`
+o.inccommand = 'split'
+
 -- Set highlight on search
 o.hlsearch = true
 
