@@ -12,6 +12,10 @@ return {
       -- comment the lines to not apply the options
       options = {
         enabled = true,
+        -- unforuntately, this won't work because we're using the lualine plugin and not the
+        -- builtin Neovim statusline
+        -- statusline will be shown only if 'laststatus' == 3
+        -- laststatus = 3,
       },
       tmux = { enabled = true }, -- disables the tmux statusline
       wezterm = {
