@@ -34,7 +34,9 @@ keymap.set('n', '<C-q>', ':q<CR>', {
 
 -- TODO: figure why using leader key doesn't work
 -- keymap.set('n', '<leader>x', ':bd<CR>', { desc = 'Close current buffer' })
-Map('n', '<leader>x', ':bd<CR>', { desc = 'Close current buffer' })
+Map('n', '<leader>ex', '<cmd>bd<CR>', { desc = 'Close current buffer' })
+Map('n', '<leader>ew', '<cmd>w<CR>', { desc = 'Save current buffer' })
+Map('n', '<leader>eq', '<cmd>q<CR>', { desc = '[Q]uit Neovim' })
 
 -- moved this functionality to nvim-tmux-navigation plugin
 -- Use alt-[hjkl] to navigate windows/panes/splits
@@ -60,10 +62,10 @@ keymap.set('n', '[d', vim.diagnostic.goto_prev, {
 keymap.set('n', ']d', vim.diagnostic.goto_next, {
   desc = 'Go to next diagnostic message',
 })
-keymap.set('n', '<leader>e', vim.diagnostic.open_float, {
+keymap.set('n', '<leader>Dd', vim.diagnostic.open_float, {
   desc = 'Open floating diagnostic message',
 })
-keymap.set('n', '<leader>q', vim.diagnostic.setloclist, {
+keymap.set('n', '<leader>Dq', vim.diagnostic.setloclist, {
   desc = 'Open diagnostics list',
 })
 

@@ -30,8 +30,5 @@ return {
     vim.keymap.set('n', '<leader>d', '<cmd>Alpha<CR>', {
       desc = '[D]ashboard',
     })
-    vim.keymap.set('n', '<leader>o', 'o<Esc>cc<Esc>k', {
-      desc = 'Add empty line below',
-    })
   end,
 }

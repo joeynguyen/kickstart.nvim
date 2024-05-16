@@ -9,6 +9,14 @@ return {
         name = '[C]ode',
         _ = 'which_key_ignore',
       },
+      ['<leader>e'] = {
+        name = '[E]ditor',
+        _ = 'which_key_ignore',
+      },
+      ['<leader>D'] = {
+        name = '[D]iagnostics',
+        _ = 'which_key_ignore',
+      },
       ['<leader>f'] = {
         name = '[F]ile',
         _ = 'which_key_ignore',
