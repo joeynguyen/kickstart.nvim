@@ -58,6 +58,7 @@ return {
           end
 
           nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+          -- nmap('<leader>rn', ':IncRename ', '[R]e[n]ame')
           nmap('<leader>ca', function()
             vim.lsp.buf.code_action {
               context = {
@@ -165,6 +166,14 @@ return {
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       opts = {},
     },
+    -- this plugin is nice but currently has issues with renaming variables exported and imported
+    -- in React/Typescript
+    -- {
+    --   'smjonas/inc-rename.nvim',
+    --   config = function()
+    --     require('inc_rename').setup()
+    --   end,
+    -- },
     {
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim',
