@@ -34,7 +34,7 @@ keymap.set('n', '<C-q>', ':q<CR>', {
 
 -- TODO: figure why using leader key doesn't work
 -- keymap.set('n', '<leader>x', ':bd<CR>', { desc = 'Close current buffer' })
-Map('n', '<leader>ex', '<cmd>bd<CR>', { desc = 'Close current buffer' })
+Map('n', '<leader>ed', '<cmd>bd<CR>', { desc = 'Close current buffer' })
 Map('n', '<leader>ew', '<cmd>w<CR>', { desc = 'Save current buffer' })
 Map('n', '<leader>eq', '<cmd>q<CR>', { desc = '[Q]uit Neovim' })
 
