@@ -39,7 +39,11 @@ return {
       },
       routes = {
         -- disable text search confirmation
-        { filter = { event = 'msg_show', find = '/' }, skip = true },
+        { filter = { event = 'msg_show', find = '/' },               skip = true },
+        { filter = { event = 'msg_show', find = 'more line' },       skip = true },
+        { filter = { event = 'msg_show', find = 'line less' },       skip = true },
+        { filter = { event = 'msg_show', find = 'changes; before' }, skip = true },
+        { filter = { event = 'msg_show', find = 'changes; after' },  skip = true },
         -- { filter = { event = 'emsg', find = 'E486' }, skip = true },
         -- { filter = { find = 'E486' }, skip = true },
         -- {
