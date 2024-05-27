@@ -105,3 +105,13 @@ vim.api.nvim_create_user_command('CopyFilename', function()
   vim.fn.setreg('+', filename)
   vim.notify('Copied "' .. filename .. '" to the clipboard!')
 end, {})
+
+-- open buffer at the same line number as last time exited
+vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
+  pattern = { '*' },
+  callback = function()
+    if vim.fn.line '\'"' > 1 and vim.fn.line '\'"' <= vim.fn.line '$' then
+      vim.api.nvim_exec('normal! g\'"', false)
+    end
+  end,
+})
