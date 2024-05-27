@@ -37,6 +37,7 @@ keymap.set('n', '<C-q>', ':q<CR>', {
 Map('n', '<leader>ed', '<cmd>bd<CR>', { desc = 'Close current buffer' })
 Map('n', '<leader>ew', '<cmd>w<CR>', { desc = 'Save current buffer' })
 Map('n', '<leader>eq', '<cmd>q<CR>', { desc = '[Q]uit Neovim' })
+Map('n', '<leader>eh', '<cmd>nohl<CR>', { desc = 'No [H]ighlight' })
 
 -- moved this functionality to nvim-tmux-navigation plugin
 -- Use alt-[hjkl] to navigate windows/panes/splits

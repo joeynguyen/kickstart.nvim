@@ -3,7 +3,8 @@ local g = vim.g
 local o = vim.o
 local wo = vim.wo
 
-vim.g.neovide_input_macos_option_key_is_meta = 'only_left'
+o.guifont = 'InconsolataGo Nerd Font:h20'
+g.neovide_input_macos_option_key_is_meta = 'only_left'
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
