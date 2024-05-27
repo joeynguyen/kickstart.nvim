@@ -45,14 +45,6 @@ Map('n', '<leader>eh', '<cmd>nohl<CR>', { desc = 'No [H]ighlight' })
 -- keymap.set('n', '<M-j>', '<cmd>wincmd j<CR>', {})
 -- keymap.set('n', '<M-k>', '<cmd>wincmd k<CR>', {})
 -- keymap.set('n', '<M-l>', '<cmd>wincmd l<CR>', {})
-if vim.g.neovide then
-  keymap.set('n', '<M-h>', '<cmd>wincmd h<CR>', {})
-  keymap.set('n', '<M-j>', '<cmd>wincmd j<CR>', {})
-  keymap.set('n', '<M-k>', '<cmd>wincmd k<CR>', {})
-  keymap.set('n', '<M-l>', '<cmd>wincmd l<CR>', {})
-
-  vim.keymap.set('i', '<D-v>', '<C-r><C-o>+') -- paste (insert)
-end
 
 -- Remap for dealing with word wrap
 keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", {
