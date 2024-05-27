@@ -14,3 +14,4 @@ return {
 -- Other themes I tried but I still prefer OneDark over:
 --   - https://github.com/sontungexpt/witch
 --   - https://github.com/oxfist/night-owl.nvim
+--   - https://github.com/folke/tokyonight.nvim
