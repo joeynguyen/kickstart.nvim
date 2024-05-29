@@ -16,28 +16,28 @@ keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', {
 })
 
 -- navigate buffers
-keymap.set('n', '<Tab>', ':bnext<CR>', {})
-keymap.set('n', '<S-Tab>', ':bprevious<CR>', {})
+keymap.set('n', '<Tab>', '<CMD>bnext<CR>', {})
+keymap.set('n', '<S-Tab>', '<CMD>bprevious<CR>', {})
 
 -- close buffer
-keymap.set('n', '<C-x>', ':bd<CR>', {
+keymap.set('n', '<C-x>', '<CMD>bd<CR>', {
   desc = 'Close current buffer',
 })
 -- save buffer
-keymap.set('n', '<C-s>', ':w<CR>', {
+keymap.set('n', '<C-s>', '<CMD>w<CR>', {
   desc = 'Save current buffer',
 })
 -- quit Neovim
-keymap.set('n', '<C-q>', ':q<CR>', {
+keymap.set('n', '<C-q>', '<CMD>q<CR>', {
   desc = 'Quit Neovim',
 })
 
 -- TODO: figure why using leader key doesn't work
 -- keymap.set('n', '<leader>x', ':bd<CR>', { desc = 'Close current buffer' })
-Map('n', '<leader>ed', '<cmd>bd<CR>', { desc = 'Close current buffer' })
-Map('n', '<leader>ew', '<cmd>w<CR>', { desc = 'Save current buffer' })
-Map('n', '<leader>eq', '<cmd>q<CR>', { desc = '[Q]uit Neovim' })
-Map('n', '<leader>eh', '<cmd>nohl<CR>', { desc = 'No [H]ighlight' })
+Map('n', '<leader>ed', '<CMD>bd<CR>', { desc = 'Close current buffer' })
+Map('n', '<leader>ew', '<CMD>w<CR>', { desc = 'Save current buffer' })
+Map('n', '<leader>eq', '<CMD>q<CR>', { desc = '[Q]uit Neovim' })
+Map('n', '<leader>eh', '<CMD>nohl<CR>', { desc = 'No [H]ighlight' })
 
 -- moved this functionality to nvim-tmux-navigation plugin
 -- Use alt-[hjkl] to navigate windows/panes/splits
@@ -72,7 +72,7 @@ keymap.set('n', '<leader>Dq', vim.diagnostic.setloclist, {
 
 -- use 'p' to paste over text without copying that text to your clipboard
 -- (sends it to the void register)
-keymap.set('x', 'p', [["_dP]])
+keymap.set('x', 'p', [["_dp]])
 
 -- delete to void register in Normal and Visual modes
 -- keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
