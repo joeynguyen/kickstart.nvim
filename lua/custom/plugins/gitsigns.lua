@@ -2,6 +2,7 @@ return {
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   'lewis6991/gitsigns.nvim',
   opts = {
+    current_line_blame = true,
     -- See `:help gitsigns.txt`
     signs = {
       add = {
@@ -61,54 +62,52 @@ return {
       map('v', '<leader>gs', function()
         gs.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
       end, {
-        desc = 'stage git hunk',
+        desc = '[s]tage git hunk',
       })
       map('v', '<leader>gr', function()
         gs.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
       end, {
-        desc = 'reset git hunk',
+        desc = '[r]eset git hunk',
       })
       -- normal mode
       map('n', '<leader>gs', gs.stage_hunk, {
-        desc = 'git stage hunk',
+        desc = '[s]tage hunk',
       })
       map('n', '<leader>gr', gs.reset_hunk, {
-        desc = 'git reset hunk',
+        desc = '[r]eset hunk',
       })
       map('n', '<leader>gS', gs.stage_buffer, {
-        desc = 'git Stage buffer',
+        desc = '[S]tage buffer',
       })
       map('n', '<leader>gu', gs.undo_stage_hunk, {
-        desc = 'undo stage hunk',
+        desc = '[U]ndo stage hunk',
       })
       map('n', '<leader>gR', gs.reset_buffer, {
-        desc = 'git Reset buffer',
+        desc = '[R]eset buffer',
       })
       map('n', '<leader>gp', gs.preview_hunk, {
-        desc = 'preview git hunk',
+        desc = '[p]review git hunk',
       })
       map('n', '<leader>gb', function()
         gs.blame_line {
           full = false,
         }
       end, {
-        desc = 'git blame line',
+        desc = '[b]lame line',
+      })
+      map('n', '<leader>gB', gs.toggle_current_line_blame, {
+        desc = '[B]lame line toggle',
       })
       map('n', '<leader>gd', gs.diffthis, {
-        desc = 'git diff against index',
+        desc = '[d]iff against index',
       })
       map('n', '<leader>gD', function()
         gs.diffthis '~'
       end, {
-        desc = 'git diff against last commit',
+        desc = '[D]iff against last commit',
       })
-
-      -- Toggles
-      map('n', '<leader>tb', gs.toggle_current_line_blame, {
-        desc = 'toggle git blame line',
-      })
-      map('n', '<leader>td', gs.toggle_deleted, {
-        desc = 'toggle git show deleted',
+      map('n', '<leader>gt', gs.toggle_deleted, {
+        desc = '[T]oggle git show deleted',
       })
 
       -- Text object

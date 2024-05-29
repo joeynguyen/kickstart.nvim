@@ -16,6 +16,9 @@ return {
       filesystem = {
         filtered_items = {
           hide_dotfiles = false,
+          always_show = { -- remains visible even if other settings would normally hide it
+            '.env',
+          },
         },
         follow_current_file = {
           enabled = true, -- This will find and focus the file in the active buffer every time
