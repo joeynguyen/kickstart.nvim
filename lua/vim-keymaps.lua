@@ -72,7 +72,15 @@ keymap.set('n', '<leader>Dq', vim.diagnostic.setloclist, {
 
 -- use 'p' to paste over text without copying that text to your clipboard
 -- (sends it to the void register)
-keymap.set('x', 'p', [["_dp]])
+-- keymap.set('x', 'p', [["_dP]])
+-- keymap.set('x', 'p', [[pgv'@=v:register.'y'<Esc>]])
+-- keymap.set('x', 'p', 'pgvy')                   -- https://stackoverflow.com/a/5093286
+-- keymap.set('x', 'p', "pgv\"'.v:register.'y`><C-c>") -- https://vi.stackexchange.com/a/25260
+-- keymap.set('x', 'p', function()
+--   -- https://neovim.discourse.group/t/exiting-visual-mode-with-vim-keymap-set/2551/2
+--   vim.api.nvim_input  "pgv\"'.v:register.'y`><C-c>"
+-- end)
+Map('n', 'p', "pgv\"'.v:register.'y`>", {})
 
 -- delete to void register in Normal and Visual modes
 -- keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
