@@ -16,9 +16,9 @@ return {
   },
   -- stylua: ignore
   keys = {
-    { "<leader><leader>g", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Code [G]roup" },
+    { ";g", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Code [G]roup" },
     {
-      "<leader><leader>/",
+      ";/",
       mode = { "n", "x", "o" },
       function()
         require("flash").toggle()

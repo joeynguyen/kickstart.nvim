@@ -9,7 +9,11 @@ return {
     presets.operators['v'] = nil
 
     -- document existing key chains
-    require('which-key').register {
+    local wk = require 'which-key'
+    wk.register {
+      [';'] = {
+        name = 'Fast Navigation',
+      },
       ['<leader>c'] = {
         name = '[C]ode',
         _ = 'which_key_ignore',
@@ -50,10 +54,6 @@ return {
       --     name = '[W]orkspace',
       --     _ = 'which_key_ignore'
       -- }
-      ['<leader><leader>'] = {
-        name = 'Hop',
-        _ = 'which_key_ignore',
-      },
       -- ['<leader>x'] = {
       --   name = 'Close current buffer',
       --   _ = 'which_key_ignore',
@@ -61,11 +61,10 @@ return {
     }
     -- register which-key VISUAL mode
     -- required for visual <leader>hs (hunk stage) to work
-    require('which-key').register({
+    wk.register({
       ['<leader>'] = {
         name = 'VISUAL <leader>',
       },
-      ['<leader><leader>'] = { 'Hop' },
       ['<leader>g'] = { '[G]it' },
       -- ['<leader>h'] = { 'Git [H]unk' },
     }, {

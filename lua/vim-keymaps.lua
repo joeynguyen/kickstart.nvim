@@ -132,6 +132,10 @@ keymap.set('n', '<leader>o', 'mz<Esc>o<Esc>cc<Esc>`z', {
 -- disables Vim Ex (batch processing) mode shortcut
 keymap.set('n', 'Q', '<nop>')
 
+-- Fast Navigation
+Map('', ';l', '$', { desc = 'End of Line' })
+Map('', ';h', '^', { desc = 'Beginning of Line' })
+
 -- QuickFix navigation
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
