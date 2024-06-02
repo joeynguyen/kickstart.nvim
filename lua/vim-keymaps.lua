@@ -80,7 +80,7 @@ keymap.set('n', '<leader>Dq', vim.diagnostic.setloclist, {
 --   -- https://neovim.discourse.group/t/exiting-visual-mode-with-vim-keymap-set/2551/2
 --   vim.api.nvim_input  "pgv\"'.v:register.'y`><C-c>"
 -- end)
-Map('n', 'p', "pgv\"'.v:register.'y`>", {})
+Map('x', 'p', "pgv\"'.v:register.'y`>", {})
 
 -- delete to void register in Normal and Visual modes
 -- keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
@@ -141,3 +141,9 @@ keymap.set('n', 'Q', '<nop>')
 -- in Visual mode, use "J" and "K" to move the selected text up and down the file
 -- keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 -- keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+--[[ My commonly unused keys
+-- Q, R, t, T, Y, U,
+-- S, D, semicolon
+-- Z, X, C, comma
+--]]
