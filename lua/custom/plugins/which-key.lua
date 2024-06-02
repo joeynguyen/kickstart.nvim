@@ -3,6 +3,11 @@ return {
   'folke/which-key.nvim',
   opts = {},
   config = function()
+    -- https://github.com/folke/which-key.nvim?tab=readme-ov-file#-operators-motions-and-text-objects
+    -- disable visual operator
+    local presets = require 'which-key.plugins.presets'
+    presets.operators['v'] = nil
+
     -- document existing key chains
     require('which-key').register {
       ['<leader>c'] = {
