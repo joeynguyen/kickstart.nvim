@@ -45,6 +45,10 @@ return {
         name = '[S]earch',
         _ = 'which_key_ignore',
       },
+      ['<leader>t'] = {
+        name = '[T]rouble',
+        _ = 'which_key_ignore',
+      },
       -- ['<leader>t'] = {
       --   name = '[T]oggle',
       --   _ = 'which_key_ignore',

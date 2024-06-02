@@ -38,6 +38,7 @@ keymap.set('n', '<C-q>', '<CMD>q<CR>', {
 -- Map('n', ',', '<CMD>nop<CR>', {})
 vim.keymap.set('', ',', '<nop>')
 Map('n', ',d', '<CMD>bd<CR>', { desc = 'Close current buffer' })
+Map('n', ',D', '<CMD>bd!<CR>', { desc = 'Close current buffer' })
 Map('n', ',w', '<CMD>w<CR>', { desc = 'Save current buffer' })
 Map('n', ',wq', '<CMD>wq<CR>', { desc = 'Save and quit' })
 Map('n', ',q', '<CMD>q<CR>', { desc = '[Q]uit Neovim' })
