@@ -14,12 +14,11 @@ return {
       [';'] = {
         name = 'Fast Navigation',
       },
+      [','] = {
+        name = 'editor',
+      },
       ['<leader>c'] = {
         name = '[C]ode',
-        _ = 'which_key_ignore',
-      },
-      ['<leader>e'] = {
-        name = '[E]ditor',
         _ = 'which_key_ignore',
       },
       ['<leader>D'] = {

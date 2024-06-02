@@ -34,10 +34,15 @@ keymap.set('n', '<C-q>', '<CMD>q<CR>', {
 
 -- TODO: figure why using leader key doesn't work
 -- keymap.set('n', '<leader>x', ':bd<CR>', { desc = 'Close current buffer' })
-Map('n', '<leader>ed', '<CMD>bd<CR>', { desc = 'Close current buffer' })
-Map('n', '<leader>ew', '<CMD>w<CR>', { desc = 'Save current buffer' })
-Map('n', '<leader>eq', '<CMD>q<CR>', { desc = '[Q]uit Neovim' })
-Map('n', '<leader>eh', '<CMD>nohl<CR>', { desc = 'No [H]ighlight' })
+-- unbind default comma repeat navigation
+-- Map('n', ',', '<CMD>nop<CR>', {})
+vim.keymap.set('', ',', '<nop>')
+Map('n', ',d', '<CMD>bd<CR>', { desc = 'Close current buffer' })
+Map('n', ',w', '<CMD>w<CR>', { desc = 'Save current buffer' })
+Map('n', ',wq', '<CMD>wq<CR>', { desc = 'Save and quit' })
+Map('n', ',q', '<CMD>q<CR>', { desc = '[Q]uit Neovim' })
+Map('n', ',Q', '<CMD>q!<CR>', { desc = '[Q]uit! Neovim' })
+Map('n', ',h', '<CMD>nohl<CR>', { desc = 'No [H]ighlight' })
 
 -- moved this functionality to nvim-tmux-navigation plugin
 -- Use alt-[hjkl] to navigate windows/panes/splits

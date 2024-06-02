@@ -150,7 +150,7 @@ return {
       vim.keymap.set('n', '<leader>sr', builtin.resume, {
         desc = '[S]earch [R]esume',
       })
-      vim.keymap.set('n', '<leader>ek', builtin.keymaps, {
+      vim.keymap.set('n', '<leader>k', builtin.keymaps, {
         desc = '[K]eymaps',
       })
     end,
