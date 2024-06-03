@@ -1,3 +1,13 @@
+--[[ How to find the mapping key code for any key in Vim
+
+From Normal mode, you can type : then Press Ctrl+k followed by any key,
+and Vim will tell you how to reference it. For example, from normal mode
+typing : then pressing Ctrl+k and pressing Backspace results in:
+
+:<BS>
+
+]]
+
 -- [[ Basic Keymaps ]]
 local keymap = vim.keymap
 
@@ -32,13 +42,18 @@ keymap.set('n', '<C-q>', '<CMD>q<CR>', {
   desc = 'Quit Neovim',
 })
 
--- TODO: figure why using leader key doesn't work
--- keymap.set('n', '<leader>x', ':bd<CR>', { desc = 'Close current buffer' })
+--[[ Fast Navigation ]]
+Map('', ';l', '$', { desc = 'End of Line' })
+Map('', ';h', '^', { desc = 'Beginning of Line' })
+Map('', '<Del>l', '$', { desc = 'End of Line' })
+Map('', '<Del>h', '^', { desc = 'Beginning of Line' })
+
+--[[ Vim editor commands ]]
 -- unbind default comma repeat navigation
--- Map('n', ',', '<CMD>nop<CR>', {})
+-- Map('n', ',', '<CMD>nop<CR>', {}) -- using Map doesn't work for this
 vim.keymap.set('', ',', '<nop>')
 Map('n', ',d', '<CMD>bd<CR>', { desc = 'Close current buffer' })
-Map('n', ',D', '<CMD>bd!<CR>', { desc = 'Close current buffer' })
+Map('n', ',D', '<CMD>bd!<CR>', { desc = 'Close! current buffer' })
 Map('n', ',w', '<CMD>w<CR>', { desc = 'Save current buffer' })
 Map('n', ',wq', '<CMD>wq<CR>', { desc = 'Save and quit' })
 Map('n', ',q', '<CMD>q<CR>', { desc = '[Q]uit Neovim' })
@@ -138,10 +153,6 @@ keymap.set('n', '<leader>o', 'mz<Esc>o<Esc>cc<Esc>`z', {
 -- disables Vim Ex (batch processing) mode shortcut
 keymap.set('n', 'Q', '<nop>')
 
--- Fast Navigation
-Map('', ';l', '$', { desc = 'End of Line' })
-Map('', ';h', '^', { desc = 'Beginning of Line' })
-
 -- QuickFix navigation
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -152,7 +163,7 @@ Map('', ';h', '^', { desc = 'Beginning of Line' })
 -- keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 -- keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
---[[ My commonly unused keys
+--[[ Vim keys I typically don't use
 -- Q, R, t, T, Y, U,
 -- S, D, semicolon
 -- Z, X, C, comma

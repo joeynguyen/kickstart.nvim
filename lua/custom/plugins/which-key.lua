@@ -14,6 +14,9 @@ return {
       [';'] = {
         name = 'Fast Navigation',
       },
+      ['<Del>'] = {
+        name = 'Fast Navigation',
+      },
       [','] = {
         name = 'editor',
       },
