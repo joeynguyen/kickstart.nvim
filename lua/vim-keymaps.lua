@@ -102,7 +102,7 @@ keymap.set('n', '<leader>Dq', vim.diagnostic.setloclist, {
 --   vim.api.nvim_input  "pgv\"'.v:register.'y`><C-c>"
 -- end)
 -- Map('x', 'p', "pgv\"'.v:register.'y`>", {})
-keymap.set('x', 'leader', [["_c<Esc>p]])
+keymap.set('x', 'p', '"_c<Esc>p')
 
 -- delete to void register in Normal and Visual modes
 -- keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
