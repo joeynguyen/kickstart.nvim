@@ -2,6 +2,9 @@
 return {
   { 'nvim-telescope/telescope-ui-select.nvim' },
   {
+    'nvim-telescope/telescope-frecency.nvim',
+  },
+  {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = {
@@ -28,17 +31,31 @@ return {
               ['<C-d>'] = false,
             },
           },
+          file_ignore_patterns = { '*.git' },
+          ignore_patterns = { '^.git/' },
+          layout_config = {
+            width = { padding = 20 },
+            height = { padding = 20 },
+          },
         },
         extensions = {
           ['ui-select'] = { require('telescope.themes').get_dropdown {} },
+          frecency = {
+            -- show_scores = true,
+            -- ignore_patterns = { '*.git' },
+            show_unindexed = true,
+            db_safe_mode = false,
+            auto_validate = false,
+            default_workspace = 'CWD',
+          },
         },
       }
       require('telescope').load_extension 'ui-select'
-
-      local builtin = require 'telescope.builtin'
-
+      require('telescope').load_extension 'frecency'
       -- Enable telescope fzf native, if installed
       pcall(require('telescope').load_extension, 'fzf')
+
+      local builtin = require 'telescope.builtin'
 
       -- Telescope live_grep in git root
       -- Function to find the git root directory based on the current buffer's path
@@ -78,7 +95,15 @@ return {
       vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
 
       -- See `:help telescope.builtin`
-      vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find file by name' })
+      -- vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find file by name' })
+      vim.keymap.set('n', '<C-p>', function()
+        require('telescope').extensions.frecency.frecency {}
+      end)
+      -- Return/Enter key (also Ctrl+m)
+      vim.keymap.set('n', '<CR>', function()
+        require('telescope').extensions.frecency.frecency {}
+      end)
+
       vim.keymap.set('n', '<C-f>', builtin.live_grep, { desc = 'Search for text in project' })
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, {
         desc = '[F]ile [G]rep',
@@ -100,9 +125,9 @@ return {
       -- vim.keymap.set('n', '<leader><space>', builtin.buffers, {
       --   desc = '[ ] View current buffers',
       -- })
-      vim.keymap.set('n', '<C-m>', builtin.buffers, { desc = 'Select from current buffers' })
-      vim.keymap.set('n', '<C-g>', builtin.oldfiles, { desc = 'Select from recent files' })
-      vim.keymap.set('n', '<BS>', builtin.oldfiles, { desc = 'Select from recent files' })
+      -- vim.keymap.set('n', '<C-m>', builtin.buffers, { desc = 'Select from current buffers' })
+      -- vim.keymap.set('n', '<C-g>', builtin.oldfiles, { desc = 'Select from recent files' })
+      -- vim.keymap.set('n', '<BS>', builtin.oldfiles, { desc = 'Select from recent files' })
 
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to telescope to change theme, layout, etc.
