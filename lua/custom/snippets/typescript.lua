@@ -10,7 +10,7 @@ local ls = require 'luasnip'
 -- local r = ls.restore_node
 
 local M = {
-  ls.parser.parse_snippet({ trig = 'cl' }, 'console.log("${1:text}", ${2:variable} )'),
+  ls.parser.parse_snippet({ trig = 'cl' }, 'console.log("${1:text}", ${2:variable})'),
   ls.parser.parse_snippet({ trig = 'ct' }, 'const ${1:name}: ${2:type} = ${3:assign}'),
   ls.parser.parse_snippet({ trig = 'cat' }, 'const ${1:name}: ${2:type} = await ${3:assign}'),
   ls.parser.parse_snippet({ trig = 'lt' }, 'let ${1:name}: ${2:type} = ${3:assign}'),

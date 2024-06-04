@@ -44,7 +44,6 @@ return {
             -- https://github.com/nvim-telescope/telescope-frecency.nvim/blob/master/doc/telescope-frecency.txt
             prompt_title = 'telescope-frecency',
             default_workspace = 'CWD',
-            db_root = 'telescope-frecency',
             show_unindexed = true,
             db_safe_mode = false,
             auto_validate = false,
