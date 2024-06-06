@@ -31,6 +31,7 @@ return {
               ['<C-d>'] = false,
             },
           },
+          -- workspace_scan_cmd = 'LUA',
           file_ignore_patterns = { '*.git' },
           ignore_patterns = { '^.git/' },
           layout_config = {
@@ -44,6 +45,7 @@ return {
           frecency = {
             -- https://github.com/nvim-telescope/telescope-frecency.nvim/blob/master/doc/telescope-frecency.txt
             prompt_title = 'telescope-frecency',
+            workspace_scan_cmd = 'LUA', -- fix for https://github.com/nvim-telescope/telescope-frecency.nvim/issues/211
             default_workspace = 'CWD',
             show_unindexed = true,
             db_safe_mode = false,
