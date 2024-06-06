@@ -34,8 +34,9 @@ return {
           file_ignore_patterns = { '*.git' },
           ignore_patterns = { '^.git/' },
           layout_config = {
-            width = { padding = 20 },
-            height = { padding = 20 },
+            -- full screen
+            width = { padding = 0 },
+            height = { padding = 0 },
           },
         },
         extensions = {
