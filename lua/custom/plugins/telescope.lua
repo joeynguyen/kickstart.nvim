@@ -32,7 +32,7 @@ return {
             },
           },
           -- workspace_scan_cmd = 'LUA',
-          file_ignore_patterns = { '*.git' },
+          file_ignore_patterns = { '*.git', 'public/@apollographql/*', '*.min.js', '*.js.map', '*.min.css', 'css.map' },
           ignore_patterns = { '^.git/' },
           layout_config = {
             -- full screen
