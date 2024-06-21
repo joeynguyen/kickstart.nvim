@@ -26,8 +26,8 @@ keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', {
 })
 
 -- navigate buffers
-keymap.set('n', '<C-Tab>', '<CMD>bnext<CR>', {})
-keymap.set('n', '<C-S-Tab>', '<CMD>bprevious<CR>', {})
+keymap.set('n', '<Tab>', '<CMD>bnext<CR>', {})
+keymap.set('n', '<S-Tab>', '<CMD>bprevious<CR>', {})
 
 -- close buffer
 keymap.set('n', '<C-x>', '<CMD>bd<CR>', {
