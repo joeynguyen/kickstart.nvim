@@ -6,7 +6,7 @@ return {
     modes = {
       -- Flash-powered regular search with `/` or `?`
       search = {
-        enabled = true,
+        enabled = false,
       },
       -- Flash-powered `f`, `F`, `t`, `T`, `;` and `,` motions
       char = {

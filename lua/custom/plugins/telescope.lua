@@ -45,9 +45,9 @@ return {
           frecency = {
             -- https://github.com/nvim-telescope/telescope-frecency.nvim/blob/master/doc/telescope-frecency.txt
             prompt_title = 'telescope-frecency',
-            workspace_scan_cmd = 'LUA', -- fix for https://github.com/nvim-telescope/telescope-frecency.nvim/issues/211
+            -- workspace_scan_cmd = 'LUA', -- fix for https://github.com/nvim-telescope/telescope-frecency.nvim/issues/211
             default_workspace = 'CWD',
-            show_unindexed = true,
+            show_unindexed = false,
             db_safe_mode = false,
             auto_validate = false,
             -- show_scores = true,
@@ -100,10 +100,10 @@ return {
       vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
 
       -- See `:help telescope.builtin`
-      -- vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find file by name' })
-      vim.keymap.set('n', '<C-p>', function()
-        require('telescope').extensions.frecency.frecency {}
-      end)
+      vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find file by name' })
+      -- vim.keymap.set('n', '<C-p>', function()
+      --   require('telescope').extensions.frecency.frecency {}
+      -- end)
       -- Return/Enter key (also Ctrl+m)
       vim.keymap.set('n', '<CR>', function()
         require('telescope').extensions.frecency.frecency {}
