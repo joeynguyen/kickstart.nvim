@@ -16,6 +16,7 @@ return {
       { ',',          group = 'Editor' },
       { ';',          group = 'Fast Navigation' },
       { '<Del>',      group = 'Fast Navigation' },
+      { '<leader>,',  group = 'Config files' },
       { '<leader>D',  group = '[D]iagnostics' },
       { '<leader>D_', hidden = true },
       { '<leader>c',  group = '[C]ode' },

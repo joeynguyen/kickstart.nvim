@@ -25,6 +25,16 @@ keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', {
   silent = true,
 })
 
+-- edit config files
+Map({ 'n', 'v' }, '<leader>,w', '<CMD>e $WEZTERM_CONFIG_FILE<CR>', { desc = '[W]ezTerm' })
+Map({ 'n', 'v' }, '<leader>,z', '<CMD>e $HOME/.zshrc<CR>', { desc = '[Z]shrc' })
+Map({ 'n', 'v' }, '<leader>,p', '<CMD>e $HOME/.profile<CR>', { desc = '[P]rofile' })
+Map({ 'n', 'v' }, '<leader>,n', '<CMD>e $HOME/.config/nvim/init.lua<CR>', { desc = '[N]eovim' })
+Map({ 'n', 'v' }, '<leader>,t', '<CMD>e $HOME/.config/tmux/tmux.conf.local<CR>', { desc = '[T]mux' })
+Map({ 'n', 'v' }, '<leader>,c', '<CMD>e $HOME/.config/containers/containers.conf<CR>', { desc = '[C]ontainers' })
+Map({ 'n', 'v' }, '<leader>,k', '<CMD>e $HOME/.config/karabiner/karabiner.json<CR>', { desc = '[K]arabiner' })
+Map({ 'n', 'v' }, '<leader>,s', '<CMD>e $HOME/.config/sesh/sesh.toml<CR>', { desc = '[S]esh' })
+
 -- navigate buffers
 keymap.set('n', '<Tab>', '<CMD>bnext<CR>', {})
 keymap.set('n', '<S-Tab>', '<CMD>bprevious<CR>', {})
