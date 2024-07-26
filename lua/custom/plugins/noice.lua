@@ -48,6 +48,10 @@ return {
         { filter = { event = 'msg_show', find = 'changes; before' }, skip = true },
         { filter = { event = 'msg_show', find = 'change; after' },   skip = true },
         { filter = { event = 'msg_show', find = 'changes; after' },  skip = true },
+        -- indented multiple lines
+        { filter = { event = 'msg_show', find = ' lines >ed ' },     skip = true },
+        { filter = { event = 'msg_show', find = ' lines <ed ' },     skip = true },
+
         -- { filter = { event = 'emsg', find = 'E486' }, skip = true },
         -- { filter = { find = 'E486' }, skip = true },
         -- {
