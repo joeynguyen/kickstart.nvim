@@ -1,4 +1,7 @@
 return {
   'kaplanz/retrail.nvim',
-  opts = {}, -- calls `setup` using provided `opts`
+  config = function()
+    require('retrail').setup()
+    vim.keymap.set('n', '<leader>ft', '<CMD>RetrailTrimWhitespace<CR>', { desc = '[T]rim Whitespace' })
+  end,
 }

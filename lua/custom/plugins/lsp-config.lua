@@ -57,8 +57,9 @@ return {
             })
           end
 
-          nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-          -- nmap('<leader>rn', ':IncRename ', '[R]e[n]ame')
+          vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename, {
+            desc = '[R]ename',
+          })
           nmap('<leader>ca', function()
             vim.lsp.buf.code_action {
               context = {
