@@ -38,6 +38,7 @@ Map({ 'n', 'v' }, '<leader>,s', '<CMD>e $HOME/.config/sesh/sesh.toml<CR>', { des
 -- navigate buffers
 keymap.set('n', '<Tab>', '<CMD>bnext<CR>', {})
 keymap.set('n', '<S-Tab>', '<CMD>bprevious<CR>', {})
+keymap.set('n', '<leader><BS>', '<CMD>b#<CR>', { desc = 'Go to previous buffer' })
 
 -- close buffer
 keymap.set('n', '<C-x>', '<CMD>bd<CR>', {
@@ -64,6 +65,7 @@ Map('', '<Del>h', '^', { desc = 'Beginning of Line' })
 vim.keymap.set('', ',', '<nop>')
 Map('n', ',d', '<CMD>bd<CR>', { desc = 'Close current buffer' })
 Map('n', ',D', '<CMD>bd!<CR>', { desc = 'Close! current buffer' })
+Map('n', ',.', '<CMD>b#<CR>', { desc = 'Go to previous buffer' })
 Map('n', ',w', '<CMD>w<CR>', { desc = 'Save current buffer' })
 Map('n', ',ww', '<CMD>w<CR>', { desc = 'Save current buffer' })
 Map('n', ',wq', '<CMD>wq<CR>', { desc = 'Save and quit' })
