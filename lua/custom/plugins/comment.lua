@@ -1,7 +1,7 @@
 return {
   -- "gc" to comment visual regions/lines
   'numToStr/Comment.nvim',
-  dependencies = 'JoosepAlviste/nvim-ts-context-commentstring',
+  dependencies = 'JoosepAlviste/nvim-ts-context-commentstring', -- support for JSX
   config = function()
     require('Comment').setup {
       toggler = {

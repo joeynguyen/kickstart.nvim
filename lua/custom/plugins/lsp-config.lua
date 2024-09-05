@@ -99,7 +99,7 @@ return {
           --   vim.diagnostic.disable()
           -- end
           if vim.bo[bufnr].buftype ~= '' or vim.bo[bufnr].filetype == 'helm' then
-            vim.diagnostic.disable(bufnr)
+            vim.diagnostic.enable(false)
             vim.defer_fn(function()
               vim.diagnostic.reset(nil, bufnr)
             end, 1000)
@@ -152,6 +152,10 @@ return {
         -- set up every language server specified in the `servers` table variable
         mason_lspconfig.setup_handlers {
           function(server_name)
+            -- https://github.com/neovim/nvim-lspconfig/pull/3232#issuecomment-2331025714
+            if server_name == 'tsserver' then
+              server_name = 'ts_ls'
+            end
             require('lspconfig')[server_name].setup {
               capabilities = capabilities,
               on_attach = on_attach,

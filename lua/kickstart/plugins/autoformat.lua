@@ -46,8 +46,13 @@ return {
 
         -- Tsserver usually works poorly. Sorry you work with bad languages
         -- You can remove this line if you know what you're doing :)
-        if client.name == 'tsserver' then
-          return
+        if client.name == 'ts_ls' then
+          client.server_capabilities.documentFormattingProvider = false
+        end
+
+        -- https://github.com/LazyVim/LazyVim/discussions/242#discussioncomment-4947842
+        if client.name == 'eslint' then
+          client.server_capabilities.documentFormattingProvider = true
         end
 
         -- Create an autocmd that will run *before* we save the buffer.

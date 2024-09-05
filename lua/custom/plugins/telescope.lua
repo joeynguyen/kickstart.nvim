@@ -51,13 +51,16 @@ return {
             db_safe_mode = false,
             auto_validate = false,
             recency_values = {
-              { age = 60,     value = 1000 }, -- past 1 hour
-              { age = 120,    value = 500 }, -- past 2 hours
-              { age = 240,    value = 100 }, -- past 4 hours
-              { age = 1440,   value = 80 }, -- past day
-              { age = 4320,   value = 60 }, -- past 3 days
-              { age = 10080,  value = 40 }, -- past week
-              { age = 43200,  value = 20 }, -- past month
+              { age = 1, value = 10000 }, -- past 1 mins
+              { age = 5, value = 7000 }, -- past 5 mins
+              { age = 30, value = 3000 }, -- past 30 mins
+              { age = 60, value = 1000 }, -- past 1 hour
+              { age = 120, value = 500 }, -- past 2 hours
+              { age = 240, value = 100 }, -- past 4 hours
+              { age = 1440, value = 80 }, -- past day
+              { age = 4320, value = 60 }, -- past 3 days
+              { age = 10080, value = 40 }, -- past week
+              { age = 43200, value = 20 }, -- past month
               { age = 129600, value = 10 }, -- past 90 days
             },
             show_scores = true,
@@ -88,8 +91,7 @@ return {
         end
 
         -- Find the Git root directory from the current file's path
-        local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')
-        [1]
+        local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')[1]
         if vim.v.shell_error ~= 0 then
           print 'Not a git repository. Searching on current working directory'
           return cwd
