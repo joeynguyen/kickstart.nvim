@@ -6,6 +6,15 @@ return {
     -- refer to the configuration section below
     window = {
       width = 320,
+      -- options = {
+      -- signcolumn = 'no',      -- disable signcolumn
+      -- number = false,         -- disable number column
+      -- relativenumber = false, -- disable relative numbers
+      -- cursorline = false, -- disable cursorline
+      -- cursorcolumn = false, -- disable cursor column
+      -- foldcolumn = "0", -- disable fold column
+      -- list = false, -- disable whitespace characters
+      -- },
     },
     plugins = {
       -- disable some global vim options (vim.o...)
@@ -24,6 +33,13 @@ return {
         font = '+8', -- (10% increase per step)
       },
     },
+    -- on_open = function(win)
+    --   lualine.hide()
+    --   vim.o.statusline = ''
+    -- end,
+    -- on_close = function()
+    --   lualine.hide { unhide = true }
+    -- end,
   },
   config = function()
     vim.keymap.set('n', '<leader>z', '<cmd>ZenMode<CR>', { desc = '[Z]enMode' })
