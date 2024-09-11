@@ -13,27 +13,27 @@ return {
     local wk = require 'which-key'
     wk.add {
       -- NORMAL mode
-      { ',',          group = 'Editor' },
-      { ';',          group = 'Fast Navigation' },
-      { '<Del>',      group = 'Fast Navigation' },
-      { '<leader>,',  group = 'Config files' },
-      { '<leader>D',  group = '[D]iagnostics' },
+      { ',', group = 'Editor' },
+      { ';', group = 'Fast Navigation' },
+      { '<Del>', group = 'Fast Navigation' },
+      { '<leader>,', group = 'Config files' },
+      { '<leader>D', group = '[D]iagnostics' },
       { '<leader>D_', hidden = true },
-      { '<leader>c',  group = '[C]ode' },
+      { '<leader>c', group = '[C]ode' },
       { '<leader>c_', hidden = true },
-      { '<leader>f',  group = '[F]ile' },
+      { '<leader>f', group = '[F]ile' },
       { '<leader>f_', hidden = true },
-      { '<leader>g',  group = '[G]it' },
+      { '<leader>g', group = '[G]it' },
       { '<leader>g_', hidden = true },
       { '<leader>r_', hidden = true },
-      { '<leader>s',  group = '[S]earch' },
+      { '<leader>s', group = '[S]earch' },
       { '<leader>s_', hidden = true },
-      { '<leader>t',  group = '[T]rouble' },
+      { '<leader>t', group = '[T]rouble' },
       { '<leader>t_', hidden = true },
 
       -- VISUAL mode
-      { '<leader>',   group = 'VISUAL <leader>', mode = 'v' },
-      { '<leader>g',  desc = '[G]it',            mode = 'v' },
+      { '<leader>', group = 'VISUAL <leader>', mode = 'v' },
+      { '<leader>g', desc = '[G]it', mode = 'v' },
     }
   end,
 }
