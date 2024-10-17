@@ -18,6 +18,9 @@ if vim.g.neovide then
   vim.g.neovide_scroll_animation_far_lines = 0
   vim.g.neovide_scroll_animation_length = 0.00
 
+  -- Cursor Particles
+  vim.g.neovide_cursor_vfx_mode = 'ripple'
+
   --[[ others
   -- command mapping
   vim.keymap.set({ 'i', 'n' }, '<D-a>', '<ESC>ggVG')                              -- select all
