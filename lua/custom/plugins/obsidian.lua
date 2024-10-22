@@ -8,8 +8,14 @@ return {
     -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
     -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
     -- refer to `:h file-pattern` for more examples
-    'BufReadPre /Users/joeynguyen/git/notable-data/notes/*.md',
-    'BufNewFile /Users/joeynguyen/git/obsidian-notes/notes/*.md',
+    'BufReadPre '
+      .. vim.fn.expand '~'
+      .. '/git/notable-data/**/*',
+    'BufReadPre ' .. vim.fn.expand '~' .. '/git/obsidian-data/**/*',
+    -- 'BufReadPre '
+    --   .. vim.fn.expand '~'
+    --   .. '/git/notable-data/notes/*.md',
+    -- 'BufReadPre ' .. vim.fn.expand '~' .. '/git/obsidian-data/notes/*.md',
   },
   dependencies = {
     -- REQUIRED
