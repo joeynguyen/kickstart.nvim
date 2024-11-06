@@ -9,6 +9,9 @@ return {
       config = function()
         local lspconfig = require 'lspconfig'
 
+        -- setup cypher-language-server
+        lspconfig.cypher_ls.setup {}
+
         -- setup helm-ls
         lspconfig.helm_ls.setup {
           settings = {
@@ -246,6 +249,8 @@ return {
       --
       -- But for many setups, the LSP (`ts_ls`) will work just fine
       ts_ls = {},
+      -- for Neo4j
+      cypher_ls = {},
     }
 
     -- Ensure the servers and tools above are installed
