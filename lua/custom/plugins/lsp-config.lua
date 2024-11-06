@@ -9,9 +9,6 @@ return {
       config = function()
         local lspconfig = require 'lspconfig'
 
-        -- setup cypher-language-server
-        lspconfig.cypher_ls.setup {}
-
         -- setup helm-ls
         lspconfig.helm_ls.setup {
           settings = {
