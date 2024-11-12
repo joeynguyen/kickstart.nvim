@@ -206,6 +206,7 @@ return {
     --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+    local lspconfig = require 'lspconfig'
 
     -- Enable the following language servers
     --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -245,7 +246,12 @@ return {
       --    https://github.com/pmizio/typescript-tools.nvim
       --
       -- But for many setups, the LSP (`ts_ls`) will work just fine
-      ts_ls = {},
+      ts_ls = {
+        root_dir = lspconfig.util.root_pattern 'package.json',
+      },
+      denols = {
+        root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
+      },
       -- for Neo4j
       cypher_ls = {},
     }
