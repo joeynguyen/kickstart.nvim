@@ -50,7 +50,8 @@ return { -- Autoformat
       },
     },
     formatters_by_ft = {
-      lua = { 'stylua' },
+      -- disabled stylua because it conflicts with lua_ls's align_continuous_rect_table_field
+      -- lua = { 'stylua' },
       -- Conform can also run multiple formatters sequentially
       python = { 'isort', 'black' },
       --

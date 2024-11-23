@@ -50,21 +50,21 @@ return {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-    { 'j-hui/fidget.nvim', opts = {} },
+    { 'j-hui/fidget.nvim',       opts = {} },
 
     -- Allows extra capabilities provided by nvim-cmp
     'hrsh7th/cmp-nvim-lsp',
-    {
-      'folke/lazydev.nvim',
-      ft = 'lua', -- only load on lua files
-      opts = {
-        library = {
-          -- See the configuration section for more details
-          -- Load luvit types when the `vim.uv` word is found
-          { path = 'luvit-meta/library', words = { 'vim%.uv' } },
-        },
-      },
-    },
+    -- {
+    --   'folke/lazydev.nvim',
+    --   ft = 'lua', -- only load on lua files
+    --   opts = {
+    --     library = {
+    --       -- See the configuration section for more details
+    --       -- Load luvit types when the `vim.uv` word is found
+    --       { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+    --     },
+    --   },
+    -- },
     -- this plugin is nice but currently has issues with renaming variables exported and imported
     -- in React/Typescript
     -- {
@@ -240,6 +240,17 @@ return {
 
       lua_ls = {
         Lua = {
+          format = {
+            enable = true,
+            -- Put format options here
+            -- NOTE: the value should be String!
+            defaultConfig = {
+              indent_style = 'space',
+              indent_size = '2',
+              align_continuous_rect_table_field = 'true',
+              align_array_table = 'true',
+            },
+          },
           diagnostics = {
             globals = { 'vim' },
           },
@@ -280,9 +291,9 @@ return {
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
     local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
-      'stylua', -- Used to format Lua code
-    })
+    -- vim.list_extend(ensure_installed, {
+    --   'stylua', -- Used to format Lua code
+    -- })
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
     require('mason-lspconfig').setup {
