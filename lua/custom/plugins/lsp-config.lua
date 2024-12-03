@@ -242,29 +242,31 @@ return {
       ktlint = {},
 
       lua_ls = {
-        Lua = {
-          format = {
-            enable = true,
-            -- Put format options here
-            -- NOTE: the value should be String!
-            defaultConfig = {
-              indent_style = 'space',
-              indent_size = '2',
-              align_continuous_rect_table_field = 'true',
-              align_array_table = 'true',
+        settings = {
+          Lua = {
+            format = {
+              enable = true,
+              -- Put format options here
+              -- NOTE: the value should be String!
+              defaultConfig = {
+                indent_style = 'space',
+                indent_size = '2',
+                align_continuous_rect_table_field = 'true',
+                align_array_table = 'true',
+              },
             },
+            diagnostics = {
+              globals = { 'vim' },
+            },
+            workspace = {
+              checkThirdParty = false,
+            },
+            telemetry = {
+              enable = false,
+            },
+            -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+            -- diagnostics = { disable = { 'missing-fields' } },
           },
-          diagnostics = {
-            globals = { 'vim' },
-          },
-          workspace = {
-            checkThirdParty = false,
-          },
-          telemetry = {
-            enable = false,
-          },
-          -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-          -- diagnostics = { disable = { 'missing-fields' } },
         },
       },
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
