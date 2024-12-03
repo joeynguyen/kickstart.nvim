@@ -41,12 +41,12 @@ return {
       hop.hint_char1 { direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 }
     end, { remap = true, desc = 'Hop backward to char before hint' })
 
-    vim.keymap.set('', ';w', '<cmd>HopWordAC<CR>', { desc = 'Hop word after cursor' })
-    vim.keymap.set('', ';b', '<cmd>HopWordBC<CR>', { desc = 'Hop word before cursor' })
+    vim.keymap.set('', ';w', '<cmd>HopCamelCaseAC<CR>', { desc = 'Hop word after cursor' })
+    vim.keymap.set('', ';b', '<cmd>HopCamelCaseBC<CR>', { desc = 'Hop word before cursor' })
     vim.keymap.set('', ';j', '<cmd>HopLineStartAC<CR>', { desc = 'Hop line down' })
     vim.keymap.set('', ';k', '<cmd>HopLineStartBC<CR>', { desc = 'Hop line up' })
-    vim.keymap.set('', '<Del>w', '<cmd>HopWordAC<CR>', { desc = 'Hop word after cursor' })
-    vim.keymap.set('', '<Del>b', '<cmd>HopWordBC<CR>', { desc = 'Hop word before cursor' })
+    vim.keymap.set('', '<Del>w', '<cmd>HopCamelCaseAC<CR>', { desc = 'Hop word after cursor' })
+    vim.keymap.set('', '<Del>b', '<cmd>HopCamelCaseBC<CR>', { desc = 'Hop word before cursor' })
     vim.keymap.set('', '<Del>j', '<cmd>HopLineStartAC<CR>', { desc = 'Hop line down' })
     vim.keymap.set('', '<Del>k', '<cmd>HopLineStartBC<CR>', { desc = 'Hop line up' })
   end,

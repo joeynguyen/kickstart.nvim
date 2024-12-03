@@ -234,6 +234,7 @@ return {
       ['markdownlint-cli2'] = {},
       ['markdown-toc'] = {},
       -- gopls = {},
+      black = {},
       pyright = {},
       -- rust_analyzer = {},
       html = { filetypes = { 'html', 'twig', 'hbs' } },
