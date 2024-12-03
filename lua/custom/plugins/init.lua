@@ -8,6 +8,7 @@ return { -- NOTE: First, some plugins that don't require any configuration
   'tpope/vim-rhubarb', -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
   'fatih/vim-go',
+  'brenoprata10/nvim-highlight-colors',
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.

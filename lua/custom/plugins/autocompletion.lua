@@ -33,6 +33,9 @@ return {
     luasnip.add_snippets('typescriptreact', require 'custom.snippets.typescript')
 
     cmp.setup {
+      formatting = {
+        format = require("nvim-highlight-colors").format
+      },
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)

@@ -6,7 +6,10 @@ return { -- Autoformat
     {
       '<leader>ff',
       function()
-        require('conform').format { async = true, lsp_format = 'fallback' }
+        require('conform').format {
+          async = true,
+          lsp_format = 'fallback',
+        }
       end,
       mode = '',
       desc = '[F]ormat [F]ile',
@@ -50,6 +53,7 @@ return { -- Autoformat
       },
     },
     formatters_by_ft = {
+      kotlin = { 'ktlint' },
       -- disabled stylua because it conflicts with lua_ls's align_continuous_rect_table_field
       -- lua = { 'stylua' },
       -- Conform can also run multiple formatters sequentially

@@ -238,6 +238,9 @@ return {
       -- rust_analyzer = {},
       html = { filetypes = { 'html', 'twig', 'hbs' } },
 
+      kotlin_language_server = {},
+      ktlint = {},
+
       lua_ls = {
         Lua = {
           format = {
