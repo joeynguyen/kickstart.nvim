@@ -4,7 +4,7 @@ return {
   -- See `:help lualine.txt`
   dependencies = {
     'folke/noice.nvim',
-    'nvim-tree/nvim-web-devicons',
+    "echasnovski/mini.icons"
   },
   opts = {},
   config = function()

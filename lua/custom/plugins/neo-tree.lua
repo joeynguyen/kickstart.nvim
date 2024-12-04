@@ -3,7 +3,8 @@ return {
   version = 'v3.x',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+    -- 'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
+    'echasnovski/mini.icons', -- this is being mocked right now until neo-tree supports it natively
     'MunifTanjim/nui.nvim',
   },
   config = function()
