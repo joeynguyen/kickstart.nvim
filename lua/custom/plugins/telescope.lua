@@ -39,7 +39,14 @@ return {
             },
           },
           -- workspace_scan_cmd = 'LUA',
-          file_ignore_patterns = { '*.git', 'public/@apollographql/*', '*.min.js', '*.js.map', '*.min.css', 'css.map' },
+          file_ignore_patterns = {
+            '*.git',
+            '*.min.js',
+            '*.js.map',
+            '*.css.map',
+            '*.min.css',
+            'public/@apollographql/*',
+          },
           ignore_patterns = { '^.git/' },
           layout_config = {
             -- full screen
@@ -49,7 +56,11 @@ return {
           },
           path_display = {
             shorten = 5,
-          }
+            -- `filename_first` doesn't seem to work - https://github.com/nvim-telescope/telescope.nvim/issues/3157
+            -- filename_first = {
+            --   reverse_directories = true
+            -- }
+          },
         },
         extensions = {
           ['ui-select'] = { require('telescope.themes').get_dropdown {} },
