@@ -12,6 +12,15 @@ local wo = vim.wo
 g.mapleader = ' '
 g.maplocalleader = ' '
 
+-- disable statusline
+o.laststatus = 0
+-- add window/split specific tab line
+-- %= : float text to right
+-- %m : display if file has been modified
+-- %f : show file name
+-- o.winbar = '%=%m %f'
+o.winbar = '%m %f'
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
