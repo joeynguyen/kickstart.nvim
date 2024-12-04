@@ -88,24 +88,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
-vim.api.nvim_create_user_command('CopyRelativePath', function()
-  local path = vim.fn.expand '%:.'
-  vim.fn.setreg('+', path)
-  vim.notify('Copied "' .. path .. '" to the clipboard!')
-end, {})
-
-vim.api.nvim_create_user_command('CopyAbsolutePath', function()
-  local path = vim.fn.expand '%:p'
-  vim.fn.setreg('+', path)
-  vim.notify('Copied "' .. path .. '" to the clipboard!')
-end, {})
-
-vim.api.nvim_create_user_command('CopyFilename', function()
-  local filename = vim.fn.expand '%:t'
-  vim.fn.setreg('+', filename)
-  vim.notify('Copied "' .. filename .. '" to the clipboard!')
-end, {})
-
 -- open buffer at the same line number as last time exited
 vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
   pattern = { '*' },

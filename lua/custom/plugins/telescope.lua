@@ -30,6 +30,13 @@ return {
               ['<C-u>'] = false,
               ['<C-d>'] = false,
             },
+            n = {
+              -- alternative to "Esc" for quitting/closing Telescope
+              ['q'] = require('telescope.actions').close,
+              ['d'] = require('telescope.actions').delete_buffer,
+              ['J'] = require('telescope.actions').preview_scrolling_down,
+              ['K'] = require('telescope.actions').preview_scrolling_up,
+            },
           },
           -- workspace_scan_cmd = 'LUA',
           file_ignore_patterns = { '*.git', 'public/@apollographql/*', '*.min.js', '*.js.map', '*.min.css', 'css.map' },
@@ -38,35 +45,55 @@ return {
             -- full screen
             width = { padding = 0 },
             height = { padding = 0 },
+            preview_width = 0.55,
           },
+          path_display = {
+            shorten = 5,
+          }
         },
         extensions = {
           ['ui-select'] = { require('telescope.themes').get_dropdown {} },
           frecency = {
             -- https://github.com/nvim-telescope/telescope-frecency.nvim/blob/master/doc/telescope-frecency.txt
+            initial_mode = 'normal',
             prompt_title = 'telescope-frecency',
-            -- workspace_scan_cmd = 'LUA', -- fix for https://github.com/nvim-telescope/telescope-frecency.nvim/issues/211
             default_workspace = 'CWD',
+            -- don't show the CWD path at the beginning of results
+            show_filter_column = false,
             show_unindexed = false,
+            -- workspace_scan_cmd = 'LUA', -- fix for https://github.com/nvim-telescope/telescope-frecency.nvim/issues/211
+            show_scores = false,
             db_safe_mode = false,
             auto_validate = false,
             recency_values = {
-              { age = 1, value = 10000 }, -- past 1 mins
-              { age = 5, value = 7000 }, -- past 5 mins
-              { age = 30, value = 3000 }, -- past 30 mins
-              { age = 60, value = 1000 }, -- past 1 hour
-              { age = 120, value = 500 }, -- past 2 hours
-              { age = 240, value = 100 }, -- past 4 hours
-              { age = 1440, value = 80 }, -- past day
-              { age = 4320, value = 60 }, -- past 3 days
-              { age = 10080, value = 40 }, -- past week
-              { age = 43200, value = 20 }, -- past month
-              { age = 129600, value = 10 }, -- past 90 days
+              { age = 1,      value = 10000 }, -- past 1 mins
+              { age = 5,      value = 7000 },  -- past 5 mins
+              { age = 30,     value = 3000 },  -- past 30 mins
+              { age = 60,     value = 1000 },  -- past 1 hour
+              { age = 120,    value = 500 },   -- past 2 hours
+              { age = 240,    value = 100 },   -- past 4 hours
+              { age = 1440,   value = 80 },    -- past day
+              { age = 4320,   value = 60 },    -- past 3 days
+              { age = 10080,  value = 40 },    -- past week
+              { age = 43200,  value = 20 },    -- past month
+              { age = 129600, value = 10 },    -- past 90 days
             },
-            show_scores = true,
             -- ignore_patterns = { '*.git' },
           },
         },
+        pickers = {
+          buffers = {
+            -- ignore_current_buffer = true,
+            sort_mru = true,
+            sort_lastused = true,
+            initial_mode = 'normal',
+            -- theme = 'ivy',
+          },
+          oldfiles = {
+            initial_mode = 'normal',
+          }
+        },
+
       }
       require('telescope').load_extension 'ui-select'
       require('telescope').load_extension 'frecency'
@@ -91,7 +118,8 @@ return {
         end
 
         -- Find the Git root directory from the current file's path
-        local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')[1]
+        local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')
+            [1]
         if vim.v.shell_error ~= 0 then
           print 'Not a git repository. Searching on current working directory'
           return cwd
@@ -111,33 +139,20 @@ return {
 
       vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
 
+      vim.keymap.set('n', '<leader>k', builtin.keymaps, { desc = '[K]eymaps' })
+
       -- See `:help telescope.builtin`
       vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find file by name' })
-      -- vim.keymap.set('n', '<C-p>', function()
-      --   require('telescope').extensions.frecency.frecency {}
-      -- end)
-      -- Return/Enter key (also Ctrl+m)
-      vim.keymap.set('n', '<CR>', function()
+      vim.keymap.set('n', '<leader>j', function()
         require('telescope').extensions.frecency.frecency {}
-      end)
+      end, { desc = "Frecency" })
+
+      -- Return/Enter key (also Ctrl+m)
+      vim.keymap.set('n', '<CR>', builtin.buffers, { desc = "View current open buffers", }) -- vim.keymap.set('n', '<leader>b', builtin.buffers, {
 
       vim.keymap.set('n', '<C-f>', builtin.live_grep, { desc = 'Search for text in project' })
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, {
-        desc = '[F]ile [G]rep',
-      })
-      -- vim.keymap.set('n', '<leader>?', builtin.oldfiles, {
-      --   desc = '[?] Find recently opened files',
-      -- })
-      vim.keymap.set('n', '<leader>fr', builtin.oldfiles, {
-        desc = '[F]iles [R]ecently opened',
-      })
-
-      vim.keymap.set('n', '<leader>fp', ':CopyRelativePath<CR>', {
-        desc = '[F]ile [P]ath copy',
-      })
-      vim.keymap.set('n', '<leader>fn', ':CopyFilename<CR>', {
-        desc = '[F]ile [N]ame copy',
-      })
+      vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ile [G]rep', })
+      vim.keymap.set('n', '<leader>fr', builtin.oldfiles, { desc = '[F]iles [R]ecently opened', })
 
       -- vim.keymap.set('n', '<leader><space>', builtin.buffers, {
       --   desc = '[ ] View current buffers',
@@ -191,9 +206,6 @@ return {
       })
       vim.keymap.set('n', '<leader>sr', builtin.resume, {
         desc = '[S]earch [R]esume',
-      })
-      vim.keymap.set('n', '<leader>k', builtin.keymaps, {
-        desc = '[K]eymaps',
       })
     end,
   },

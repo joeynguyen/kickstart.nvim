@@ -190,3 +190,24 @@ keymap.set('n', 'Q', '<nop>')
 -- S, D, semicolon
 -- Z, X, C, comma
 --]]
+
+vim.api.nvim_create_user_command('CopyRelativePath', function()
+  local path = vim.fn.expand '%:.'
+  vim.fn.setreg('+', path)
+  vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})
+
+vim.api.nvim_create_user_command('CopyAbsolutePath', function()
+  local path = vim.fn.expand '%:p'
+  vim.fn.setreg('+', path)
+  vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})
+
+vim.api.nvim_create_user_command('CopyFilename', function()
+  local filename = vim.fn.expand '%:t'
+  vim.fn.setreg('+', filename)
+  vim.notify('Copied "' .. filename .. '" to the clipboard!')
+end, {})
+
+vim.keymap.set('n', '<leader>fp', '<CMD>CopyRelativePath<CR>', { desc = '[F]ile [P]ath copy', })
+vim.keymap.set('n', '<leader>fn', '<CMD>CopyFilename<CR>', { desc = '[F]ile [N]ame copy', })
