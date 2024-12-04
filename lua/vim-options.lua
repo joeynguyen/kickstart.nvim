@@ -19,7 +19,6 @@ o.laststatus = 0
 -- %m : display if file has been modified
 -- %f : show file name
 -- o.winbar = '%=%m %f'
-o.winbar = '%m %f'
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
