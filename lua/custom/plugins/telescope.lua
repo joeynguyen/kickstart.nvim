@@ -67,7 +67,7 @@ return {
           ['ui-select'] = { require('telescope.themes').get_dropdown {} },
           frecency = {
             -- https://github.com/nvim-telescope/telescope-frecency.nvim/blob/master/doc/telescope-frecency.txt
-            initial_mode = 'normal',
+            -- initial_mode = 'normal',
             prompt_title = 'telescope-frecency',
             default_workspace = 'CWD',
             -- don't show the CWD path at the beginning of results
@@ -155,7 +155,7 @@ return {
 
       -- See `:help telescope.builtin`
       vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find file by name' })
-      vim.keymap.set('n', '<leader>j', function()
+      vim.keymap.set('n', '<leader><leader>', function()
         require('telescope').extensions.frecency.frecency {}
       end, { desc = "Frecency" })
 
