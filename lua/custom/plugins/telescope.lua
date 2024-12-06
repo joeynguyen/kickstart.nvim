@@ -41,10 +41,11 @@ return {
           -- workspace_scan_cmd = 'LUA',
           file_ignore_patterns = {
             '*.git',
-            '*.min.js',
-            '*.js.map',
             '*.css.map',
+            '*.js.map',
             '*.min.css',
+            '*.min.js',
+            '*.svg',
             'public/@apollographql/*',
           },
           ignore_patterns = { '^.git/' },
@@ -71,7 +72,7 @@ return {
             default_workspace = 'CWD',
             -- don't show the CWD path at the beginning of results
             show_filter_column = false,
-            show_unindexed = false,
+            show_unindexed = true,
             -- workspace_scan_cmd = 'LUA', -- fix for https://github.com/nvim-telescope/telescope-frecency.nvim/issues/211
             show_scores = false,
             db_safe_mode = false,
