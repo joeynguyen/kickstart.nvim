@@ -172,9 +172,9 @@ keymap.set('n', '<leader>o', 'mz<Esc>o<Esc>cc<Esc>`z', {
 --  inoremap <leader>o <esc>o
 --  inoremap <leader>O <esc>ko
 
--- edit to black hole register
-Map({ 'n', 'v' }, '<leader><leader>c', '"_c', { desc = '[c] edit to black hole register' })
-Map({ 'n', 'v' }, '<leader><leader>d', '"_d', { desc = '[d] edit to black hole register' })
+-- edit to black hole register with hyphen prefix
+Map({ 'n', 'v' }, '-c', '"_c', { desc = '[c] edit to black hole register' })
+Map({ 'n', 'v' }, '-d', '"_d', { desc = '[d] delete to black hole register' })
 
 -- disables Vim Ex (batch processing) mode shortcut
 keymap.set('n', 'Q', '<nop>')
