@@ -19,11 +19,25 @@ function Map(mode, lhs, rhs, opts)
   vim.keymap.set(mode, lhs, rhs, options)
 end
 
+-- function Nmap(shortcut, command)
+--   vim.api.nvim_set_keymap('n', shortcut, command, {})
+-- end
+--
+-- function Imap(shortcut, command)
+--   vim.api.nvim_set_keymap('i', shortcut, command, {})
+-- end
+
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', {
   silent = true,
 })
+-- keymap.set({ 'n', 'v' }, '<BS>', '<Space>', {
+--   silent = true,
+-- })
+-- Map({ 'n', 'v' }, '<BS>', '<Leader>')
+-- Nmap('<BS>', '<Leader>')
+
 -- Ctrl-l toggle search highlight - https://www.reddit.com/r/neovim/comments/sd7bmv/comment/hubkeix/
 Map("n", "<C-l>", [[ (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n" <BAR> redraw<CR>]],
   { silent = true, expr = true }
