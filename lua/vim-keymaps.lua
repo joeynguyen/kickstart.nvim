@@ -24,6 +24,10 @@ end
 keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', {
   silent = true,
 })
+-- Ctrl-l toggle search highlight - https://www.reddit.com/r/neovim/comments/sd7bmv/comment/hubkeix/
+Map("n", "<C-l>", [[ (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n" <BAR> redraw<CR>]],
+  { silent = true, expr = true }
+)
 
 -- edit config files
 Map({ 'n', 'v' }, '<leader>,a', '<CMD>e $HOME/.config/aerospace/aerospace.toml<CR>', { desc = '[A]erospace' })
