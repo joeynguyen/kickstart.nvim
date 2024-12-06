@@ -39,7 +39,7 @@ Map({ 'n', 'v' }, '<leader>,z', '<CMD>e $HOME/.zshrc<CR>', { desc = '[Z]shrc' })
 -- navigate buffers
 keymap.set('n', '<Tab>', '<CMD>bnext<CR>', {})
 keymap.set('n', '<S-Tab>', '<CMD>bprevious<CR>', {})
-keymap.set('n', '<leader><BS>', '<CMD>b#<CR>', { desc = 'Go to previous buffer' })
+keymap.set('n', '<BS>', '<CMD>b#<CR>', { desc = 'Go to previous buffer' })
 
 -- close buffer
 keymap.set('n', '<C-x>', '<CMD>bd<CR>', {
