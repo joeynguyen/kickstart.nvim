@@ -71,8 +71,28 @@ return {
       },
     }
     require('notify').setup {
-      timeout = 1500,
+      -- background_colour = "NotifyBackground",
+      -- fps = 30,
+      -- icons = {
+      --   DEBUG = "",
+      --   ERROR = "",
+      --   INFO = "",
+      --   TRACE = "✎",
+      --   WARN = ""
+      -- },
+      -- level = 2,
+      -- minimum_width = 50,
+      -- render = "default",
+      -- stages = "fade_in_slide_out",
       stages = 'static',
+      -- time_formats = {
+      --   notification = "%T",
+      --   notification_history = "%FT%T"
+      -- },
+      -- timeout = 5000,
+      timeout = 1500,
+      -- top_down = true,
+      merge_duplicates = false,
     }
   end,
 }
