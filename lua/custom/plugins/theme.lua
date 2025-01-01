@@ -5,29 +5,20 @@ return {
   priority = 1000,
   opts = {},
   config = function()
-    -- require("tokyonight").setup({
-    --   style = "moon",
-    -- })
+    require("tokyonight").setup({
+      style = "moon", -- moon | storm | night | day
+    })
     vim.cmd [[colorscheme tokyonight]]
   end,
 }
--- return {
---   -- Theme inspired by Atom
---   'navarasu/onedark.nvim',
---   priority = 1000,
---   lazy = false,
---   config = function()
---     require('onedark').setup {
---       -- Set a style preset. 'dark' is default.
---       style = 'dark', -- dark, darker, cool, deep, warm, warmer, light
---     }
---     require('onedark').load()
---   end,
--- }
--- Other themes I tried but I still prefer OneDark over:
+
+-- Other themes I tried but I still prefer TokyoNight over:
 --   - https://github.com/sontungexpt/witch
 --   - https://github.com/oxfist/night-owl.nvim
---   - https://github.com/folke/tokyonight.nvim
+--   - https://github.com/shaunsingh/moonlight.nvim
+--   - https://github.com/maxmx03/fluoromachine.nvim
+--   - https://github.com/navarasu/onedark.nvim
+--   - https://github.com/olimorris/onedarkpro.nvim
 
 -- Attempt at overriding colors with Ultraviolent theme
 -- return {
