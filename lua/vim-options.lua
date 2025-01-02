@@ -3,6 +3,9 @@ local g = vim.g
 local o = vim.o
 local wo = vim.wo
 
+-- https://github.com/neovim/neovim/issues/31675#issuecomment-2558405042
+vim.hl = vim.highlight
+
 -- o.guifont = 'Rec Mono Semicasual:h20'
 -- o.guifont = 'InconsolataGo Nerd Font:h20'
 
@@ -29,6 +32,9 @@ o.inccommand = 'split'
 
 -- Set highlight on search
 o.hlsearch = true
+
+-- Set highlight current line
+o.cursorline = true
 
 -- Make line numbers default
 wo.number = true
