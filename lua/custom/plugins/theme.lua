@@ -148,7 +148,9 @@ return {
         -- Git
         GitSignsAdd = { fg = "${cyan}" },
         GitSignsChange = { fg = "${orange}" },
-
+        -- Cursor = { fg = "${white}", bg = "${cyan}" },
+        -- lCursor = { fg = "${orange}", bg = "${cyan}" },
+        CurSearch = { fg = "${black}", bg = "${cyan}" },
       },
       colors = {
         jsx_text = color.darken("#b5b5b5", 20),
