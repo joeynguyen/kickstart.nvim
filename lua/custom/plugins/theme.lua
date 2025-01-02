@@ -54,8 +54,8 @@ return {
         ["@variable.tsx"] = { fg = "${white}" },
         ["@variable.typescript"] = { fg = "${white}" },
         -- Variables - functions
-        ["@lsp.type.function.typescript"] = { fg = "${white}" },
-        ["@lsp.type.function.typescriptreact"] = { fg = "${white}" },
+        ["@lsp.type.function.typescript"] = { fg = "${green}" },        -- imported functions
+        ["@lsp.type.function.typescriptreact"] = { fg = "${green}" },   -- imported functions
         ["@lsp.mod.local.typescript"] = { fg = "${white}" },            -- local functions
         ["@lsp.mod.local.typescriptreact"] = { fg = "${white}" },       -- local functions
         ["@lsp.mod.declaration.typescript"] = { fg = "${green}" },      -- `component Name`
