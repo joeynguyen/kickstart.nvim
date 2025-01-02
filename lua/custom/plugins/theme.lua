@@ -35,7 +35,6 @@ return {
         ["@lsp.mod.defaultLibrary.typescript"] = { fg = "${blue}" },      -- `Number`
         ["@lsp.mod.defaultLibrary.typescriptreact"] = { fg = "${blue}" }, -- `Number`
 
-
         ["@keyword.import"] = { fg = "${red}" },
         ["@keyword.repeat"] = { fg = "${green}" },
         ["@keyword.return"] = { fg = "${red}" },
@@ -64,6 +63,7 @@ return {
         ["@lsp.mod.readonly.typescript"] = { fg = "${green}" },         -- `react hooks`
         ["@lsp.mod.readonly.typescriptreact"] = { fg = "${green}" },    -- `react hooks`
 
+        ["@function.call.kotlin"] = { fg = "${cyan}" },
         ["@function.call.tsx"] = { fg = "${white}" },
         ["@function.tsx"] = { fg = "${green}" },
         ["@lsp.typemod.variable.defaultLibrary.typescript"] = { fg = "${blue}" },
@@ -86,6 +86,8 @@ return {
         ["@type.tsx"] = { fg = "${green}" },
         ["@variable.builtin"] = { fg = "${blue}" },
         ["@type.builtin.tsx"] = { fg = "${blue}" },
+        ["@function.builtin.kotlin"] = { fg = "${blue}" },
+
         ["@lsp.typemod.function.defaultLibrary.typescript"] = { fg = "${blue}" },
         ["@lsp.typemod.function.defaultLibrary.typescriptreact"] = { fg = "${blue}" },
         ["@lsp.type.class"] = { fg = "${green}" },
@@ -105,6 +107,9 @@ return {
         ["@boolean.json"] = { fg = "${purple}" },
         ["@odp.braces.json"] = { fg = "${white}" },
         ["@constructor.lua"] = { fg = "${purple}" },
+
+        ["@punctuation.special"] = { fg = "${purple}" }, -- ${variable} inside string interpolation - JS, Kotlin
+        ["@punctuation.bracket.kotlin"] = { fg = "${white}" },
         ["@punctuation.bracket.lua"] = { fg = "${white}" },
         ["@odp.expression.punctuation.bracket.javascript"] = { fg = "${white}" },
         ["@odp.expression.punctuation.bracket.javascriptreact"] = { fg = "${white}" },
