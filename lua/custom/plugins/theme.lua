@@ -10,12 +10,12 @@ return {
       highlights = {
         ["@property"] = { fg = "${white}" },
         ["@lsp.typemod.property.declaration.typescript"] = { fg = "${white}" },
-        ["@lsp.typemod.property.declaration.typescriptreact"] = { fg = "${white}" },
+        ["@lsp.typemod.property.declaration.typescriptreact"] = { fg = "${white}" }, -- TS type properties
 
-        ["@lsp.type.property.javascript"] = { fg = "${purple}" },      -- JSON properties
-        ["@lsp.type.property.javascriptreact"] = { fg = "${purple}" }, -- JSON properties
-        ["@lsp.type.property.typescript"] = { fg = "${purple}" },      -- JSON properties
-        ["@lsp.type.property.typescriptreact"] = { fg = "${purple}" }, -- JSON properties
+        ["@lsp.type.property.javascript"] = { fg = "${purple}" },                    -- JSON properties
+        ["@lsp.type.property.javascriptreact"] = { fg = "${purple}" },               -- JSON properties
+        ["@lsp.type.property.typescript"] = { fg = "${purple}" },                    -- JSON properties
+        ["@lsp.type.property.typescriptreact"] = { fg = "${purple}" },               -- JSON properties
         -- ["@text.uri.comment"] = { fg = "${cyan}" },
         -- ["@text.uri"] = { fg = "${cyan}" },
 
@@ -99,7 +99,7 @@ return {
         ["@tag.tsx"] = { fg = "${purple}" },
         ["@tag.builtin.tsx"] = { fg = "${red}" },
         ["@tag.delimiter.tsx"] = { fg = "${white}" },
-        ["@tag.attribute.tsx"] = { fg = "${green}" },
+        ["@tag.attribute.tsx"] = { fg = "${green}", italic = true },
 
         ["@number.json"] = { fg = "${purple}" },
         ["@boolean.json"] = { fg = "${purple}" },
