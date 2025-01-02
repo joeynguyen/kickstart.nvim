@@ -1,88 +1,169 @@
--- return {
---   -- https://github.com/folke/tokyonight.nvim
---   "folke/tokyonight.nvim",
---   lazy = false,
---   priority = 1000,
---   opts = {},
---   config = function()
---     require("tokyonight").setup({
---       style = "moon", -- moon | storm | night | day
---     })
---     vim.cmd [[colorscheme tokyonight]]
---   end,
--- }
-
--- Other themes I tried but I still prefer TokyoNight over:
---   - https://github.com/sontungexpt/witch
---   - https://github.com/oxfist/night-owl.nvim
---   - https://github.com/shaunsingh/moonlight.nvim
---   - https://github.com/maxmx03/fluoromachine.nvim
---   - https://github.com/navarasu/onedark.nvim
---   - https://github.com/olimorris/onedarkpro.nvim
-
 -- Attempt at overriding colors with Ultraviolent theme
 return {
   "olimorris/onedarkpro.nvim",
   priority = 1000, -- Ensure it loads first
   config = function()
+    local color = require("onedarkpro.helpers")
+
     require("onedarkpro").setup({
+      -- use the Treesitter ":Inspect" command to find these properties
       highlights = {
-        ["@property"] = { fg = "#ffffff" },
-        ["@string"] = { link = "String" },
-        ["@constructor"] = { fg = "#ffffff" },
+        ["@property"] = { fg = "${white}" },
+        ["@lsp.typemod.property.declaration.typescript"] = { fg = "${white}" },
+        ["@lsp.typemod.property.declaration.typescriptreact"] = { fg = "${white}" },
+
+        ["@lsp.type.property.javascript"] = { fg = "${purple}" },      -- JSON properties
+        ["@lsp.type.property.javascriptreact"] = { fg = "${purple}" }, -- JSON properties
+        ["@lsp.type.property.typescript"] = { fg = "${purple}" },      -- JSON properties
+        ["@lsp.type.property.typescriptreact"] = { fg = "${purple}" }, -- JSON properties
+        -- ["@text.uri.comment"] = { fg = "${cyan}" },
+        -- ["@text.uri"] = { fg = "${cyan}" },
+
+        ["@property.json"] = { fg = "${orange}" },
+        ["@string.special.url"] = { fg = "${cyan}" },
+        ["@constructor"] = { fg = "${white}" },
         ["@operator"] = { fg = "${red}" },
-        -- ["@constant.builtin"] = { fg = "${cyan}" },
-        -- ["@character.special"] = { fg = "${cyan}" },
-        -- ["@attribute"] = { fg = "${cyan}" },
-        -- ["@constant.conditional"] = { fg = "${cyan}" },
-        -- ["@character.special"] = { fg = "${cyan}" },
         ["@keyword.function"] = { fg = "${cyan}" },
-        ["@keyword.operator"] = { fg = "${red}" }, -- `new`
+        ["@keyword.operator"] = { fg = "${red}" },                        -- `new`
+        ["@keyword.operator.tsx"] = { fg = "${blue}" },                   -- `typeof`
+        ["@keyword.operator.typescript"] = { fg = "${blue}" },            -- `typeof`
+        ["@keyword.exception.tsx"] = { fg = "${blue}" },                  -- `try/catch`
+        ["@keyword.exception.typescript"] = { fg = "${red}" },            -- `try/catch`
+
+        ["@lsp.type.class.typescript"] = { fg = "${purple}" },            -- Classes
+        ["@lsp.type.class.typescriptreact"] = { fg = "${purple}" },       -- Classes
+        ["@lsp.mod.defaultLibrary.typescript"] = { fg = "${blue}" },      -- `Number`
+        ["@lsp.mod.defaultLibrary.typescriptreact"] = { fg = "${blue}" }, -- `Number`
+
+
         ["@keyword.import"] = { fg = "${red}" },
         ["@keyword.repeat"] = { fg = "${green}" },
         ["@keyword.return"] = { fg = "${red}" },
-        ["@keyword.conditional"] = { fg = "${cyan}" },
+        ["@keyword.conditional"] = { fg = "${red}" }, -- `try/catch`
         ["@function"] = { fg = "${green}" },
         ["@function.method"] = { fg = "${cyan}" },
-        ["@function.macro"] = { fg = "${purple}" },
-        ["@variable"] = { fg = "#ffffff" },
-        ["@variable.member"] = { fg = "#ffffff" },
-        ["@constant"] = { fg = "#ffffff" },
-        -- ["@tag"] = { fg = "${red}" },            -- XML tag names
-        -- ["@tag.attribute"] = { fg = "${red}" },  -- XML tag attributes
-        -- ["@tag.delimiter"] = { fg = "#ffffff" }, -- XML tag delimiters
-        -- ["@parameter.tsx"] = { fg = "#ffffff" },
-        -- ["@tag.tsx"] = { fg = "${green}" },
-        ["@tag.builtin.tsx"] = { fg = "${red}" },
-        ["@tag.delimiter.tsx"] = { fg = "#ffffff" },
-        ["@tag.attribute.tsx"] = { fg = "${green}" },
-        ["@punctuation.bracket.tsx"] = { fg = "${cyan}" },
-        -- ["@function.call.tsx"] = { fg = "${green}" },
-        -- ["@function.tsx"] = { fg = "${green}" },
+        ["@lsp.typemod.member.defaultLibrary.typescript"] = { fg = "${cyan}" },
 
-        -- Identifier = { fg = "${cyan}" },
+        ["@function.macro"] = { fg = "${purple}" },
+        ["@variable"] = { fg = "${white}" },
+        ["@variable.member"] = { fg = "${purple}" },
+        ["@variable.parameter"] = { fg = "${orange}" },
+
+        ["@constant"] = { fg = "${white}" },
+
+        -- Variables
+        ["@variable.tsx"] = { fg = "${white}" },
+        ["@variable.typescript"] = { fg = "${white}" },
+        -- Variables - functions
+        ["@lsp.type.function.typescript"] = { fg = "${white}" },
+        ["@lsp.type.function.typescriptreact"] = { fg = "${white}" },
+        ["@lsp.mod.local.typescript"] = { fg = "${white}" },            -- local functions
+        ["@lsp.mod.local.typescriptreact"] = { fg = "${white}" },       -- local functions
+        ["@lsp.mod.declaration.typescript"] = { fg = "${green}" },      -- `component Name`
+        ["@lsp.mod.declaration.typescriptreact"] = { fg = "${green}" }, -- `component Name`
+        ["@lsp.mod.readonly.typescript"] = { fg = "${green}" },         -- `react hooks`
+        ["@lsp.mod.readonly.typescriptreact"] = { fg = "${green}" },    -- `react hooks`
+
+        ["@function.call.tsx"] = { fg = "${white}" },
+        ["@function.tsx"] = { fg = "${green}" },
+        ["@lsp.typemod.variable.defaultLibrary.typescript"] = { fg = "${blue}" },
+        ["@lsp.typemod.variable.defaultLibrary.typescriptreact"] = { fg = "${blue}" },
+        ["@lsp.typemod.function.local.typescript"] = { fg = "${white}" },
+        ["@lsp.typemod.function.local.typescriptreact"] = { fg = "${white}" },
+        ["@lsp.typemod.parameter.declaration.typescript"] = { fg = "${orange}" },
+        ["@lsp.typemod.parameter.declaration.typescriptreact"] = { fg = "${orange}" },
+
+        -- String inside JSX tag
+        ["@markup.heading.tsx"] = { fg = "${jsx_text}", italic = true, bold = true },
+        ["@markup.heading.1.tsx"] = { fg = "${jsx_text}", italic = true, bold = true },
+        ["@markup.heading.2.tsx"] = { fg = "${jsx_text}", italic = true, bold = true },
+        ["@markup.heading.3.tsx"] = { fg = "${jsx_text}", italic = true, bold = true },
+        ["@markup.heading.4.tsx"] = { fg = "${jsx_text}", italic = true, bold = true },
+        ["@none.tsx"] = { fg = "${jsx_text}", italic = true, bold = true },
+
+        -- Types
+        Type = { fg = "${green}" },
+        ["@type.tsx"] = { fg = "${green}" },
+        ["@variable.builtin"] = { fg = "${blue}" },
+        ["@type.builtin.tsx"] = { fg = "${blue}" },
+        ["@lsp.typemod.function.defaultLibrary.typescript"] = { fg = "${blue}" },
+        ["@lsp.typemod.function.defaultLibrary.typescriptreact"] = { fg = "${blue}" },
+        ["@lsp.type.class"] = { fg = "${green}" },
+        ["@lsp.type.interface"] = { fg = "${green}" },
+        ["@lsp.type.interface.typescript"] = { fg = "${green}" },
+        ["@lsp.type.interface.typescriptreact"] = { fg = "${green}" },
+        ["@lsp.type.namespace.typescript"] = { fg = "${orange}" },
+        ["@lsp.type.namespace.typescriptreact"] = { fg = "${orange}" },
+
+
+        ["@tag.tsx"] = { fg = "${purple}" },
+        ["@tag.builtin.tsx"] = { fg = "${red}" },
+        ["@tag.delimiter.tsx"] = { fg = "${white}" },
+        ["@tag.attribute.tsx"] = { fg = "${green}" },
+
+        ["@number.json"] = { fg = "${purple}" },
+        ["@boolean.json"] = { fg = "${purple}" },
+        ["@odp.braces.json"] = { fg = "${white}" },
+        ["@constructor.lua"] = { fg = "${purple}" },
+        ["@punctuation.bracket.lua"] = { fg = "${white}" },
+        ["@odp.expression.punctuation.bracket.javascript"] = { fg = "${white}" },
+        ["@odp.expression.punctuation.bracket.javascriptreact"] = { fg = "${white}" },
+        ["@punctuation.bracket.javascript"] = { fg = "${white}" },
+        ["@punctuation.bracket.javascriptreact"] = { fg = "${white}" },
+        ["@punctuation.bracket.typescript"] = { fg = "${white}" },
+        ["@punctuation.bracket.typescriptreact"] = { fg = "${white}" },
+        ["@punctuation.bracket.tsx"] = { fg = "${white}" },
+
+        ["@odp.operator.fat_arrow.tsx"] = { fg = "${cyan}" },
+        ["@string"] = { link = "String" },
+
+        -- XML
+        -- ["@tag"] = { fg = "${red}" },
+        -- ["@tag.attribute"] = { fg = "${red}" },
+        -- ["@tag.delimiter"] = { fg = "${white}" },
+
+        Identifier = { fg = "${cyan}" },
         Constant = { fg = "${purple}" },
         Keyword = { fg = "${cyan}" },
-        String = { fg = { onedark = "${yellow}" } },
-        -- SpecialChar = { fg = { onedark = "${cyan}" } },
+        String = { fg = "${yellow}" },
+        Error = { fg = "${red}" },
 
-        Comment = { fg = "#75715E" },
-        --   Number = { fg = "${purple}" },
-        -- Function = { fg = "#b6ff00" },
-        -- Statement = { fg = "#b6ff00" },
-        -- Identifier = { fg = "#b6ff00" },
+        Comment = { fg = "${comment}" },
+        -- Number = { fg = "${purple}" },
+        -- Function = { fg = "${purple}" },
+        -- Statement = { fg = "${purple}" },
+        -- Identifier = { fg = "${purple}" },
+
+        -- Diagnostics
+        DiagnosticVirtualTextHint = { fg = "${orange}" },
+        -- DiagnosticVirtualTextError
+        -- DiagnosticVirtualTextWarn
+        -- DiagnosticVirtualTextInfo = { fg = "${red}" },
+
+        -- Git
+        GitSignsAdd = { fg = "${cyan}" },
+        GitSignsChange = { fg = "${orange}" },
+
       },
       colors = {
-        -- my_new_red = "#f44336",
+        jsx_text = color.darken("#b5b5b5", 20),
         red = "#ff0090",
-        -- orange = "",
+        orange = "#FD971E",
         yellow = "#ebe087",
         green = "#b6ff00",
-        -- blue = "",
         cyan = "#47e0fb",
+        blue = "#0effbb",
         purple = "#e681ff",
+        white = "#f9f9f5",
+        -- black = "#242728",
+        gray = "#e1e1e1",
+        highlight = "#d731ff",
+        comment = "#75715E",
+        -- none = "NONE",
+        -- bg = "#fafafa",
+        -- fg = "#6a6a6a",
         dark = { bg = "#242728" },
-        -- light = { bg = "#00FF00" }, -- green
+        -- light = { bg = "" },
       },
     })
 
@@ -349,3 +430,25 @@ return {
 -- vim.api.nvim_set_hl(0, "diffLine", { fg = "#61afef" })
 -- vim.api.nvim_set_hl(0, "diffNewFile", { fg = "#e5c07b" })
 -- vim.api.nvim_set_hl(0, "diffRemoved", { fg = "#e06c75" })
+
+-- return {
+--   -- https://github.com/folke/tokyonight.nvim
+--   "folke/tokyonight.nvim",
+--   lazy = false,
+--   priority = 1000,
+--   opts = {},
+--   config = function()
+--     require("tokyonight").setup({
+--       style = "moon", -- moon | storm | night | day
+--     })
+--     vim.cmd [[colorscheme tokyonight]]
+--   end,
+-- }
+
+-- Other themes I tried but I still prefer TokyoNight over:
+--   - https://github.com/sontungexpt/witch
+--   - https://github.com/oxfist/night-owl.nvim
+--   - https://github.com/shaunsingh/moonlight.nvim
+--   - https://github.com/maxmx03/fluoromachine.nvim
+--   - https://github.com/navarasu/onedark.nvim
+--   - https://github.com/olimorris/onedarkpro.nvim
