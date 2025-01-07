@@ -23,6 +23,7 @@ return {
         ["@string.special.url"] = { fg = "${cyan}" },
         ["@constructor"] = { fg = "${white}" },
         ["@operator"] = { fg = "${red}" },
+
         ["@keyword.function"] = { fg = "${cyan}" },
         ["@keyword.operator"] = { fg = "${red}" },                        -- `new`
         ["@keyword.operator.tsx"] = { fg = "${blue}" },                   -- `typeof`
@@ -35,7 +36,7 @@ return {
         ["@lsp.mod.defaultLibrary.typescript"] = { fg = "${blue}" },      -- `Number`
         ["@lsp.mod.defaultLibrary.typescriptreact"] = { fg = "${blue}" }, -- `Number`
 
-        ["@keyword.import"] = { fg = "${red}" },
+        ["@keyword.import"] = { fg = "${red}", italic = true },
         ["@keyword.repeat"] = { fg = "${green}" },
         ["@keyword.return"] = { fg = "${red}" },
         ["@keyword.conditional"] = { fg = "${red}" }, -- `try/catch`
@@ -66,12 +67,14 @@ return {
         ["@function.call.kotlin"] = { fg = "${cyan}" },
         ["@function.call.tsx"] = { fg = "${white}" },
         ["@function.tsx"] = { fg = "${green}" },
-        ["@lsp.typemod.variable.defaultLibrary.typescript"] = { fg = "${blue}" },
-        ["@lsp.typemod.variable.defaultLibrary.typescriptreact"] = { fg = "${blue}" },
+        ["@lsp.typemod.variable.defaultLibrary.typescript"] = { fg = "${blue}", italic = true },
+        ["@lsp.typemod.variable.defaultLibrary.typescriptreact"] = { fg = "${blue}", italic = true },
         ["@lsp.typemod.function.local.typescript"] = { fg = "${white}" },
         ["@lsp.typemod.function.local.typescriptreact"] = { fg = "${white}" },
         ["@lsp.typemod.parameter.declaration.typescript"] = { fg = "${orange}" },
         ["@lsp.typemod.parameter.declaration.typescriptreact"] = { fg = "${orange}" },
+        ["@lsp.typemod.function.defaultLibrary.typescript"] = { fg = "${blue}", italic = true },
+        ["@lsp.typemod.function.defaultLibrary.typescriptreact"] = { fg = "${blue}", italic = true },
 
         -- String inside JSX tag
         ["@markup.heading.tsx"] = { fg = "${jsx_text}", italic = true, bold = true },
@@ -84,12 +87,11 @@ return {
         -- Types
         Type = { fg = "${green}" },
         ["@type.tsx"] = { fg = "${green}" },
-        ["@variable.builtin"] = { fg = "${blue}" },
-        ["@type.builtin.tsx"] = { fg = "${blue}" },
+        ["@variable.builtin"] = { fg = "${blue}", italic = true },
+        ["@type.builtin.tsx"] = { fg = "${blue}", italic = true },
         ["@function.builtin.kotlin"] = { fg = "${blue}" },
+        ["@function.builtin.lua"] = { fg = "${cyan}", italic = true },
 
-        ["@lsp.typemod.function.defaultLibrary.typescript"] = { fg = "${blue}" },
-        ["@lsp.typemod.function.defaultLibrary.typescriptreact"] = { fg = "${blue}" },
         ["@lsp.type.class"] = { fg = "${green}" },
         ["@lsp.type.interface"] = { fg = "${green}" },
         ["@lsp.type.interface.typescript"] = { fg = "${green}" },
@@ -98,8 +100,8 @@ return {
         ["@lsp.type.namespace.typescriptreact"] = { fg = "${orange}" },
 
 
-        ["@tag.tsx"] = { fg = "${purple}" },
-        ["@tag.builtin.tsx"] = { fg = "${red}" },
+        ["@tag.tsx"] = { fg = "${purple}" },      -- JSX component tags
+        ["@tag.builtin.tsx"] = { fg = "${red}" }, -- HTML tags
         ["@tag.delimiter.tsx"] = { fg = "${white}" },
         ["@tag.attribute.tsx"] = { fg = "${green}", italic = true },
 
@@ -148,9 +150,10 @@ return {
         -- Git
         GitSignsAdd = { fg = "${cyan}" },
         GitSignsChange = { fg = "${orange}" },
+        GitSignsCurrentLineBlame = { fg = "${blue}" },
+        CurSearch = { fg = "${black}", bg = "${cyan}" },
         -- Cursor = { fg = "${white}", bg = "${cyan}" },
         -- lCursor = { fg = "${orange}", bg = "${cyan}" },
-        CurSearch = { fg = "${black}", bg = "${cyan}" },
       },
       colors = {
         jsx_text = color.darken("#b5b5b5", 20),
