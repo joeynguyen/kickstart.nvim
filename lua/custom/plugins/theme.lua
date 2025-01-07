@@ -77,12 +77,12 @@ return {
         ["@lsp.typemod.function.defaultLibrary.typescriptreact"] = { fg = "${blue}", italic = true },
 
         -- String inside JSX tag
-        ["@markup.heading.tsx"] = { fg = "${jsx_text}", italic = true, bold = true },
-        ["@markup.heading.1.tsx"] = { fg = "${jsx_text}", italic = true, bold = true },
-        ["@markup.heading.2.tsx"] = { fg = "${jsx_text}", italic = true, bold = true },
-        ["@markup.heading.3.tsx"] = { fg = "${jsx_text}", italic = true, bold = true },
-        ["@markup.heading.4.tsx"] = { fg = "${jsx_text}", italic = true, bold = true },
-        ["@none.tsx"] = { fg = "${jsx_text}", italic = true, bold = true },
+        ["@markup.heading.tsx"] = { fg = "${jsx_text}", italic = true },
+        ["@markup.heading.1.tsx"] = { fg = "${jsx_text}", italic = true },
+        ["@markup.heading.2.tsx"] = { fg = "${jsx_text}", italic = true },
+        ["@markup.heading.3.tsx"] = { fg = "${jsx_text}", italic = true },
+        ["@markup.heading.4.tsx"] = { fg = "${jsx_text}", italic = true },
+        ["@none.tsx"] = { fg = "${jsx_text}", italic = true },
 
         -- Types
         Type = { fg = "${green}" },
@@ -156,7 +156,8 @@ return {
         -- lCursor = { fg = "${orange}", bg = "${cyan}" },
       },
       colors = {
-        jsx_text = color.darken("#b5b5b5", 20),
+        -- jsx_text = color.darken("#b5b5b5", 20),
+        jsx_text = color.darken("##f9f9f5", 5),
         red = "#ff0090",
         orange = "#FD971E",
         yellow = "#ebe087",
