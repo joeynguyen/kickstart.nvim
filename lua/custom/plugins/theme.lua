@@ -25,16 +25,16 @@ return {
         ["@operator"] = { fg = "${red}" },
 
         ["@keyword.function"] = { fg = "${cyan}" },
-        ["@keyword.operator"] = { fg = "${red}" },                        -- `new`
-        ["@keyword.operator.tsx"] = { fg = "${blue}" },                   -- `typeof`
-        ["@keyword.operator.typescript"] = { fg = "${blue}" },            -- `typeof`
-        ["@keyword.exception.tsx"] = { fg = "${blue}" },                  -- `try/catch`
-        ["@keyword.exception.typescript"] = { fg = "${red}" },            -- `try/catch`
+        ["@keyword.operator"] = { fg = "${red}", italic = true },                        -- `new`
+        ["@keyword.operator.tsx"] = { fg = "${blue}", italic = true },                   -- `typeof`
+        ["@keyword.operator.typescript"] = { fg = "${blue}", italic = true },            -- `typeof`
+        ["@keyword.exception.tsx"] = { fg = "${blue}", italic = true },                  -- `try/catch`
+        ["@keyword.exception.typescript"] = { fg = "${red}", italic = true },            -- `try/catch`
 
-        ["@lsp.type.class.typescript"] = { fg = "${purple}" },            -- Classes
-        ["@lsp.type.class.typescriptreact"] = { fg = "${purple}" },       -- Classes
-        ["@lsp.mod.defaultLibrary.typescript"] = { fg = "${blue}" },      -- `Number`
-        ["@lsp.mod.defaultLibrary.typescriptreact"] = { fg = "${blue}" }, -- `Number`
+        ["@lsp.type.class.typescript"] = { fg = "${purple}", italic = true },            -- Classes
+        ["@lsp.type.class.typescriptreact"] = { fg = "${purple}", italic = true },       -- Classes
+        ["@lsp.mod.defaultLibrary.typescript"] = { fg = "${blue}", italic = true },      -- `Number`
+        ["@lsp.mod.defaultLibrary.typescriptreact"] = { fg = "${blue}", italic = true }, -- `Number`
 
         ["@keyword.import"] = { fg = "${red}", italic = true },
         ["@keyword.repeat"] = { fg = "${green}" },
