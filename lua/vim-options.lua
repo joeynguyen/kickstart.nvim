@@ -111,3 +111,13 @@ vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
     end
   end,
 })
+
+-- Create an autocmd group for Markdown-specific settings
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    -- set `wrap` to true
+    vim.opt.wrap = true
+  end,
+  desc = "Enable line wrapping for Markdown files",
+})
