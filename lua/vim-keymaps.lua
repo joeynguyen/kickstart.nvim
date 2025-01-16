@@ -47,6 +47,7 @@ Map("n", "<C-l>", [[ (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n" <BAR> red
 Map({ 'n', 'v' }, '<leader>,a', '<CMD>e $HOME/.config/aerospace/aerospace.toml<CR>', { desc = '[A]erospace' })
 Map({ 'n', 'v' }, '<leader>,c', '<CMD>e $HOME/.config/containers/containers.conf<CR>', { desc = '[C]ontainers' })
 Map({ 'n', 'v' }, '<leader>,k', '<CMD>e $HOME/.config/karabiner/karabiner.json<CR>', { desc = '[K]arabiner' })
+Map({ 'n', 'v' }, '<leader>,g', '<CMD>e $HOME/.config/ghostty/config<CR>', { desc = '[G]hostty' })
 Map({ 'n', 'v' }, '<leader>,p', '<CMD>e $HOME/.profile<CR>', { desc = '[P]rofile' })
 Map({ 'n', 'v' }, '<leader>,n', '<CMD>e $HOME/.config/nvim/init.lua<CR>', { desc = '[N]eovim' })
 Map({ 'n', 'v' }, '<leader>,s', '<CMD>e $HOME/.config/sesh/sesh.toml<CR>', { desc = '[S]esh' })
