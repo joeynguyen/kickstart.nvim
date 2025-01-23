@@ -155,9 +155,9 @@ return {
 
       -- See `:help telescope.builtin`
       vim.keymap.set('n', '<C-p>', builtin.find_files, { desc = 'Find file by name' })
-      vim.keymap.set('n', '<leader><leader>', function()
+      vim.keymap.set('n', '<leader>j', function()
         require('telescope').extensions.frecency.frecency {}
-      end, { desc = "Frecency" })
+      end, { desc = "Frecency search" })
 
       -- Return/Enter key (also Ctrl+m)
       vim.keymap.set('n', '<CR>', builtin.buffers, { desc = "View current open buffers", }) -- vim.keymap.set('n', '<leader>b', builtin.buffers, {
