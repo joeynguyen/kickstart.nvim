@@ -56,11 +56,13 @@ return {
             preview_width = 0.55,
           },
           path_display = {
-            shorten = 5,
+            -- shorten = 5,
+            "tail",
             -- `filename_first` doesn't seem to work - https://github.com/nvim-telescope/telescope.nvim/issues/3157
-            -- filename_first = {
-            --   reverse_directories = true
-            -- }
+            -- "filename_first",
+            filename_first = {
+              reverse_directories = true
+            }
           },
         },
         extensions = {
