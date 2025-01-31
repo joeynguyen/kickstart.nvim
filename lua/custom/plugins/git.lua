@@ -9,6 +9,7 @@ return {
   },
   keys = {
     { '<leader>gn', '<CMD>Neogit<CR>', desc = '[N]eogit open' },
+    { '<leader>gg', '<CMD>Neogit<CR>', desc = '[G]UI - Neogit ' },
   },
   config = true,
 }

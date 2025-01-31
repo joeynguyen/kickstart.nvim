@@ -16,8 +16,8 @@ return {
         section_separators = '',
       },
       tabline = {
-        -- lualine_a = { 'buffers' },
-        lualine_a = { 'filename' },
+        lualine_a = { 'buffers' },
+        -- lualine_a = { 'filename' },
         lualine_b = {},
         lualine_c = {
           -- {

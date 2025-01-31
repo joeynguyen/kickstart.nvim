@@ -24,13 +24,37 @@ return {
     -- See `:help cmp`
     local cmp = require 'cmp'
     local luasnip = require 'luasnip'
-    require('luasnip.loaders.from_vscode').lazy_load()
-    luasnip.config.setup {}
+    -- local s = luasnip.snippet
+    -- local t = luasnip.text_node
+    -- local i = luasnip.insert_node
 
-    luasnip.add_snippets('javascript', require 'custom.snippets.javascript')
-    luasnip.add_snippets('javascriptreact', require 'custom.snippets.javascript')
+    -- luasnip.add_snippets({ "javascript", "typescript", "javascriptreact", "typescriptreact" },
+    --   {                                    -- Add support for .js, .ts, .jsx, and .tsx
+    --     s("cl", {                          -- Trigger: 'cl'
+    --       t("console.log("),
+    --       t('"'), i(1, "message"), t('"'), -- $1 with placeholder "message"
+    --       t(", "), i(2, "value"),          -- $2 with placeholder "value"
+    --       t(");"),
+    --     }),
+    --   })
+    luasnip.add_snippets('javascript', require 'custom.snippets.typescript')
+    luasnip.add_snippets('javascriptreact', require 'custom.snippets.typescript')
     luasnip.add_snippets('typescript', require 'custom.snippets.typescript')
     luasnip.add_snippets('typescriptreact', require 'custom.snippets.typescript')
+    -- luasnip.add_snippets({ "javascript", "typescript", "javascriptreact", "typescriptreact" },
+    --   require 'custom.snippets.typescript')
+
+    -- Debug: Print all loaded snippets for the current filetype
+    -- print(vim.inspect(luasnip.snippets.typescriptreact)) -- Change `javascript` to the relevant filetype
+
+    -- require('luasnip.loaders.from_vscode').lazy_load()
+    luasnip.config.setup({
+      history = true,                            -- Allows jumping back to previous nodes
+      updateevents = "TextChanged,TextChangedI", -- Updates as you type
+      region_check_events = "InsertEnter",       -- Ensures Insert mode stays active
+      delete_check_events = "InsertLeave",       -- Avoids glitches when leaving insert
+    })
+
 
     cmp.setup {
       formatting = {
@@ -56,12 +80,14 @@ return {
         ['<C-Space>'] = cmp.mapping.complete {},
         ['<CR>'] = cmp.mapping.confirm {
           behavior = cmp.ConfirmBehavior.Replace,
-          select = true,
+          select = false, -- Avoids auto-selecting
         },
         ['<Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
           elseif luasnip.expand_or_locally_jumpable() then
+            -- Debugging: Print state if needed
+            print("Expanding or jumping LuaSnip")
             luasnip.expand_or_jump()
           else
             fallback()
@@ -83,10 +109,15 @@ return {
           -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
           group_index = 0,
         },
-        { name = 'nvim_lsp' },
         { name = 'luasnip' },
+        { name = 'nvim_lsp' },
         { name = 'path' },
       },
+      -- sources = cmp.config.sources({
+      --   { name = 'luasnip',  group_index = 1 },
+      --   { name = 'nvim_lsp', group_index = 2 },
+      --   { name = 'path',     group_index = 3 },
+      -- }),
     }
   end,
 }
