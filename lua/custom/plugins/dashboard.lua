@@ -29,7 +29,7 @@ return {
     }
 
     alpha.setup(dashboard.opts)
-    vim.keymap.set('n', '<leader>d', '<cmd>Alpha<CR>', {
+    vim.keymap.set('n', '<leader>D', '<cmd>Alpha<CR>', {
       desc = '[D]ashboard',
     })
   end,

@@ -120,10 +120,10 @@ keymap.set('n', '[d', vim.diagnostic.goto_prev, {
 keymap.set('n', ']d', vim.diagnostic.goto_next, {
   desc = 'Go to next diagnostic message',
 })
-keymap.set('n', '<leader>Dd', vim.diagnostic.open_float, {
+keymap.set('n', '<leader>dd', vim.diagnostic.open_float, {
   desc = 'Open floating diagnostic message',
 })
-keymap.set('n', '<leader>Dq', vim.diagnostic.setloclist, {
+keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, {
   desc = 'Open diagnostics list',
 })
 
