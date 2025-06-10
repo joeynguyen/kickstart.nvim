@@ -69,9 +69,9 @@ keymap.set('n', '<C-s>', '<CMD>w<CR>', {
   desc = 'Save current buffer',
 })
 -- quit Neovim
-keymap.set('n', '<C-q>', '<CMD>q<CR>', {
-  desc = 'Quit Neovim',
-})
+-- keymap.set('n', '<C-q>', '<CMD>q<CR>', {
+--   desc = 'Quit Neovim',
+-- })
 
 --[[ Fast Navigation ]]
 Map('', ';l', '$', { desc = 'End of Line' })
