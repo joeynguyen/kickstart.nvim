@@ -1,160 +1,164 @@
 -- Attempt at overriding colors with Ultraviolent theme
 return {
   "olimorris/onedarkpro.nvim",
+  lazy = false, -- make sure we load this during startup if it is your main colorscheme
   priority = 1000, -- Ensure it loads first
   config = function()
     local color = require("onedarkpro.helpers")
 
+    -- Cache the setup to avoid repeated function calls
+    local highlights = {
+      -- Performance: Group similar highlights together
+      -- Property and LSP highlights
+      ["@property"] = { fg = "${white}" },
+      ["@lsp.typemod.property.declaration.typescript"] = { fg = "${white}" },
+      ["@lsp.typemod.property.declaration.typescriptreact"] = { fg = "${white}" },
+      ["@lsp.type.property.javascript"] = { fg = "${purple}" },
+      ["@lsp.type.property.javascriptreact"] = { fg = "${purple}" },
+      ["@lsp.type.property.typescript"] = { fg = "${purple}" },
+      ["@lsp.type.property.typescriptreact"] = { fg = "${purple}" },
+      -- ["@text.uri.comment"] = { fg = "${cyan}" },
+      -- ["@text.uri"] = { fg = "${cyan}" },
+
+      ["@property.json"] = { fg = "${orange}" },
+      ["@string.special.url"] = { fg = "${cyan}" },
+      ["@constructor"] = { fg = "${white}" },
+      ["@operator"] = { fg = "${red}" },
+
+      ["@keyword.function"] = { fg = "${cyan}" },
+      ["@keyword.operator"] = { fg = "${red}", italic = true },                        -- `new`
+      ["@keyword.operator.tsx"] = { fg = "${blue}", italic = true },                   -- `typeof`
+      ["@keyword.operator.typescript"] = { fg = "${blue}", italic = true },            -- `typeof`
+      ["@keyword.exception.tsx"] = { fg = "${blue}", italic = true },                  -- `try/catch`
+      ["@keyword.exception.typescript"] = { fg = "${red}", italic = true },            -- `try/catch`
+
+      ["@lsp.type.class.typescript"] = { fg = "${purple}", italic = true },            -- Classes
+      ["@lsp.type.class.typescriptreact"] = { fg = "${purple}", italic = true },       -- Classes
+      ["@lsp.mod.defaultLibrary.typescript"] = { fg = "${blue}", italic = true },      -- `Number`
+      ["@lsp.mod.defaultLibrary.typescriptreact"] = { fg = "${blue}", italic = true }, -- `Number`
+
+      ["@keyword.import"] = { fg = "${red}", italic = true },
+      ["@keyword.repeat"] = { fg = "${green}" },
+      ["@keyword.return"] = { fg = "${red}" },
+      ["@keyword.conditional"] = { fg = "${red}" }, -- `try/catch`
+      ["@function"] = { fg = "${green}" },
+      ["@function.method"] = { fg = "${cyan}" },
+      ["@lsp.typemod.member.defaultLibrary.typescript"] = { fg = "${cyan}" },
+
+      ["@function.macro"] = { fg = "${purple}" },
+      ["@variable"] = { fg = "${white}" },
+      ["@variable.member"] = { fg = "${purple}" },
+      ["@variable.parameter"] = { fg = "${orange}" },
+
+      ["@constant"] = { fg = "${white}" },
+
+      -- Variables
+      ["@variable.tsx"] = { fg = "${white}" },
+      ["@variable.typescript"] = { fg = "${white}" },
+      -- Variables - functions
+      ["@lsp.type.function.typescript"] = { fg = "${green}" },        -- imported functions
+      ["@lsp.type.function.typescriptreact"] = { fg = "${green}" },   -- imported functions
+      ["@lsp.mod.local.typescript"] = { fg = "${white}" },            -- local functions
+      ["@lsp.mod.local.typescriptreact"] = { fg = "${white}" },       -- local functions
+      ["@lsp.mod.declaration.typescript"] = { fg = "${green}" },      -- `component Name`
+      ["@lsp.mod.declaration.typescriptreact"] = { fg = "${green}" }, -- `component Name`
+      ["@lsp.mod.readonly.typescript"] = { fg = "${green}" },         -- `react hooks`
+      ["@lsp.mod.readonly.typescriptreact"] = { fg = "${green}" },    -- `react hooks`
+
+      ["@function.call.kotlin"] = { fg = "${cyan}" },
+      ["@function.call.tsx"] = { fg = "${white}" },
+      ["@function.tsx"] = { fg = "${green}" },
+      ["@lsp.typemod.variable.defaultLibrary.typescript"] = { fg = "${blue}", italic = true },
+      ["@lsp.typemod.variable.defaultLibrary.typescriptreact"] = { fg = "${blue}", italic = true },
+      ["@lsp.typemod.function.local.typescript"] = { fg = "${white}" },
+      ["@lsp.typemod.function.local.typescriptreact"] = { fg = "${white}" },
+      ["@lsp.typemod.parameter.declaration.typescript"] = { fg = "${orange}" },
+      ["@lsp.typemod.parameter.declaration.typescriptreact"] = { fg = "${orange}" },
+      ["@lsp.typemod.function.defaultLibrary.typescript"] = { fg = "${blue}", italic = true },
+      ["@lsp.typemod.function.defaultLibrary.typescriptreact"] = { fg = "${blue}", italic = true },
+
+      -- String inside JSX tag
+      ["@markup.heading.tsx"] = { fg = "${jsx_text}", italic = true },
+      ["@markup.heading.1.tsx"] = { fg = "${jsx_text}", italic = true },
+      ["@markup.heading.2.tsx"] = { fg = "${jsx_text}", italic = true },
+      ["@markup.heading.3.tsx"] = { fg = "${jsx_text}", italic = true },
+      ["@markup.heading.4.tsx"] = { fg = "${jsx_text}", italic = true },
+      ["@none.tsx"] = { fg = "${jsx_text}", italic = true },
+
+      -- Types
+      Type = { fg = "${green}" },
+      ["@type.tsx"] = { fg = "${green}" },
+      ["@variable.builtin"] = { fg = "${blue}", italic = true },
+      ["@type.builtin.tsx"] = { fg = "${blue}", italic = true },
+      ["@function.builtin.kotlin"] = { fg = "${blue}" },
+      ["@function.builtin.lua"] = { fg = "${cyan}", italic = true },
+
+      ["@lsp.type.class"] = { fg = "${green}" },
+      ["@lsp.type.interface"] = { fg = "${green}" },
+      ["@lsp.type.interface.typescript"] = { fg = "${green}" },
+      ["@lsp.type.interface.typescriptreact"] = { fg = "${green}" },
+      ["@lsp.type.namespace.typescript"] = { fg = "${orange}" },
+      ["@lsp.type.namespace.typescriptreact"] = { fg = "${orange}" },
+
+
+      ["@tag.tsx"] = { fg = "${purple}" },      -- JSX component tags
+      ["@tag.builtin.tsx"] = { fg = "${red}" }, -- HTML tags
+      ["@tag.delimiter.tsx"] = { fg = "${white}" },
+      ["@tag.attribute.tsx"] = { fg = "${green}", italic = true },
+
+      ["@number.json"] = { fg = "${purple}" },
+      ["@boolean.json"] = { fg = "${purple}" },
+      ["@odp.braces.json"] = { fg = "${white}" },
+      ["@constructor.lua"] = { fg = "${purple}" },
+
+      ["@punctuation.special"] = { fg = "${purple}" }, -- ${variable} inside string interpolation - JS, Kotlin
+      ["@punctuation.bracket.kotlin"] = { fg = "${white}" },
+      ["@punctuation.bracket.lua"] = { fg = "${white}" },
+      ["@odp.expression.punctuation.bracket.javascript"] = { fg = "${white}" },
+      ["@odp.expression.punctuation.bracket.javascriptreact"] = { fg = "${white}" },
+      ["@punctuation.bracket.javascript"] = { fg = "${white}" },
+      ["@punctuation.bracket.javascriptreact"] = { fg = "${white}" },
+      ["@punctuation.bracket.typescript"] = { fg = "${white}" },
+      ["@punctuation.bracket.typescriptreact"] = { fg = "${white}" },
+      ["@punctuation.bracket.tsx"] = { fg = "${white}" },
+
+      ["@odp.operator.fat_arrow.tsx"] = { fg = "${cyan}" },
+      ["@string"] = { link = "String" },
+
+      -- XML
+      -- ["@tag"] = { fg = "${red}" },
+      -- ["@tag.attribute"] = { fg = "${red}" },
+      -- ["@tag.delimiter"] = { fg = "${white}" },
+
+      Identifier = { fg = "${cyan}" },
+      Constant = { fg = "${purple}" },
+      Keyword = { fg = "${cyan}" },
+      String = { fg = "${yellow}" },
+      Error = { fg = "${red}" },
+
+      Comment = { fg = "${comment}" },
+      -- Number = { fg = "${purple}" },
+      -- Function = { fg = "${purple}" },
+      -- Statement = { fg = "${purple}" },
+      -- Identifier = { fg = "${purple}" },
+
+      -- Diagnostics
+      DiagnosticVirtualTextHint = { fg = "${orange}" },
+      -- DiagnosticVirtualTextError
+      -- DiagnosticVirtualTextWarn
+      -- DiagnosticVirtualTextInfo = { fg = "${red}" },
+
+      -- Git
+      GitSignsAdd = { fg = "${cyan}" },
+      GitSignsChange = { fg = "${orange}" },
+      GitSignsCurrentLineBlame = { fg = "${blue}" },
+      CurSearch = { fg = "${black}", bg = "${cyan}" },
+      -- Cursor = { fg = "${white}", bg = "${cyan}" },
+      -- lCursor = { fg = "${orange}", bg = "${cyan}" },
+    }
+
     require("onedarkpro").setup({
-      -- use the Treesitter ":Inspect" command to find these properties
-      highlights = {
-        ["@property"] = { fg = "${white}" },
-        ["@lsp.typemod.property.declaration.typescript"] = { fg = "${white}" },
-        ["@lsp.typemod.property.declaration.typescriptreact"] = { fg = "${white}" }, -- TS type properties
-
-        ["@lsp.type.property.javascript"] = { fg = "${purple}" },                    -- JSON properties
-        ["@lsp.type.property.javascriptreact"] = { fg = "${purple}" },               -- JSON properties
-        ["@lsp.type.property.typescript"] = { fg = "${purple}" },                    -- JSON properties
-        ["@lsp.type.property.typescriptreact"] = { fg = "${purple}" },               -- JSON properties
-        -- ["@text.uri.comment"] = { fg = "${cyan}" },
-        -- ["@text.uri"] = { fg = "${cyan}" },
-
-        ["@property.json"] = { fg = "${orange}" },
-        ["@string.special.url"] = { fg = "${cyan}" },
-        ["@constructor"] = { fg = "${white}" },
-        ["@operator"] = { fg = "${red}" },
-
-        ["@keyword.function"] = { fg = "${cyan}" },
-        ["@keyword.operator"] = { fg = "${red}", italic = true },                        -- `new`
-        ["@keyword.operator.tsx"] = { fg = "${blue}", italic = true },                   -- `typeof`
-        ["@keyword.operator.typescript"] = { fg = "${blue}", italic = true },            -- `typeof`
-        ["@keyword.exception.tsx"] = { fg = "${blue}", italic = true },                  -- `try/catch`
-        ["@keyword.exception.typescript"] = { fg = "${red}", italic = true },            -- `try/catch`
-
-        ["@lsp.type.class.typescript"] = { fg = "${purple}", italic = true },            -- Classes
-        ["@lsp.type.class.typescriptreact"] = { fg = "${purple}", italic = true },       -- Classes
-        ["@lsp.mod.defaultLibrary.typescript"] = { fg = "${blue}", italic = true },      -- `Number`
-        ["@lsp.mod.defaultLibrary.typescriptreact"] = { fg = "${blue}", italic = true }, -- `Number`
-
-        ["@keyword.import"] = { fg = "${red}", italic = true },
-        ["@keyword.repeat"] = { fg = "${green}" },
-        ["@keyword.return"] = { fg = "${red}" },
-        ["@keyword.conditional"] = { fg = "${red}" }, -- `try/catch`
-        ["@function"] = { fg = "${green}" },
-        ["@function.method"] = { fg = "${cyan}" },
-        ["@lsp.typemod.member.defaultLibrary.typescript"] = { fg = "${cyan}" },
-
-        ["@function.macro"] = { fg = "${purple}" },
-        ["@variable"] = { fg = "${white}" },
-        ["@variable.member"] = { fg = "${purple}" },
-        ["@variable.parameter"] = { fg = "${orange}" },
-
-        ["@constant"] = { fg = "${white}" },
-
-        -- Variables
-        ["@variable.tsx"] = { fg = "${white}" },
-        ["@variable.typescript"] = { fg = "${white}" },
-        -- Variables - functions
-        ["@lsp.type.function.typescript"] = { fg = "${green}" },        -- imported functions
-        ["@lsp.type.function.typescriptreact"] = { fg = "${green}" },   -- imported functions
-        ["@lsp.mod.local.typescript"] = { fg = "${white}" },            -- local functions
-        ["@lsp.mod.local.typescriptreact"] = { fg = "${white}" },       -- local functions
-        ["@lsp.mod.declaration.typescript"] = { fg = "${green}" },      -- `component Name`
-        ["@lsp.mod.declaration.typescriptreact"] = { fg = "${green}" }, -- `component Name`
-        ["@lsp.mod.readonly.typescript"] = { fg = "${green}" },         -- `react hooks`
-        ["@lsp.mod.readonly.typescriptreact"] = { fg = "${green}" },    -- `react hooks`
-
-        ["@function.call.kotlin"] = { fg = "${cyan}" },
-        ["@function.call.tsx"] = { fg = "${white}" },
-        ["@function.tsx"] = { fg = "${green}" },
-        ["@lsp.typemod.variable.defaultLibrary.typescript"] = { fg = "${blue}", italic = true },
-        ["@lsp.typemod.variable.defaultLibrary.typescriptreact"] = { fg = "${blue}", italic = true },
-        ["@lsp.typemod.function.local.typescript"] = { fg = "${white}" },
-        ["@lsp.typemod.function.local.typescriptreact"] = { fg = "${white}" },
-        ["@lsp.typemod.parameter.declaration.typescript"] = { fg = "${orange}" },
-        ["@lsp.typemod.parameter.declaration.typescriptreact"] = { fg = "${orange}" },
-        ["@lsp.typemod.function.defaultLibrary.typescript"] = { fg = "${blue}", italic = true },
-        ["@lsp.typemod.function.defaultLibrary.typescriptreact"] = { fg = "${blue}", italic = true },
-
-        -- String inside JSX tag
-        ["@markup.heading.tsx"] = { fg = "${jsx_text}", italic = true },
-        ["@markup.heading.1.tsx"] = { fg = "${jsx_text}", italic = true },
-        ["@markup.heading.2.tsx"] = { fg = "${jsx_text}", italic = true },
-        ["@markup.heading.3.tsx"] = { fg = "${jsx_text}", italic = true },
-        ["@markup.heading.4.tsx"] = { fg = "${jsx_text}", italic = true },
-        ["@none.tsx"] = { fg = "${jsx_text}", italic = true },
-
-        -- Types
-        Type = { fg = "${green}" },
-        ["@type.tsx"] = { fg = "${green}" },
-        ["@variable.builtin"] = { fg = "${blue}", italic = true },
-        ["@type.builtin.tsx"] = { fg = "${blue}", italic = true },
-        ["@function.builtin.kotlin"] = { fg = "${blue}" },
-        ["@function.builtin.lua"] = { fg = "${cyan}", italic = true },
-
-        ["@lsp.type.class"] = { fg = "${green}" },
-        ["@lsp.type.interface"] = { fg = "${green}" },
-        ["@lsp.type.interface.typescript"] = { fg = "${green}" },
-        ["@lsp.type.interface.typescriptreact"] = { fg = "${green}" },
-        ["@lsp.type.namespace.typescript"] = { fg = "${orange}" },
-        ["@lsp.type.namespace.typescriptreact"] = { fg = "${orange}" },
-
-
-        ["@tag.tsx"] = { fg = "${purple}" },      -- JSX component tags
-        ["@tag.builtin.tsx"] = { fg = "${red}" }, -- HTML tags
-        ["@tag.delimiter.tsx"] = { fg = "${white}" },
-        ["@tag.attribute.tsx"] = { fg = "${green}", italic = true },
-
-        ["@number.json"] = { fg = "${purple}" },
-        ["@boolean.json"] = { fg = "${purple}" },
-        ["@odp.braces.json"] = { fg = "${white}" },
-        ["@constructor.lua"] = { fg = "${purple}" },
-
-        ["@punctuation.special"] = { fg = "${purple}" }, -- ${variable} inside string interpolation - JS, Kotlin
-        ["@punctuation.bracket.kotlin"] = { fg = "${white}" },
-        ["@punctuation.bracket.lua"] = { fg = "${white}" },
-        ["@odp.expression.punctuation.bracket.javascript"] = { fg = "${white}" },
-        ["@odp.expression.punctuation.bracket.javascriptreact"] = { fg = "${white}" },
-        ["@punctuation.bracket.javascript"] = { fg = "${white}" },
-        ["@punctuation.bracket.javascriptreact"] = { fg = "${white}" },
-        ["@punctuation.bracket.typescript"] = { fg = "${white}" },
-        ["@punctuation.bracket.typescriptreact"] = { fg = "${white}" },
-        ["@punctuation.bracket.tsx"] = { fg = "${white}" },
-
-        ["@odp.operator.fat_arrow.tsx"] = { fg = "${cyan}" },
-        ["@string"] = { link = "String" },
-
-        -- XML
-        -- ["@tag"] = { fg = "${red}" },
-        -- ["@tag.attribute"] = { fg = "${red}" },
-        -- ["@tag.delimiter"] = { fg = "${white}" },
-
-        Identifier = { fg = "${cyan}" },
-        Constant = { fg = "${purple}" },
-        Keyword = { fg = "${cyan}" },
-        String = { fg = "${yellow}" },
-        Error = { fg = "${red}" },
-
-        Comment = { fg = "${comment}" },
-        -- Number = { fg = "${purple}" },
-        -- Function = { fg = "${purple}" },
-        -- Statement = { fg = "${purple}" },
-        -- Identifier = { fg = "${purple}" },
-
-        -- Diagnostics
-        DiagnosticVirtualTextHint = { fg = "${orange}" },
-        -- DiagnosticVirtualTextError
-        -- DiagnosticVirtualTextWarn
-        -- DiagnosticVirtualTextInfo = { fg = "${red}" },
-
-        -- Git
-        GitSignsAdd = { fg = "${cyan}" },
-        GitSignsChange = { fg = "${orange}" },
-        GitSignsCurrentLineBlame = { fg = "${blue}" },
-        CurSearch = { fg = "${black}", bg = "${cyan}" },
-        -- Cursor = { fg = "${white}", bg = "${cyan}" },
-        -- lCursor = { fg = "${orange}", bg = "${cyan}" },
-      },
+      highlights = highlights,
       colors = {
         -- jsx_text = color.darken("#b5b5b5", 20),
         jsx_text = color.darken("##f9f9f5", 5),
