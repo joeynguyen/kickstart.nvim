@@ -86,8 +86,6 @@ return {
           if cmp.visible() then
             cmp.select_next_item()
           elseif luasnip.expand_or_locally_jumpable() then
-            -- Debugging: Print state if needed
-            print("Expanding or jumping LuaSnip")
             luasnip.expand_or_jump()
           else
             fallback()
