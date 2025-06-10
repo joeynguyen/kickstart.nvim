@@ -6,6 +6,12 @@ local wo = vim.wo
 -- https://github.com/neovim/neovim/issues/31675#issuecomment-2558405042
 vim.hl = vim.highlight
 
+-- Performance optimizations
+o.updatetime = 250
+o.timeoutlen = 300
+o.redrawtime = 10000
+o.maxmempattern = 20000
+
 -- o.guifont = 'Rec Mono Semicasual:h20'
 -- o.guifont = 'InconsolataGo Nerd Font:h20'
 
@@ -78,10 +84,6 @@ o.smartcase = true
 
 -- Keep signcolumn on by default
 wo.signcolumn = 'yes'
-
--- Decrease update time
-o.updatetime = 250
-o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
 o.completeopt = 'menuone,noselect'
