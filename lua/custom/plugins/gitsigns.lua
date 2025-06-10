@@ -2,7 +2,7 @@ return {
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   'lewis6991/gitsigns.nvim',
   opts = {
-    current_line_blame = true,
+    -- current_line_blame = true,
     -- See `:help gitsigns.txt`
     signs = {
       add = {
@@ -88,16 +88,16 @@ return {
       map('n', '<leader>gp', gs.preview_hunk, {
         desc = '[p]review git hunk',
       })
-      map('n', '<leader>gb', function()
+      --[[ map('n', '<leader>gb', function()
         gs.blame_line {
           full = false,
         }
       end, {
         desc = '[b]lame line',
-      })
-      map('n', '<leader>gB', gs.toggle_current_line_blame, {
+      }) ]]
+      --[[ map('n', '<leader>gB', gs.toggle_current_line_blame, {
         desc = '[B]lame line toggle',
-      })
+      }) ]]
       map('n', '<leader>gd', gs.diffthis, {
         desc = '[d]iff against index',
       })
