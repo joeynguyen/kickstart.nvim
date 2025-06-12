@@ -19,7 +19,7 @@ local ls = require 'luasnip'
 --   })
 
 local M = {
-  ls.parser.parse_snippet({ trig = 'cl' }, 'console.log("${1:text}", ${2:variable})'),
+  ls.parser.parse_snippet({ trig = 'cl' }, 'console.log(\'${1:text}\', ${2:variable})'),
   -- ls.parser.parse_snippet(
   --   "cl",                                      -- Trigger: 'cl'
   --   'console.log("${1:text}", ${2:variable});' -- Snippet body with placeholders
