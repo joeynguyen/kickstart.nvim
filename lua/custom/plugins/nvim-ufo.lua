@@ -3,10 +3,15 @@ return {
   'kevinhwang91/nvim-ufo',
   dependencies = 'kevinhwang91/promise-async',
   config = function()
+    -- displays fold markers in the gutter
     vim.o.foldcolumn = '1'
+    -- controls which folds are automatically closed based on their nesting depth.
+    -- By setting it to 99, we're essentially telling Neovim to keep all folds open by default
     vim.o.foldlevel = 99
+    -- same as foldlevel, but for new buffers
     vim.o.foldlevelstart = 99
-    vim.o.foldenable = true
+    -- controls whether folds are enabled in the current buffer
+    vim.o.foldenable = false
 
     -- Using ufo provider need remap `zR` and `zM`.
     vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
