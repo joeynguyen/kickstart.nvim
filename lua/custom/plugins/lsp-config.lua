@@ -14,6 +14,7 @@ return {
           settings = {
             ['helm-ls'] = {
               yamlls = {
+                -- needs to be installed - `npm install -g yaml-language-server`
                 path = 'yaml-language-server',
               },
             },
