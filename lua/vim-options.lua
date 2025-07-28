@@ -123,3 +123,11 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   desc = "Enable line wrapping for Markdown files",
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  -- pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+  callback = function()
+    vim.api.nvim_set_hl(0, "TelescopeSelection", { link = "Visual" })
+  end,
+  desc = "Use the current color theme's setting for Visual selection",
+})
