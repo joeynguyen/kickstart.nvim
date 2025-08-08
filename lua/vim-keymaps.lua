@@ -39,9 +39,16 @@ keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', {
 -- Nmap('<BS>', '<Leader>')
 
 -- Ctrl-l toggle search highlight - https://www.reddit.com/r/neovim/comments/sd7bmv/comment/hubkeix/
-Map("n", "<C-l>", [[ (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n" <BAR> redraw<CR>]],
-  { silent = true, expr = true }
+Map("n", "<leader>h", [[ (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n" <BAR> redraw<CR>]],
+  { silent = true, expr = true, desc = 'Toggle Search [H]ighlight' }
 )
+Map({ 'n', 'v' }, '<leader>,a', '<CMD>e $HOME/.config/aerospace/aerospace.toml<CR>', { desc = '[A]erospace' })
+
+-- Window navigation
+Map('n', '<C-h>', '<cmd>wincmd h<CR>', { desc = 'Move to left window' })
+Map('n', '<C-l>', '<cmd>wincmd l<CR>', { desc = 'Move to right window' })
+Map('n', '<C-j>', '<cmd>wincmd j<CR>', { desc = 'Move to bottom window' })
+Map('n', '<C-k>', '<cmd>wincmd k<CR>', { desc = 'Move to top window' })
 
 -- edit config files
 Map({ 'n', 'v' }, '<leader>,a', '<CMD>e $HOME/.config/aerospace/aerospace.toml<CR>', { desc = '[A]erospace' })
