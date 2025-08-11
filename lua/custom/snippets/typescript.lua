@@ -19,17 +19,12 @@ local ls = require 'luasnip'
 --   })
 
 local M = {
-  ls.parser.parse_snippet({ trig = 'cl' }, 'console.log(\'${1:text}\', ${2:variable})'),
-  -- ls.parser.parse_snippet(
-  --   "cl",                                      -- Trigger: 'cl'
-  --   'console.log("${1:text}", ${2:variable});' -- Snippet body with placeholders
-  -- ),
-  ls.parser.parse_snippet({ trig = 'ct' }, 'const ${1:name}: ${2:type} = ${3:assign}'),
-  ls.parser.parse_snippet({ trig = 'cat' }, 'const ${1:name}: ${2:type} = await ${3:assign}'),
-  ls.parser.parse_snippet({ trig = 'lt' }, 'let ${1:name}: ${2:type} = ${3:assign}'),
-  ls.parser.parse_snippet({ trig = 'lat' }, 'let ${1:name}: ${2:type} = await ${3:assign}'),
-  ls.parser.parse_snippet({ trig = 'aft' }, '(${1:params}): ${2:type} => {\n\t$0\n}'),
-  ls.parser.parse_snippet({ trig = 'tr' }, 'if ${1:[[ ${2:word} -eq ${3:word2} ]]}; then\n\t$4\nfi'),
+  ls.parser.parse_snippet({ trig = 'cl' }, "console.log('${1}', ${2})"),
+  ls.parser.parse_snippet({ trig = 'ct' }, 'const ${1}: ${2} = ${3}'),
+  ls.parser.parse_snippet({ trig = 'cat' }, 'const ${1}: ${2} = await ${3}'),
+  ls.parser.parse_snippet({ trig = 'lt' }, 'let ${1}: ${2} = ${3}'),
+  ls.parser.parse_snippet({ trig = 'lat' }, 'let ${1}: ${2} = await ${3}'),
+  ls.parser.parse_snippet({ trig = 'aft' }, '(${1}): ${2} => {\n\t$0\n}'),
 }
 
 return M

@@ -147,12 +147,30 @@ keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, {
 -- Map('x', 'p', "pgv\"'.v:register.'y`>", {})
 keymap.set('x', 'p', '"_c<Esc>p')
 
+-- In Select mode (used by Snippet autocompletion), paste into placeholders without leaving insert
+keymap.set('s', 'p', function()
+  local reg = vim.v.register ~= '' and vim.v.register or '+'
+  return vim.api.nvim_replace_termcodes('<BS><C-r>' .. reg, true, false, true)
+end, { expr = true, desc = 'Paste into selection and stay in Insert' })
+keymap.set('s', 'P', function()
+  local reg = vim.v.register ~= '' and vim.v.register or '+'
+  return vim.api.nvim_replace_termcodes('<BS><C-r>' .. reg, true, false, true)
+end, { expr = true, desc = 'Paste into selection and stay in Insert' })
+
 -- delete to void register in Normal and Visual modes
 -- keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
 -- keymap.set({ 'n', 'v' }, '<leader>c', [["_c]])
 
--- make <C-c> behave exactly like <Esc>
-keymap.set('i', '<C-c>', '<Esc>')
+-- make <C-c> behave exactly like <Esc>, but snippet-aware
+keymap.set('i', '<C-c>', function()
+  local luasnip = require('luasnip')
+  -- If we're in a snippet, don't force Esc, let LuaSnip handle it
+  if luasnip.in_snippet() then
+    return '<C-c>'
+  else
+    return '<Esc>'
+  end
+end, { expr = true })
 
 -- keeps cursor in the same place while using "J"
 keymap.set('n', 'J', 'mzJ`z')

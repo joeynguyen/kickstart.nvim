@@ -51,9 +51,25 @@ return {
     luasnip.config.setup({
       history = true,                            -- Allows jumping back to previous nodes
       updateevents = "TextChanged,TextChangedI", -- Updates as you type
-      region_check_events = "InsertEnter",       -- Ensures Insert mode stays active
-      delete_check_events = "InsertLeave",       -- Avoids glitches when leaving insert
+      region_check_events = "CursorMoved,CursorMovedI,InsertEnter", -- Improved events to keep Insert mode active
+      delete_check_events = "TextChanged,InsertLeave", -- Avoids glitches when leaving insert
+      enable_autosnippets = true,                -- Enable automatic snippet expansion
     })
+
+    -- Additional keymaps for better snippet navigation
+    -- Using <C-l> and <C-h> in insert/select mode for snippet navigation
+    -- (these only conflict with window navigation in normal mode)
+    vim.keymap.set({ "i", "s" }, "<C-l>", function()
+      if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      end
+    end, { desc = "Expand or jump forward in snippet" })
+
+    vim.keymap.set({ "i", "s" }, "<C-h>", function()
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      end
+    end, { desc = "Jump backward in snippet" })
 
 
     cmp.setup {
