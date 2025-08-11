@@ -91,6 +91,8 @@ o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 o.termguicolors = true
 
+o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', {
