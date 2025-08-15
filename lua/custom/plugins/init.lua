@@ -9,6 +9,7 @@ return { -- NOTE: First, some plugins that don't require any configuration
   'tpope/vim-sleuth',
   'fatih/vim-go',
   -- Additional useful plugins
+  'tpope/vim-rsi', -- Emacs key bindings in Insert mode
   --[[ {
     -- Better quickfix window
     'kevinhwang91/nvim-bqf',
