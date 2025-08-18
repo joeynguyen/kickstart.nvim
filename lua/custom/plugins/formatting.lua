@@ -18,6 +18,36 @@ return { -- Autoformat
   opts = {
     notify_on_error = false,
     format_on_save = function(bufnr)
+      -- List of filenames and paths to ignore
+      local ignore_patterns = {
+        '^lazy%-lock%.json$', -- Lazy.nvim lock file
+        '^node_modules/',     -- any file under a node_modules folder
+        '^%.git/',            -- any .git‑internal file
+        -- add more patterns as you need
+        -- '/path/to/ignored/file.txt',
+        -- '/path/to/ignored/directory/',
+        -- 'specific_filename_to_ignore.py',
+      }
+
+      -- Helper that decides whether the current buffer should be skipped
+      local function should_ignore()
+        local rel_path = vim.fn.expand('%:.') -- path relative to cwd
+        -- vim.notify("Checking file: " .. rel_path) -- uncomment to debug print
+        for _, pat in ipairs(ignore_patterns) do
+          -- vim.notify("Testing pattern: " .. pat)  -- uncomment to debug print
+          if string.find(rel_path, pat) then
+            -- vim.notify("MATCHED: " .. rel_path)   -- uncomment to debug print
+            return true
+          end
+        end
+        return false
+      end
+
+      if should_ignore() then
+        -- tell the plugin “don’t run any formatter for this buffer”,
+        -- not returning a Lua table == no formatting
+        return nil
+      end
       -- Disable "format_on_save lsp_fallback" for languages that don't
       -- have a well standardized coding style. You can add additional
       -- languages here or re-enable it for the disabled ones.
