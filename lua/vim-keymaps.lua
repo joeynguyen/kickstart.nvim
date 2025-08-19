@@ -50,6 +50,10 @@ Map('n', '<C-l>', '<cmd>wincmd l<CR>', { desc = 'Move to right window' })
 Map('n', '<C-j>', '<cmd>wincmd j<CR>', { desc = 'Move to bottom window' })
 Map('n', '<C-k>', '<cmd>wincmd k<CR>', { desc = 'Move to top window' })
 
+-- Alternative: use < and > for character search repeats
+Map('n', '>', ';', { desc = 'Repeat last character search forward' })
+Map('n', '<', ',', { desc = 'Repeat last character search backward' })
+
 -- edit config files
 Map({ 'n', 'v' }, '<leader>,a', '<CMD>e $HOME/.config/aerospace/aerospace.toml<CR>', { desc = '[A]erospace' })
 Map({ 'n', 'v' }, '<leader>,c', '<CMD>e $HOME/.config/containers/containers.conf<CR>', { desc = '[C]ontainers' })
