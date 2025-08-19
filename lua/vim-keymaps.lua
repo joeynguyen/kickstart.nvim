@@ -99,8 +99,8 @@ Map('n', ',.', '<CMD>b#<CR>', { desc = 'Go to previous buffer' })
 Map('n', ',w', '<CMD>w<CR>', { desc = 'Save current buffer' })
 Map('n', ',ww', '<CMD>w<CR>', { desc = 'Save current buffer' })
 Map('n', ',wq', '<CMD>wq<CR>', { desc = 'Save and quit' })
-Map('n', ',q', '<CMD>q<CR>', { desc = '[Q]uit Neovim' })
-Map('n', ',Q', '<CMD>q!<CR>', { desc = '[Q]uit! Neovim' })
+Map('n', ',q', '<CMD>qa<CR>', { desc = '[Q]uit Neovim' })
+Map('n', ',Q', '<CMD>qa!<CR>', { desc = '[Q]uit! Neovim' })
 Map('n', ',h', '<CMD>nohl<CR>', { desc = 'No [H]ighlight' })
 
 -- moved this functionality to nvim-tmux-navigation plugin
