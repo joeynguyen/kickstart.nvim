@@ -163,7 +163,9 @@ return {
       -- Return/Enter key (also Ctrl+m)
       vim.keymap.set('n', '<CR>', builtin.buffers, { desc = "View current open buffers", }) -- vim.keymap.set('n', '<leader>b', builtin.buffers, {
 
-      vim.keymap.set('n', '<C-f>', builtin.live_grep, { desc = 'Search for text in project' })
+      -- to exclude multiple folders: additional_args = { '-g', '!node_modules/', '-g', '!dist/', '-g', '!vendor/' }
+      vim.keymap.set('n', '<C-f>', builtin.live_grep,
+        { additional_args = { '-g', '!patches/' }, desc = 'Search for text in project', })
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ile [G]rep', })
       vim.keymap.set('n', '<leader>fr', builtin.oldfiles, { desc = '[F]iles [R]ecently opened', })
 
