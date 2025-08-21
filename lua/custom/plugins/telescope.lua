@@ -24,6 +24,23 @@ return {
       -- See `:help telescope` and `:help telescope.setup()`
       require('telescope').setup {
         defaults = {
+          vimgrep_arguments = {
+            'rg',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case',
+            '--hidden',
+            '--glob=!**/.git/*',
+            '--glob=!**/node_modules/*',
+            '--glob=!**/patches/*',
+            '--glob=!**/dist/*',
+            '--glob=!**/build/*',
+            '--glob=!**/.next/*',
+            '--glob=!**/coverage/*',
+          },
           mappings = {
             i = {
               ['<C-u>'] = false,
@@ -164,8 +181,13 @@ return {
       vim.keymap.set('n', '<CR>', builtin.buffers, { desc = "View current open buffers", }) -- vim.keymap.set('n', '<leader>b', builtin.buffers, {
 
       -- to exclude multiple folders: additional_args = { '-g', '!node_modules/', '-g', '!dist/', '-g', '!vendor/' }
-      vim.keymap.set('n', '<C-f>', builtin.live_grep,
-        { additional_args = { '-g', '!patches/' }, desc = 'Search for text in project', })
+      vim.keymap.set('n', '<C-f>', function()
+        builtin.live_grep({
+          additional_args = function()
+            return { '-g', '!patches/' }
+          end
+        })
+      end, { desc = 'Search for text in project (excluding patches/)' })
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ile [G]rep', })
       vim.keymap.set('n', '<leader>fr', builtin.oldfiles, { desc = '[F]iles [R]ecently opened', })
 
