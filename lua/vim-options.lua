@@ -133,3 +133,24 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   desc = "Use the current color theme's setting for Visual selection",
 })
+
+------------------------------------------------------------------------------
+-- Treat all files that don't have a file extension in their name
+-- as shell script files for syntax highlighting purposes.
+
+-- 1. Create an autocommand group for filetype detection
+vim.api.nvim_create_augroup("FileTypeNoExtension", { clear = true })
+
+-- 2. Autocommand to set filetype to 'sh' for files with no extension
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  group = "FileTypeNoExtension",
+  desc = "Set filetype to sh for files with no extension",
+  pattern = "*",
+  callback = function()
+    local filename = vim.fn.expand("%:t")
+    if filename:match("^[^%.]+$") and vim.bo.filetype == "" then
+      vim.bo.filetype = "sh"
+    end
+  end,
+})
+------------------------------------------------------------------------------
