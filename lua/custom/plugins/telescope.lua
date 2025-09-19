@@ -63,6 +63,7 @@ return {
             '*.min.js',
             '*.svg',
             'public/@apollographql/*',
+            'node_modules',
           },
           ignore_patterns = { '^.git/' },
           layout_config = {
