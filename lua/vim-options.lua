@@ -3,9 +3,6 @@ local g = vim.g
 local o = vim.o
 local wo = vim.wo
 
--- https://github.com/neovim/neovim/issues/31675#issuecomment-2558405042
-vim.hl = vim.highlight
-
 -- Performance optimizations
 o.updatetime = 250
 o.timeoutlen = 300
@@ -94,13 +91,13 @@ o.termguicolors = true
 o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
+-- See `:help vim.hl.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', {
   clear = true,
 })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
   group = highlight_group,
   pattern = '*',
