@@ -38,6 +38,15 @@ I hope you enjoy your Neovim journey,
 P.S. You can delete this when you're done too. It's your config now :)
 --]]
 
+-- Resolve Python Provider warning in :checkhealth
+-- Run the following:
+--   python3 -m venv ~/.nvim-py3
+--   source ~/.nvim-py3/bin/activate
+--   pip install pynvim
+vim.g.python3_host_prog = '/Users/joeynguyen/.nvim-py3/bin/python'
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
