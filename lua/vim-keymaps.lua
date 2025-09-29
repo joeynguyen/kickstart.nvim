@@ -56,15 +56,17 @@ Map('n', '<C-k>', '<cmd>wincmd k<CR>', { desc = 'Move to top window' })
 -- Map('n', '<', ',', { desc = 'Repeat last character search backward' })
 
 -- edit config files
-Map({ 'n', 'v' }, '<leader>,a', '<CMD>e $HOME/.config/aerospace/aerospace.toml<CR>', { desc = '[A]erospace' })
+-- Map({ 'n', 'v' }, '<leader>,a', '<CMD>e $HOME/.config/aerospace/aerospace.toml<CR>', { desc = '[A]erospace' })
+Map({ 'n', 'v' }, '<leader>,a', '<CMD>e $HOME/.aws/config<CR>', { desc = '[A]WS' })
 Map({ 'n', 'v' }, '<leader>,c', '<CMD>e $HOME/.config/containers/containers.conf<CR>', { desc = '[C]ontainers' })
-Map({ 'n', 'v' }, '<leader>,k', '<CMD>e $HOME/.config/karabiner/karabiner.json<CR>', { desc = '[K]arabiner' })
 Map({ 'n', 'v' }, '<leader>,g', '<CMD>e $HOME/.config/ghostty/config<CR>', { desc = '[G]hostty' })
+Map({ 'n', 'v' }, '<leader>,k', '<CMD>e $HOME/.config/karabiner/karabiner.json<CR>', { desc = '[K]arabiner' })
+Map({ 'n', 'v' }, '<leader>,K', '<CMD>e $HOME/.kube/config<CR>', { desc = '[K]ubectl' })
 Map({ 'n', 'v' }, '<leader>,p', '<CMD>e $HOME/.profile<CR>', { desc = '[P]rofile' })
 Map({ 'n', 'v' }, '<leader>,n', '<CMD>e $HOME/.config/nvim/init.lua<CR>', { desc = '[N]eovim' })
 Map({ 'n', 'v' }, '<leader>,s', '<CMD>e $HOME/.config/sesh/sesh.toml<CR>', { desc = '[S]esh' })
 Map({ 'n', 'v' }, '<leader>,t', '<CMD>e $HOME/.config/tmux/tmux.conf.local<CR>', { desc = '[T]mux' })
-Map({ 'n', 'v' }, '<leader>,w', '<CMD>e $WEZTERM_CONFIG_FILE<CR>', { desc = '[W]ezTerm' })
+-- Map({ 'n', 'v' }, '<leader>,w', '<CMD>e $WEZTERM_CONFIG_FILE<CR>', { desc = '[W]ezTerm' })
 Map({ 'n', 'v' }, '<leader>,z', '<CMD>e $HOME/.zshrc<CR>', { desc = '[Z]shrc' })
 
 -- navigate buffers
