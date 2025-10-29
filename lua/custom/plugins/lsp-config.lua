@@ -51,7 +51,16 @@ return {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-    { 'j-hui/fidget.nvim',       opts = {} },
+    {
+      'j-hui/fidget.nvim',
+      opts = {
+        notification = {
+          -- Fidget will still handle LSP progress messages, but other
+          -- general notifications will be managed by the `noice` plugin
+          override_vim_notify = false,
+        },
+      },
+    },
 
     -- Allows extra capabilities provided by nvim-cmp
     'hrsh7th/cmp-nvim-lsp',
