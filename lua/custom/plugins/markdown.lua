@@ -1,40 +1,21 @@
 return {
-  {
-    -- MarkDown preview in editor
-    'MeanderingProgrammer/render-markdown.nvim',
-    opts = {
-      latex = { enabled = false }
-    },
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+  'MeanderingProgrammer/render-markdown.nvim',
+  dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' }, -- if you use the mini.nvim suite
+  -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
+  -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+  ---@module 'render-markdown'
+  ---@type render.md.UserConfig
+  opts = {
+    latex = { enabled = false },
   },
-  {
-    -- MarkDown preview window
-    'toppair/peek.nvim',
-    event = { 'VeryLazy' },
-    build = 'deno task --quiet build:fast', -- requires that deno be installed on this system first
-    config = function()
-      require('peek').setup()
-      -- refer to `configuration to change defaults`
-      vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {})
-      vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
-      vim.api.nvim_create_user_command('MarkdownPreviewOpen', require('peek').open, {})
-      vim.api.nvim_create_user_command('MarkdownPreviewClose', require('peek').close, {})
-    end,
-  },
+
+  config = function()
+    local render_markdown = require 'render-markdown'
+    vim.api.nvim_create_user_command('MarkdownRenderToggle', function()
+      render_markdown.toggle()
+    end, {})
+    vim.api.nvim_create_user_command('MarkdownRenderPreview', function()
+      render_markdown.preview()
+    end, {})
+  end,
 }
-
--- another Markdown Preview plugin
--- {"ellisonleao/glow.nvim", config = true, cmd = "Glow"}
-
--- {
--- -- install with yarn or npm
---   'iamcco/markdown-preview.nvim',
---   cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
---   build = 'cd app && yarn install',
---   init = function()
---     vim.g.mkdp_filetypes = { 'markdown' }
---   end,
---   ft = { 'markdown' },
--- },
