@@ -177,7 +177,20 @@ return {
       end, { desc = 'Frecency search' })
 
       -- Return/Enter key (also Ctrl+m)
-      vim.keymap.set('n', '<CR>', builtin.buffers, { desc = 'View current open buffers' })
+      -- Inside Telescope/quickfix buffers, do not override Enter key functionality for choosing an option
+      vim.keymap.set('n', '<CR>', function()
+        local bt = vim.bo.buftype
+        local ft = vim.bo.filetype
+
+        if bt ~= '' or ft == 'qf' or ft == 'TelescopePrompt' or ft == 'TelescopeResults' then
+          return '<CR>'
+        end
+
+        vim.schedule(function()
+          builtin.buffers()
+        end)
+        return ''
+      end, { desc = 'View current open buffers', expr = true, silent = true })
       -- vim.keymap.set('n', '<leader>b', builtin.buffers, { desc = 'View current open buffers' })
 
       -- to exclude multiple folders: additional_args = { '-g', '!node_modules/', '-g', '!dist/', '-g', '!vendor/' }
