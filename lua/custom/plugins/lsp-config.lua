@@ -4,46 +4,18 @@ return {
   dependencies = { -- Automatically install LSPs to stdpath for neovim
     -- needs to be before mason-lspconfig so that this plugin detects and assigns the 'helm' filetype
     {
-      -- Helm Language Server - Yaml
-      'towolf/vim-helm',
-      config = function()
-        local lspconfig = require 'lspconfig'
-
-        -- setup helm-ls
-        lspconfig.helm_ls.setup {
-          settings = {
-            ['helm-ls'] = {
-              yamlls = {
-                -- needs to be installed - `npm install -g yaml-language-server`
-                path = 'yaml-language-server',
-              },
-            },
-          },
-        }
-
-        -- setup yamlls
-        lspconfig.yamlls.setup {
-          settings = {
-            yaml = {
-              schemas = {
-                kubernetes = 'k8s-*.yaml',
-                ['http://json.schemastore.org/github-workflow'] = '.github/workflows/*',
-                ['http://json.schemastore.org/github-action'] = '.github/action.{yml,yaml}',
-                ['http://json.schemastore.org/ansible-playbook'] = '*play*.{yml,yaml}',
-                ['http://json.schemastore.org/ansible-stable-2.9'] = 'roles/tasks/**/*.{yml,yaml}',
-                ['http://json.schemastore.org/prettierrc'] = '.prettierrc.{yml,yaml}',
-                ['http://json.schemastore.org/kustomization'] = 'kustomization.{yml,yaml}',
-                ['http://json.schemastore.org/chart'] = 'Chart.{yml,yaml}',
-                ['http://json.schemastore.org/circleciconfig'] = '.circleci/**/*.{yml,yaml}',
-                ['https://json.schemastore.org/dependabot-v2'] = '.github/dependabot.{yml,yaml}',
-                ['https://json.schemastore.org/gitlab-ci'] = '*gitlab-ci*.{yml,yaml}',
-                ['https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/schemas/v3.1/schema.json'] = '*api*.{yml,yaml}',
-                ['https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json'] = '*docker-compose*.{yml,yaml}',
-              },
-            },
-          },
-        }
-      end,
+      "qvalentin/helm-ls.nvim",
+      ft = "helm",
+      opts = {
+        conceal_templates = {
+          -- enable the replacement of templates with virtual text of their current values
+          enabled = true, -- tree-sitter must be setup for this feature
+        },
+        indent_hints = {
+          -- enable hints for indent and nindent functions
+          enabled = true, -- tree-sitter must be setup for this feature
+        },
+      },
     },
     -- Automatically install LSPs and related tools to stdpath for Neovim
     { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
@@ -83,7 +55,7 @@ return {
     --     require('inc_rename').setup()
     --   end,
     -- },
-    { 'Bilal2453/luvit-meta', lazy = true }, -- optional `vim.uv` typings
+    { 'Bilal2453/luvit-meta',    lazy = true }, -- optional `vim.uv` typings
     {
       'antosha417/nvim-lsp-file-operations',
       dependencies = {
