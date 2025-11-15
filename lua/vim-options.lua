@@ -90,6 +90,8 @@ o.termguicolors = true
 
 o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
+require 'utils/visual-sort'
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.hl.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', {
