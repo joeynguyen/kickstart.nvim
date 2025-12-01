@@ -11,6 +11,12 @@ typing : then pressing Ctrl+k and pressing Backspace results in:
 -- [[ Basic Keymaps ]]
 local keymap = vim.keymap
 
+-- Clipboard interaction
+-- Sync yank to system clipboard
+vim.keymap.set({ 'n', 'v' }, 'y', '"+y', { desc = 'Yank to system clipboard' })
+vim.keymap.set('n', 'Y', '"+Y', { desc = 'Yank line to system clipboard' })
+vim.keymap.set('n', 'yy', '"+yy', { desc = 'Yank line to system clipboard' })
+
 function Map(mode, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
   if opts then

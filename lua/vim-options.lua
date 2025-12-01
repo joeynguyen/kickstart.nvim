@@ -48,7 +48,7 @@ o.mouse = 'a'
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-o.clipboard = 'unnamedplus'
+-- o.clipboard = 'unnamedplus'
 
 -- tabs & indentation
 o.tabstop = 2
