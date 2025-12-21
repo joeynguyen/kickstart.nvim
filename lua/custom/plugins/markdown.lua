@@ -5,9 +5,9 @@ return {
   -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
   ---@module 'render-markdown'
   ---@type render.md.UserConfig
-  opts = {
-    latex = { enabled = false },
-  },
+  -- opts = {
+  --   latex = { enabled = false },
+  -- },
 
   config = function()
     local render_markdown = require 'render-markdown'
@@ -17,5 +17,6 @@ return {
     vim.api.nvim_create_user_command('MarkdownRenderPreview', function()
       render_markdown.preview()
     end, {})
+    require('render-markdown').setup({ latex = { enabled = false } })
   end,
 }
