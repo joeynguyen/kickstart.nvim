@@ -67,6 +67,7 @@ vim.opt.rtp:prepend(lazypath)
 require 'vim-options'
 
 -- [[ Configure plugins ]]
+-- run :Lazy to update plugins
 require('lazy').setup 'custom.plugins'
 
 -- [[ Configure Neovim keymaps ]]
@@ -77,6 +78,7 @@ require 'vim-keymaps'
 require 'neovide'
 
 -- [[ Health check utilities ]]
+-- run :healthcheck
 require 'health-check'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
