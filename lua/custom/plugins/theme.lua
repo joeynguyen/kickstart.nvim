@@ -1,7 +1,7 @@
--- Attempt at overriding colors with Ultraviolent theme
+-- Attempt at overriding colors with Ultra Violent theme
 return {
   "olimorris/onedarkpro.nvim",
-  lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  lazy = false,    -- make sure we load this during startup if it is your main colorscheme
   priority = 1000, -- Ensure it loads first
   config = function()
     local color = require("onedarkpro.helpers")
@@ -446,21 +446,8 @@ return {
 -- vim.api.nvim_set_hl(0, "diffNewFile", { fg = "#e5c07b" })
 -- vim.api.nvim_set_hl(0, "diffRemoved", { fg = "#e06c75" })
 
--- return {
---   -- https://github.com/folke/tokyonight.nvim
---   "folke/tokyonight.nvim",
---   lazy = false,
---   priority = 1000,
---   opts = {},
---   config = function()
---     require("tokyonight").setup({
---       style = "moon", -- moon | storm | night | day
---     })
---     vim.cmd [[colorscheme tokyonight]]
---   end,
--- }
-
--- Other themes I tried but I still prefer TokyoNight over:
+-- Other themes I tried but I still prefer Ultra Violent over:
+--   - https://github.com/folke/tokyonight.nvim
 --   - https://github.com/sontungexpt/witch
 --   - https://github.com/oxfist/night-owl.nvim
 --   - https://github.com/shaunsingh/moonlight.nvim
