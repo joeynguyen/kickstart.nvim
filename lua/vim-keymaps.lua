@@ -45,7 +45,10 @@ keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', {
 -- Nmap('<BS>', '<Leader>')
 
 -- Ctrl-l toggle search highlight - https://www.reddit.com/r/neovim/comments/sd7bmv/comment/hubkeix/
-Map("n", "<leader>h", [[ (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n" <BAR> redraw<CR>]],
+Map(
+  'n',
+  '<leader>h',
+  [[ (&hls && v:hlsearch ? ':nohls' : ':set hls')."\n" <BAR> redraw<CR>]],
   { silent = true, expr = true, desc = 'Toggle Search [H]ighlight' }
 )
 Map({ 'n', 'v' }, '<leader>,a', '<CMD>e $HOME/.config/aerospace/aerospace.toml<CR>', { desc = '[A]erospace' })
@@ -177,7 +180,7 @@ end, { expr = true, desc = 'Paste into selection and stay in Insert' })
 
 -- make <C-c> behave exactly like <Esc>, but snippet-aware
 keymap.set('i', '<C-c>', function()
-  local luasnip = require('luasnip')
+  local luasnip = require 'luasnip'
   -- If we're in a snippet, don't force Esc, let LuaSnip handle it
   if luasnip.in_snippet() then
     return '<C-c>'
@@ -269,5 +272,6 @@ vim.api.nvim_create_user_command('CopyFilename', function()
   vim.notify('Copied "' .. filename .. '" to the clipboard!')
 end, {})
 
-vim.keymap.set('n', '<leader>fp', '<CMD>CopyRelativePath<CR>', { desc = '[F]ile [P]ath copy', })
-vim.keymap.set('n', '<leader>fn', '<CMD>CopyFilename<CR>', { desc = '[F]ile [N]ame copy', })
+vim.keymap.set('n', '<leader>fp', '<CMD>CopyRelativePath<CR>', { desc = '[F]ile relative [p]ath copy' })
+vim.keymap.set('n', '<leader>fP', '<CMD>CopyAbsolutePath<CR>', { desc = '[F]ile absolute [P]ath copy' })
+vim.keymap.set('n', '<leader>fn', '<CMD>CopyFilename<CR>', { desc = '[F]ile [N]ame copy' })
