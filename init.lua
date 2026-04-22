@@ -52,6 +52,24 @@ P.S. You can delete this when you're done too. It's your config now :)
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
+-- GUI launches on macOS often miss your shell PATH, which breaks Node-backed
+-- tools like tsserver, Mason npm installs, Prettier, and prettierd.
+local path_entries = {
+  vim.fn.expand '~/.asdf/shims',
+  vim.fn.expand '~/.asdf/bin',
+  '/opt/homebrew/bin',
+  '/opt/homebrew/sbin',
+  '/usr/local/bin',
+  '/usr/local/sbin',
+  vim.fn.expand '~/.local/bin',
+}
+
+for _, entry in ipairs(path_entries) do
+  if vim.fn.isdirectory(entry) == 1 and not vim.env.PATH:find(vim.pesc(entry), 1, true) then
+    vim.env.PATH = entry .. ':' .. vim.env.PATH
+  end
+end
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
