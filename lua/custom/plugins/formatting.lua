@@ -90,12 +90,12 @@ return { -- Autoformat
       python = { 'isort', 'black' },
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list
-      javascript = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
-      javascriptreact = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
-      typescript = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
-      typescriptreact = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
+      javascript = { 'biome', 'prettier', 'prettierd', stop_after_first = true },
+      javascriptreact = { 'biome', 'prettier', 'prettierd', stop_after_first = true },
+      typescript = { 'biome', 'prettier', 'prettierd', stop_after_first = true },
+      typescriptreact = { 'biome', 'prettier', 'prettierd', stop_after_first = true },
 
-      json = { 'biome', 'prettierd', 'prettier', stop_after_first = true },
+      json = { 'biome', 'prettier', 'prettierd', stop_after_first = true },
 
       ['markdown'] = { 'prettier', 'markdownlint-cli2', 'markdown-toc' },
       ['markdown.mdx'] = { 'prettier', 'markdownlint-cli2', 'markdown-toc' },
