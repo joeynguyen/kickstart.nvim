@@ -164,7 +164,8 @@ keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, {
 --   vim.api.nvim_input  "pgv\"'.v:register.'y`><C-c>"
 -- end)
 -- Map('x', 'p', "pgv\"'.v:register.'y`>", {})
-keymap.set('x', 'p', '"_c<Esc>p')
+-- keymap.set('x', 'p', '"_c<Esc>p')
+keymap.set("v", "p", '"_dP', { noremap = true, silent = true }) -- https://tduyng.com/blog/neovim-basic-setup/
 
 -- In Select mode (used by Snippet autocompletion), paste into placeholders without leaving insert
 keymap.set('s', 'p', function()
