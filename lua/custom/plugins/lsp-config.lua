@@ -303,7 +303,7 @@ return {
         root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
       }, ]]
       -- for Neo4j
-      cypher_ls = {},
+      -- cypher_ls = {},
     }
 
     -- Ensure the servers and tools above are installed
