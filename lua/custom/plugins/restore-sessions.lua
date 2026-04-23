@@ -1,10 +1,15 @@
 return {
-  'rmagatti/auto-session',
+  'folke/persistence.nvim',
   lazy = false,
-  dependencies = {
-    'nvim-telescope/telescope.nvim', -- Only needed if you want to use sesssion lens
-  },
-  opts = {
-    suppressed_dirs = { "~/", "~/Downloads", "/" }
-  },
+  init = function()
+    -- Automatically load the session for the current directory when Neovim starts
+    vim.api.nvim_create_autocmd("VimEnter", {
+      callback = function()
+        -- Only load if no arguments were passed
+        if vim.fn.argc() == 0 then
+          require("persistence").load()
+        end
+      end,
+    })
+  end
 }
