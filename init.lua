@@ -71,6 +71,10 @@ vim.opt.rtp:prepend(lazypath)
 -- [[ Configure Neovim options ]]
 require 'vim-options'
 
+require 'vim-autocmds'
+
+require 'utils/visual-sort'
+
 -- [[ Configure plugins ]]
 -- run :Lazy to update plugins
 require('lazy').setup 'custom.plugins'
