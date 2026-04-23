@@ -1,16 +1,8 @@
--- for conciseness
+-- [[ Setting options ]]
+-- See `:help vim.opt`
+-- NOTE: You can change these options as you wish!
 local g = vim.g
-local o = vim.o
-local wo = vim.wo
-
--- Performance optimizations
-o.updatetime = 250
-o.timeoutlen = 300
-o.redrawtime = 10000
-o.maxmempattern = 20000
-
--- o.guifont = 'Rec Mono Semicasual:h20'
--- o.guifont = 'InconsolataGo Nerd Font:h20'
+local opt = vim.opt
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -18,32 +10,39 @@ o.maxmempattern = 20000
 g.mapleader = ' '
 g.maplocalleader = ' '
 
+-- Performance optimizations
+opt.updatetime = 250
+opt.timeoutlen = 300
+opt.redrawtime = 10000
+opt.maxmempattern = 20000
+
+-- for GUIs like Neovide
+-- opt.guifont = 'Rec Mono Semicasual:h20'
+-- opt.guifont = 'InconsolataGo Nerd Font:h20'
+
 -- disable statusline
-o.laststatus = 0
+opt.laststatus = 0
+
 -- add window/split specific tab line
 -- %= : float text to right
 -- %m : display if file has been modified
 -- %f : show file name
 -- o.winbar = '%=%m %f'
 
--- [[ Setting options ]]
--- See `:help vim.o`
--- NOTE: You can change these options as you wish!
-
 -- live preview when performing text replace commands, e.g. `:%s/tab/space`
-o.inccommand = 'split'
+opt.inccommand = 'split'
 
 -- Set highlight on search
-o.hlsearch = true
+opt.hlsearch = true
 
 -- Set highlight current line
-o.cursorline = true
+opt.cursorline = true
 
 -- Make line numbers default
-wo.number = true
+opt.number = true
 
 -- Enable mouse mode
-o.mouse = 'a'
+opt.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
@@ -51,44 +50,44 @@ o.mouse = 'a'
 -- o.clipboard = 'unnamedplus'
 
 -- tabs & indentation
-o.tabstop = 2
-o.softtabstop = 2
-o.shiftwidth = 2
+opt.tabstop = 2
+opt.softtabstop = 2
+opt.shiftwidth = 2
 -- use spaces instead of tabs
-o.expandtab = true
-o.smartindent = true
+opt.expandtab = true
+opt.smartindent = true
 
-o.wrap = false
-o.lazyredraw = false
+opt.wrap = false
+opt.lazyredraw = false
 
 -- Enable break indent
-o.breakindent = true
+opt.breakindent = true
 
 -- Save undo history
-o.undofile = true
+opt.undofile = true
 
 -- search settings
-o.swapfile = false
-o.backup = false
-o.hlsearch = true
-o.incsearch = true
-o.scrolloff = 8
-o.colorcolumn = '100'
+opt.swapfile = false
+opt.backup = false
+opt.hlsearch = true
+opt.incsearch = true
+opt.scrolloff = 8
+opt.colorcolumn = '100'
 
 -- Case-insensitive searching UNLESS \C or capital in search
-o.ignorecase = true
-o.smartcase = true
+opt.ignorecase = true
+opt.smartcase = true
 
 -- Keep signcolumn on by default
-wo.signcolumn = 'yes'
+opt.signcolumn = 'yes'
 
 -- Set completeopt to have a better completion experience
-o.completeopt = 'menuone,noselect'
+opt.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
-o.termguicolors = true
+opt.termguicolors = true
 
-o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 require 'utils/visual-sort'
 
