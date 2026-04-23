@@ -68,11 +68,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- [[ Configure Neovim options ]]
 require 'vim-options'
-
 require 'vim-autocmds'
 
+-- [[ Custom Utilities ]]
+require 'utils/health-check' -- run :healthcheck
 require 'utils/visual-sort'
 
 -- [[ Configure plugins ]]
@@ -84,11 +84,7 @@ require('lazy').setup 'custom.plugins'
 require 'vim-keymaps'
 
 -- [[ support for Neovide GUI editor ]]
-require 'neovide'
-
--- [[ Health check utilities ]]
--- run :healthcheck
-require 'health-check'
+-- require 'neovide'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
