@@ -13,16 +13,16 @@ local keymap = vim.keymap
 
 -- Clipboard interaction
 -- Sync yank to system clipboard
-vim.keymap.set({ 'n', 'v' }, 'y', '"+y', { desc = 'Yank to system clipboard' })
-vim.keymap.set('n', 'Y', '"+Y', { desc = 'Yank line to system clipboard' })
-vim.keymap.set('n', 'yy', '"+yy', { desc = 'Yank line to system clipboard' })
+keymap.set({ 'n', 'v' }, 'y', '"+y', { desc = 'Yank to system clipboard' })
+keymap.set('n', 'Y', '"+Y', { desc = 'Yank line to system clipboard' })
+keymap.set('n', 'yy', '"+yy', { desc = 'Yank line to system clipboard' })
 
 function Map(mode, lhs, rhs, opts)
   local options = { noremap = true, silent = true }
   if opts then
     options = vim.tbl_extend('force', options, opts)
   end
-  vim.keymap.set(mode, lhs, rhs, options)
+  keymap.set(mode, lhs, rhs, options)
 end
 
 -- function Nmap(shortcut, command)
@@ -106,7 +106,7 @@ Map('', '<Del>h', '^', { desc = 'Beginning of Line' })
 --[[ Vim editor commands ]]
 -- unbind default comma repeat navigation
 -- Map('n', ',', '<CMD>nop<CR>', {}) -- using Map doesn't work for this
-vim.keymap.set('', ',', '<nop>')
+keymap.set('', ',', '<nop>')
 Map('n', ',d', '<CMD>bd<CR>', { desc = 'Close current buffer' })
 Map('n', ',D', '<CMD>bd!<CR>', { desc = 'Close! current buffer' })
 Map('n', ',a', '<CMD>%bd|e#|bd #<CR>', { desc = 'Close all buffers except current' })
@@ -239,10 +239,10 @@ Map({ 'n', 'v' }, '<leader><leader>d', '"_d', { desc = '[d] delete to black hole
 keymap.set('n', 'Q', '<nop>')
 
 -- QuickFix navigation
--- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
--- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
--- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
--- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+-- keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+-- keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+-- keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+-- keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- in Visual mode, use "J" and "K" to move the selected text up and down the file
 -- keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -272,6 +272,6 @@ vim.api.nvim_create_user_command('CopyFilename', function()
   vim.notify('Copied "' .. filename .. '" to the clipboard!')
 end, {})
 
-vim.keymap.set('n', '<leader>fp', '<CMD>CopyRelativePath<CR>', { desc = '[F]ile relative [p]ath copy' })
-vim.keymap.set('n', '<leader>fP', '<CMD>CopyAbsolutePath<CR>', { desc = '[F]ile absolute [P]ath copy' })
-vim.keymap.set('n', '<leader>fn', '<CMD>CopyFilename<CR>', { desc = '[F]ile [N]ame copy' })
+keymap.set('n', '<leader>fp', '<CMD>CopyRelativePath<CR>', { desc = '[F]ile relative [p]ath copy' })
+keymap.set('n', '<leader>fP', '<CMD>CopyAbsolutePath<CR>', { desc = '[F]ile absolute [P]ath copy' })
+keymap.set('n', '<leader>fn', '<CMD>CopyFilename<CR>', { desc = '[F]ile [N]ame copy' })
