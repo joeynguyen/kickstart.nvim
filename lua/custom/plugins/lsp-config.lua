@@ -156,7 +156,7 @@ return {
         --  For example, in C this would take you to the header.
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-        map('gh', vim.lsp.buf.hover, '[H]over Documentation')
+        map('gH', vim.lsp.buf.hover, '[H]over Documentation')
         map('K', vim.lsp.buf.hover, 'Hover Documentation')
         -- map('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
         map('gk', vim.lsp.buf.signature_help, 'Signature Documentation')

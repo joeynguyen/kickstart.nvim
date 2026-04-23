@@ -98,8 +98,8 @@ keymap.set('n', '<C-s>', '<CMD>w<CR>', {
 -- })
 
 --[[ Fast Navigation ]]
-Map('', ';l', '$', { desc = 'End of Line' })
-Map('', ';h', '^', { desc = 'Beginning of Line' })
+Map('', 'gl', '$', { desc = 'End of Line' })
+Map('', 'gh', '^', { desc = 'Beginning of Line' })
 Map('', '<Del>l', '$', { desc = 'End of Line' })
 Map('', '<Del>h', '^', { desc = 'Beginning of Line' })
 
