@@ -1,9 +1,11 @@
 return {
   'folke/persistence.nvim',
   lazy = false,
-  init = function()
+  config = function()
+    require("persistence").setup()
     -- Automatically load the session for the current directory when Neovim starts
     vim.api.nvim_create_autocmd("VimEnter", {
+      once = true,
       callback = function()
         -- Only load if no arguments were passed
         if vim.fn.argc() == 0 then
@@ -11,5 +13,5 @@ return {
         end
       end,
     })
-  end
+  end,
 }
