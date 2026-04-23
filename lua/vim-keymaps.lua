@@ -140,10 +140,10 @@ keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", {
 })
 
 -- Diagnostic keymaps
-keymap.set('n', '[d', vim.diagnostic.goto_prev, {
+keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1 }) end, {
   desc = 'Go to previous diagnostic message',
 })
-keymap.set('n', ']d', vim.diagnostic.goto_next, {
+keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1 }) end, {
   desc = 'Go to next diagnostic message',
 })
 keymap.set('n', '<leader>dd', vim.diagnostic.open_float, {

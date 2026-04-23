@@ -46,7 +46,6 @@ opt.autoread = true  -- Auto reload files changed outside vim
 -- Performance optimizations
 opt.updatetime = 250 -- Faster completion and git signs
 opt.timeoutlen = 300
-opt.lazyredraw = false
 opt.redrawtime = 10000
 opt.maxmempattern = 20000
 opt.synmaxcol = 300 -- Syntax highlighting limit (prevents freezes on minified files)
