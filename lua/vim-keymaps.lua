@@ -44,6 +44,8 @@ keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', {
 -- Map({ 'n', 'v' }, '<BS>', '<Leader>')
 -- Nmap('<BS>', '<Leader>')
 
+-- Escape also clears search highlight
+keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsearch" })
 -- Ctrl-l toggle search highlight - https://www.reddit.com/r/neovim/comments/sd7bmv/comment/hubkeix/
 Map(
   'n',
