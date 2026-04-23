@@ -41,6 +41,10 @@ I hope you enjoy your Neovim journey,
 P.S. You can delete this when you're done too. It's your config now :)
 --]]
 
+-- New UI opt-in
+-- (noice plugin, which hasn't been updated since Feb 6, 2025, is incompatible with ui2)
+-- require('vim._core.ui2').enable({})
+
 -- Resolve Python Provider warning in :checkhealth
 -- Run the following:
 --   brew install uv
