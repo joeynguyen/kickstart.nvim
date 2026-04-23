@@ -249,7 +249,7 @@ return {
               },
             },
             diagnostics = {
-              globals = { 'vim' },
+              globals = { 'vim', 'require' },
             },
             workspace = {
               checkThirdParty = false,
