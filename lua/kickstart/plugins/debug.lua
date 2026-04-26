@@ -20,6 +20,8 @@ return {
 
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
+    -- Python debugger
+    'mfussenegger/nvim-dap-python',
   },
   config = function()
     local dap = require 'dap'
@@ -39,6 +41,7 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
+        'debugpy', -- Python debug adapter
       },
     }
 
@@ -83,5 +86,16 @@ return {
 
     -- Install golang specific config
     require('dap-go').setup()
+
+    -- Install Python-specific config
+    -- Prefer the uv virtualenv python if it exists in the current project
+    local python_path
+    local venv_python = vim.fn.getcwd() .. '/.venv/bin/python'
+    if vim.fn.filereadable(venv_python) == 1 then
+      python_path = venv_python
+    else
+      python_path = vim.fn.exepath 'python3'
+    end
+    require('dap-python').setup(python_path)
   end,
 }

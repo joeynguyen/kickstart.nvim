@@ -87,7 +87,9 @@ return { -- Autoformat
       -- disabled stylua because it conflicts with lua_ls's align_continuous_rect_table_field
       -- lua = { 'stylua' },
       -- Conform can also run multiple formatters sequentially
-      python = { 'isort', 'black' },
+      -- ruff_organize_imports handles import sorting (replaces isort)
+      -- ruff_format handles code formatting (replaces black)
+      python = { 'ruff_organize_imports', 'ruff_format' },
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list
       javascript = { 'biome', 'prettier', 'prettierd', stop_after_first = true },

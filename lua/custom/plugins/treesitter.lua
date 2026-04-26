@@ -84,6 +84,7 @@ return {
       -- Add languages to be installed here that you want installed for treesitter
       local ensureInstalled = {
         'bash',
+        'toml', -- for pyproject.toml (uv project manifest)
         -- 'c',
         'cpp',
         'go',

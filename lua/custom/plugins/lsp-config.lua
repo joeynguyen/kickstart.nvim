@@ -226,8 +226,28 @@ return {
       ['markdownlint-cli2'] = {},
       ['markdown-toc'] = {},
       -- gopls = {},
-      black = {},
-      pyright = {},
+      ruff = {}, -- used by nvim-lint and ruff_format (replaces black)
+      pyright = {
+        before_init = function(_, config)
+          -- Auto-detect uv virtualenv at .venv/bin/python
+          local venv_python = vim.fn.getcwd() .. '/.venv/bin/python'
+          if vim.fn.filereadable(venv_python) == 1 then
+            config.settings = config.settings or {}
+            config.settings.python = config.settings.python or {}
+            config.settings.python.pythonPath = venv_python
+          end
+        end,
+        settings = {
+          python = {
+            analysis = {
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
+              diagnosticMode = 'workspace',
+              typeCheckingMode = 'basic',
+            },
+          },
+        },
+      },
       -- rust_analyzer = {},
       html = { filetypes = { 'html', 'twig', 'hbs' } },
 
