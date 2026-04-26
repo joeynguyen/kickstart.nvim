@@ -279,12 +279,3 @@ keymap.set('n', '<leader>fp', '<CMD>CopyRelativePath<CR>', { desc = '[F]ile rela
 keymap.set('n', '<leader>fP', '<CMD>CopyAbsolutePath<CR>', { desc = '[F]ile absolute [P]ath copy' })
 keymap.set('n', '<leader>fn', '<CMD>CopyFilename<CR>', { desc = '[F]ile [N]ame copy' })
 keymap.set("n", "<leader>fw", "<CMD>set wrap!<CR>", { desc = "[F]ile Toggle [W]rap", silent = true })
-
--- Auto-close pairs (simple, no plugin needed) - https://tduyng.com/blog/neovim-basic-setup/
-keymap.set("i", "`", "``<left>")
-keymap.set("i", "'", "''<left>")
-keymap.set("i", '"', '""<left>')
-keymap.set("i", "(", "()<left>")
-keymap.set("i", "[", "[]<left>")
-keymap.set("i", "{", "{}<left>")
-keymap.set("i", "<", "<><left>")
