@@ -1,6 +1,7 @@
 return {
   -- Highlight, edit, and navigate code
   'nvim-treesitter/nvim-treesitter',
+  lazy = false,
   branch = 'main',
   dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects', branch = 'main', },
   opts = {
@@ -10,6 +11,14 @@ return {
     sync_install = false,
     -- List of parsers to ignore installing
     ignore_install = {},
+    highlight = {
+      enable = true,
+      -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+      -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+      -- Using this option may slow down your editor, and you may see some duplicate highlights.
+      -- Instead of true it can also be a list of languages
+      additional_vim_regex_highlighting = false,
+    },
     -- You can specify additional Treesitter modules here: -- For example: -- playground = {--enable = true,-- },
     modules = {},
     incremental_selection = {
@@ -81,21 +90,18 @@ return {
       end,
     })
 
+    -- Manually trigger Treesitter for any buffers already loaded (e.g. from session restore or CLI)
+    for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+      if vim.api.nvim_buf_is_loaded(bufnr) and vim.bo[bufnr].filetype ~= '' then
+        pcall(vim.treesitter.start, bufnr)
+      end
+    end
+
+    -- Map jinja2 filetype to jinja parser
+    vim.treesitter.language.register('jinja', 'jinja2')
+
     -- Defer the rest of the setup (like parser installation) to improve startup time.
     vim.defer_fn(function()
-      -- Register custom jinja2 parser
-      local ok, parsers = pcall(require, 'nvim-treesitter.parsers')
-      if ok then
-        parsers.get_parser_configs().jinja2 = {
-          install_info = {
-            url = 'https://github.com/geigerzaehler/tree-sitter-jinja2',
-            files = { 'src/parser.c' },
-            branch = 'main',
-          },
-          filetype = 'jinja2',
-        }
-      end
-
       -- Add languages to be installed here that you want installed for treesitter
       local ensureInstalled = {
         'bash',
@@ -105,7 +111,7 @@ return {
         'go',
         'helm',
         'html',
-        'jinja2',
+        'jinja',
         'javascript',
         'kotlin',
         'lua',
