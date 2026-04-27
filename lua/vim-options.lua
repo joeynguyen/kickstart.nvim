@@ -18,7 +18,7 @@ opt.laststatus = 0 -- Disable statusline
 -- Live preview when performing text replace commands, e.g. `:%s/tab/space`
 opt.inccommand = 'split'
 opt.errorbells = false               -- No error bells
-opt.iskeyword:append("-")            -- Treat dash as part of word
+-- opt.iskeyword:append("-")            -- Treat dash as part of word
 opt.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
 opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
