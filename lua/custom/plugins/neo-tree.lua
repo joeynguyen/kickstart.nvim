@@ -15,7 +15,7 @@ return {
         },
       },
       filesystem = {
-        -- hijack_netrw_behavior = 'disabled', -- This stops it from opening with 'nvim .'
+        hijack_netrw_behavior = 'disabled', -- This stops it from opening with 'nvim .'
         filtered_items = {
           hide_dotfiles = false,
           always_show = { -- remains visible even if other settings would normally hide it
