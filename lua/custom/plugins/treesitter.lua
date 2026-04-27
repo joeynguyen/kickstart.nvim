@@ -70,17 +70,19 @@ return {
   init = function()
     -- [[ Configure Treesitter ]]
     -- See `:help nvim-treesitter`
-    -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
-    vim.defer_fn(function()
-      vim.api.nvim_create_autocmd('FileType', {
-        callback = function()
-          -- Enable treesitter highlighting and disable regex syntax
-          pcall(vim.treesitter.start)
-          -- Enable treesitter-based indentation
-          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-        end,
-      })
+    -- We create the FileType autocmd immediately so it's ready for any buffers loaded during startup or session restore.
+    -- This avoids the race condition where highlighting fails to start for the first file or restored session.
+    vim.api.nvim_create_autocmd('FileType', {
+      callback = function()
+        -- Enable treesitter highlighting and disable regex syntax
+        pcall(vim.treesitter.start)
+        -- Enable treesitter-based indentation
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+      end,
+    })
 
+    -- Defer the rest of the setup (like parser installation) to improve startup time.
+    vim.defer_fn(function()
       -- Add languages to be installed here that you want installed for treesitter
       local ensureInstalled = {
         'bash',
