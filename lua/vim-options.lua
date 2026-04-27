@@ -91,6 +91,9 @@ opt.wildignore:append({ "*.o", "*.obj", "*.pyc", "*.class", "*.jar" })
 vim.filetype.add({
   extension = {
     env = "dotenv",
+    jinja = "jinja2",
+    jinja2 = "jinja2",
+    j2 = "jinja2",
   },
   filename = {
     [".env"] = "dotenv",
@@ -99,5 +102,6 @@ vim.filetype.add({
   pattern = {
     ["[jt]sconfig.*.json"] = "jsonc",
     ["%.env%.[%w_.-]+"] = "dotenv",
+    ["templates/.*%.html"] = "jinja2",
   },
 })

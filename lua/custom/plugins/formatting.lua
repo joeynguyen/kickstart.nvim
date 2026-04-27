@@ -101,6 +101,8 @@ return { -- Autoformat
 
       ['markdown'] = { 'prettier', 'markdownlint-cli2', 'markdown-toc' },
       ['markdown.mdx'] = { 'prettier', 'markdownlint-cli2', 'markdown-toc' },
+      html = { 'djlint' },
+      jinja2 = { 'djlint' },
       -- yaml = { 'yamlfix' },
     },
   },

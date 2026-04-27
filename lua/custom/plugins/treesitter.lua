@@ -91,6 +91,8 @@ return {
         'cpp',
         'go',
         'helm',
+        'html',
+        'jinja2',
         'javascript',
         'kotlin',
         'lua',
