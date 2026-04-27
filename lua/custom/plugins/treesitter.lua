@@ -83,6 +83,19 @@ return {
 
     -- Defer the rest of the setup (like parser installation) to improve startup time.
     vim.defer_fn(function()
+      -- Register custom jinja2 parser
+      local ok, parsers = pcall(require, 'nvim-treesitter.parsers')
+      if ok then
+        parsers.get_parser_configs().jinja2 = {
+          install_info = {
+            url = 'https://github.com/geigerzaehler/tree-sitter-jinja2',
+            files = { 'src/parser.c' },
+            branch = 'main',
+          },
+          filetype = 'jinja2',
+        }
+      end
+
       -- Add languages to be installed here that you want installed for treesitter
       local ensureInstalled = {
         'bash',
