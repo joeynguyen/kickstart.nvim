@@ -7,8 +7,9 @@ return {
     vim.api.nvim_create_autocmd("VimEnter", {
       once = true,
       callback = function()
-        -- Only load if no arguments were passed
-        if vim.fn.argc() == 0 then
+        -- Load session if no args, or the only arg is a directory (e.g. nvim . from shell wrapper)
+        local argc = vim.fn.argc()
+        if argc == 0 or (argc == 1 and vim.fn.isdirectory(vim.fn.argv(0)) == 1) then
           require("persistence").load()
         end
       end,
