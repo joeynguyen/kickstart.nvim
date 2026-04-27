@@ -39,6 +39,18 @@ return {
         },
       },
       routes = {
+        -- skip pyright progress
+        {
+          filter = {
+            event = "lsp",
+            kind = "progress",
+            cond = function(message)
+              local client = message.opts and message.opts.progress and message.opts.progress.client
+              return client == "pyright"
+            end,
+          },
+          skip = true,
+        },
         -- disable text search confirmation
         { filter = { event = 'msg_show', find = '/' },               skip = true },
         { filter = { event = 'msg_show', find = 'lines yanked' },    skip = true },
@@ -52,6 +64,7 @@ return {
         -- indented multiple lines
         { filter = { event = 'msg_show', find = ' lines >ed ' },     skip = true },
         { filter = { event = 'msg_show', find = ' lines <ed ' },     skip = true },
+
 
         -- { filter = { event = 'emsg', find = 'E486' }, skip = true },
         -- { filter = { find = 'E486' }, skip = true },

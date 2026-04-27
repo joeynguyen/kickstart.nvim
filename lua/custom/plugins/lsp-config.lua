@@ -26,6 +26,10 @@ return {
     {
       'j-hui/fidget.nvim',
       opts = {
+        progress = {
+          -- Suppress pyright's per-keystroke "✔ analysis complete" notifications
+          ignore = { 'pyright' },
+        },
         notification = {
           -- Fidget will still handle LSP progress messages, but other
           -- general notifications will be managed by the `noice` plugin
@@ -33,6 +37,7 @@ return {
         },
       },
     },
+
 
     -- Allows extra capabilities provided by nvim-cmp
     'hrsh7th/cmp-nvim-lsp',
@@ -244,7 +249,12 @@ return {
               useLibraryCodeForTypes = true,
               diagnosticMode = 'workspace',
               typeCheckingMode = 'basic',
+              reportAnalysisProgress = false,
             },
+          },
+          -- Disable progress notifications (the noisy "✔ pyright" analysis messages)
+          pyright = {
+            disableProgressNotifications = true,
           },
         },
       },
