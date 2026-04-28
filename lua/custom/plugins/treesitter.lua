@@ -97,8 +97,18 @@ return {
       end
     end
 
-    -- Map jinja2 filetype to jinja parser
+    -- Map jinja2 filetype back to jinja parser (handles quotes better)
     vim.treesitter.language.register('jinja', 'jinja2')
+
+    -- Inject HTML into jinja 'content' nodes so standard HTML tags work
+    vim.treesitter.query.set('jinja', 'injections', [[
+      ((content) @injection.content
+       (#set! injection.language "html")
+       (#set! injection.combined))
+
+      ((comment) @injection.content
+       (#set! injection.language "comment"))
+    ]])
 
     -- Defer the rest of the setup (like parser installation) to improve startup time.
     vim.defer_fn(function()
