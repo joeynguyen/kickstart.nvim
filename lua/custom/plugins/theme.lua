@@ -125,8 +125,7 @@ return {
       ['@string'] = { link = 'String' },
 
       -- Jinja2
-      ["@keyword.directive.jinja"] = { fg = "${highlight}", bold = true },
-      ["@keyword.directive.jinja_inline"] = { fg = "${highlight}", bold = true },
+      ["@punctuation.bracket.jinja"] = { fg = "${highlight}", bold = true }, -- {{, }}, {%, %}
       ["@variable.jinja_inline"] = { fg = "${white}" },
       ["@function.call.jinja_inline"] = { fg = "${cyan}" },
       ["@keyword.jinja_inline"] = { fg = "${cyan}", italic = true },
