@@ -124,10 +124,34 @@ return {
       ['@odp.operator.fat_arrow.tsx'] = { fg = '${cyan}' },
       ['@string'] = { link = 'String' },
 
-      -- XML
+      -- Jinja2
+      ["@keyword.directive.jinja"] = { fg = "${highlight}", bold = true },
+      ["@keyword.directive.jinja_inline"] = { fg = "${highlight}", bold = true },
+      ["@variable.jinja_inline"] = { fg = "${white}" },
+      ["@function.call.jinja_inline"] = { fg = "${cyan}" },
+      ["@keyword.jinja_inline"] = { fg = "${cyan}", italic = true },
+      ["@keyword.conditional.jinja_inline"] = { fg = "${red}", italic = true },
+      ["@keyword.repeat.jinja_inline"] = { fg = "${green}", italic = true },
+      ["@keyword.import.jinja_inline"] = { fg = "${red}", italic = true },
+      ["@operator.jinja_inline"] = { fg = "${purple}" },
+      ["@attribute.builtin.jinja_inline"] = { fg = "${yellow}" },
+      ["@variable.parameter.jinja_inline"] = { fg = "${orange}" },
+      ["@constant.jinja_inline"] = { fg = "${yellow}" },
+
+      -- Python
+      -- ['@module.python'] = { fg = '${cyan}' },
+      -- ['@variable.python'] = { fg = '${green}' },
+      ['@odp.import_module.python'] = { fg = '${green}' },
+
+      -- XML / HTML
       -- ["@tag"] = { fg = "${red}" },
-      -- ["@tag.attribute"] = { fg = "${red}" },
+      -- ["@tag.builtin"] = { fg = "${red}" },
+      -- ["@tag.attribute"] = { fg = "${green}", italic = true },
       -- ["@tag.delimiter"] = { fg = "${white}" },
+      -- ["@tag.html"] = { fg = "${red}" },
+      -- ["@tag.attribute.html"] = { fg = "${green}", italic = true },
+      -- ["@tag.delimiter.html"] = { fg = "${white}" },
+      -- ["@markup.heading"] = { fg = "${orange}", bold = true },
 
       Identifier = { fg = '${cyan}' },
       Constant = { fg = '${purple}' },
@@ -135,6 +159,9 @@ return {
       String = { fg = '${yellow}' },
       Error = { fg = '${red}' },
 
+      ['@punctuation.bracket'] = { fg = '${white}' },
+      ['@punctuation.delimiter'] = { fg = '${white}' },
+      ['@comment'] = { fg = '${comment}', italic = true },
       Comment = { fg = '${comment}' },
       -- Number = { fg = "${purple}" },
       -- Function = { fg = "${purple}" },
