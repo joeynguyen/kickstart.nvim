@@ -141,6 +141,7 @@ return {
       -- ['@module.python'] = { fg = '${cyan}' },
       -- ['@variable.python'] = { fg = '${green}' },
       ['@odp.import_module.python'] = { fg = '${green}' },
+      ['@boolean.python'] = { fg = '${cyan}' },
 
       -- XML / HTML
       -- ["@tag"] = { fg = "${red}" },
