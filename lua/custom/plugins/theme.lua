@@ -125,17 +125,17 @@ return {
       ['@string'] = { link = 'String' },
 
       -- Jinja2
-      ["@punctuation.bracket.jinja"] = { fg = "${highlight}", bold = true }, -- {{, }}, {%, %}
-      ["@variable.jinja_inline"] = { fg = "${white}" },
-      ["@function.call.jinja_inline"] = { fg = "${cyan}" },
-      ["@keyword.jinja_inline"] = { fg = "${cyan}", italic = true },
-      ["@keyword.conditional.jinja_inline"] = { fg = "${red}", italic = true },
-      ["@keyword.repeat.jinja_inline"] = { fg = "${green}", italic = true },
-      ["@keyword.import.jinja_inline"] = { fg = "${red}", italic = true },
-      ["@operator.jinja_inline"] = { fg = "${purple}" },
-      ["@attribute.builtin.jinja_inline"] = { fg = "${yellow}" },
-      ["@variable.parameter.jinja_inline"] = { fg = "${orange}" },
-      ["@constant.jinja_inline"] = { fg = "${yellow}" },
+      ['@punctuation.bracket.jinja'] = { fg = '${highlight}', bold = true }, -- {{, }}, {%, %}
+      ['@variable.jinja_inline'] = { fg = '${white}' },
+      ['@function.call.jinja_inline'] = { fg = '${cyan}' },
+      ['@keyword.jinja_inline'] = { fg = '${cyan}', italic = true },
+      ['@keyword.conditional.jinja_inline'] = { fg = '${red}', italic = true },
+      ['@keyword.repeat.jinja_inline'] = { fg = '${green}', italic = true },
+      ['@keyword.import.jinja_inline'] = { fg = '${red}', italic = true },
+      ['@operator.jinja_inline'] = { fg = '${purple}' },
+      ['@attribute.builtin.jinja_inline'] = { fg = '${yellow}' },
+      ['@variable.parameter.jinja_inline'] = { fg = '${orange}' },
+      ['@constant.jinja_inline'] = { fg = '${yellow}' },
 
       -- Python
       -- ['@module.python'] = { fg = '${cyan}' },
