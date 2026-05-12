@@ -17,12 +17,12 @@ return { -- Autoformat
   },
   opts = {
     notify_on_error = false,
-    format_on_save = function(bufnr)
+    format_after_save = function(bufnr)
       -- List of filenames and paths to ignore
       local ignore_patterns = {
         '^lazy%-lock%.json$', -- Lazy.nvim lock file
-        '^node_modules/',     -- any file under a node_modules folder
-        '^%.git/',            -- any .git‑internal file
+        '^node_modules/', -- any file under a node_modules folder
+        '^%.git/', -- any .git‑internal file
         -- add more patterns as you need
         -- '/path/to/ignored/file.txt',
         -- '/path/to/ignored/directory/',
@@ -31,7 +31,7 @@ return { -- Autoformat
 
       -- Helper that decides whether the current buffer should be skipped
       local function should_ignore()
-        local rel_path = vim.fn.expand('%:.') -- path relative to cwd
+        local rel_path = vim.fn.expand '%:.' -- path relative to cwd
         -- vim.notify("Checking file: " .. rel_path) -- uncomment to debug print
         for _, pat in ipairs(ignore_patterns) do
           -- vim.notify("Testing pattern: " .. pat)  -- uncomment to debug print
