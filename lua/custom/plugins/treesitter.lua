@@ -3,7 +3,7 @@ return {
   'nvim-treesitter/nvim-treesitter',
   lazy = false,
   branch = 'main',
-  dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects', branch = 'main', },
+  dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects', branch = 'main' },
   opts = {
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = true,
@@ -122,9 +122,11 @@ return {
         'typescript',
         -- 'vimdoc',
         -- 'vim'
+        'yaml',
       }
       local alreadyInstalled = require('nvim-treesitter.config').get_installed()
-      local parsersToInstall = vim.iter(ensureInstalled)
+      local parsersToInstall = vim
+          .iter(ensureInstalled)
           :filter(function(parser)
             return not vim.tbl_contains(alreadyInstalled, parser)
           end)
