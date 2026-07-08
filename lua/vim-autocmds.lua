@@ -49,11 +49,13 @@ vim.api.nvim_create_augroup("FileTypeNoExtension", { clear = true })
 -- 2. Autocommand to set filetype to 'sh' for files with no extension
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   group = "FileTypeNoExtension",
-  desc = "Set filetype to sh for files with no extension",
+  desc = "Set filetype for Dockerfiles and extensionless scripts",
   pattern = "*",
   callback = function()
     local filename = vim.fn.expand("%:t")
-    if filename:match("^[^%.]+$") and vim.bo.filetype == "" then
+    if filename:match "^Dockerfile" then
+      vim.bo.filetype = "sh"
+    elseif filename:match("^[^%.]+$") and vim.bo.filetype == "" then
       vim.bo.filetype = "sh"
     end
   end,
