@@ -45,7 +45,7 @@ keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', {
 -- Nmap('<BS>', '<Leader>')
 
 -- Escape also clears search highlight
-keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>", { desc = "Escape and Clear hlsearch" })
+keymap.set({ 'i', 'n' }, '<esc>', '<cmd>noh<cr><esc>', { desc = 'Escape and Clear hlsearch' })
 -- Ctrl-l toggle search highlight - https://www.reddit.com/r/neovim/comments/sd7bmv/comment/hubkeix/
 Map(
   'n',
@@ -140,10 +140,14 @@ keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", {
 })
 
 -- Diagnostic keymaps
-keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1 }) end, {
+keymap.set('n', '[d', function()
+  vim.diagnostic.jump { count = -1 }
+end, {
   desc = 'Go to previous diagnostic message',
 })
-keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1 }) end, {
+keymap.set('n', ']d', function()
+  vim.diagnostic.jump { count = 1 }
+end, {
   desc = 'Go to next diagnostic message',
 })
 keymap.set('n', '<leader>dd', vim.diagnostic.open_float, {
@@ -278,4 +282,4 @@ end, {})
 keymap.set('n', '<leader>fp', '<CMD>CopyRelativePath<CR>', { desc = '[F]ile relative [p]ath copy' })
 keymap.set('n', '<leader>fP', '<CMD>CopyAbsolutePath<CR>', { desc = '[F]ile absolute [P]ath copy' })
 keymap.set('n', '<leader>fn', '<CMD>CopyFilename<CR>', { desc = '[F]ile [N]ame copy' })
-keymap.set("n", "<leader>fw", "<CMD>set wrap!<CR>", { desc = "[F]ile Toggle [W]rap", silent = true })
+keymap.set('n', '<leader>fw', '<CMD>set wrap!<CR>', { desc = '[F]ile Toggle [W]rap', silent = true })
