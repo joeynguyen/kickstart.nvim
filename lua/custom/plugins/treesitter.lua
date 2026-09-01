@@ -107,6 +107,7 @@ return {
         'bash',
         'toml', -- for pyproject.toml (uv project manifest)
         -- 'c',
+        'css',
         'cpp',
         'go',
         'helm',
