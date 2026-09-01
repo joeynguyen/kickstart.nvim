@@ -17,7 +17,7 @@ return { -- Autoformat
   },
   opts = {
     notify_on_error = false,
-    format_after_save = function(bufnr)
+    format_on_save = function(bufnr)
       -- List of filenames and paths to ignore
       local ignore_patterns = {
         '^lazy%-lock%.json$', -- Lazy.nvim lock file
@@ -60,7 +60,7 @@ return { -- Autoformat
       end
       return {
         lsp_format = lsp_format_opt,
-        timeout_ms = 1000,
+        timeout_ms = 3000,
       }
     end,
     formatters = {
@@ -92,12 +92,16 @@ return { -- Autoformat
       python = { 'ruff_organize_imports', 'ruff_format' },
       --
       -- You can use 'stop_after_first' to run the first available formatter from the list
-      javascript = { 'biome', 'prettier', 'prettierd', stop_after_first = true },
-      javascriptreact = { 'biome', 'prettier', 'prettierd', stop_after_first = true },
-      typescript = { 'biome', 'prettier', 'prettierd', stop_after_first = true },
-      typescriptreact = { 'biome', 'prettier', 'prettierd', stop_after_first = true },
-
-      json = { 'biome', 'prettier', 'prettierd', stop_after_first = true },
+      javascript = { 'prettierd', 'prettier', stop_after_first = true },
+      javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+      typescript = { 'prettierd', 'prettier', stop_after_first = true },
+      typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+      json = { 'prettierd', 'prettier', stop_after_first = true },
+      jsonc = { 'prettierd', 'prettier', stop_after_first = true },
+      css = { 'prettierd', 'prettier', stop_after_first = true },
+      scss = { 'prettierd', 'prettier', stop_after_first = true },
+      yaml = { 'prettierd', 'prettier', stop_after_first = true },
+      graphql = { 'prettierd', 'prettier', stop_after_first = true },
 
       ['markdown'] = { 'prettier', 'markdownlint-cli2', 'markdown-toc' },
       ['markdown.mdx'] = { 'prettier', 'markdownlint-cli2', 'markdown-toc' },
