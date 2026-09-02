@@ -41,6 +41,7 @@ return {
             '--glob=!**/build/*',
             '--glob=!**/.next/*',
             '--glob=!**/coverage/*',
+            '--glob=!**/*.ipynb',
           },
           mappings = {
             i = {
@@ -65,6 +66,7 @@ return {
             '*.svg',
             'public/@apollographql/*',
             'node_modules',
+            '*.ipynb',
           },
           ignore_patterns = { '^.git/' },
           layout_config = {
@@ -110,7 +112,8 @@ return {
               { age = 43200,  value = 20 },    -- past month
               { age = 129600, value = 10 },    -- past 90 days
             },
-            -- ignore_patterns = { '*.git' },
+            ignore_patterns = { '*.ipynb' },
+
           },
         },
         pickers = {

@@ -2,6 +2,7 @@
 
 :Lazy - update plugins
 :Mason - update LSP, linters, and formatters
+:FrecencyValidate - update Telescope index's cache
 
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
